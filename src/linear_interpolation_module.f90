@@ -1001,14 +1001,14 @@
 !         if   xt(n) <= x           then ileft=n-1, iright=n,    mflag=1
 !```
 !
-!# History
+!### History
 !
 !  * interv written by carl de boor [5]
 !  * dintrv author: amos, d. e., (snla) : date written 800901
 !  * revision date 820801
 !  * Jacob Williams, 2/24/2015 : updated to free-form Fortran.
 !  * Jacob Williams, 2/17/2016 : additional refactoring (eliminated GOTOs).
-!  * Jacob Williams, 2/22/2016 : modified bspline-fortran routine for
+!  * Jacob Williams, 2/22/2016 : modified bspline-fortran `dintrv` routine for
 !    linear interpolation/extrapolation use.
 
     pure subroutine dintrv(xt,x,ilo,ileft,iright,mflag)
@@ -1157,9 +1157,13 @@
 !  Uses a non-recursive quicksort, reverting to insertion sort on arrays of
 !  size <= 20. Dimension of `stack` limits array size to about \(2^32\).
 !
+!### License
+!  * [Original LAPACK license](http://www.netlib.org/lapack/LICENSE.txt)
+!
 !### History
 !  * Based on the LAPACK routine [DLASRT](http://www.netlib.org/lapack/explore-html/df/ddf/dlasrt_8f.html).
-!  * Extensively modified by Jacob Williams, Feb. 2016.
+!  * Extensively modified by Jacob Williams, Feb. 2016. Converted to
+!    modern Fortran and added the `dy` output. Removed the descending sort option.
 !
 !@note This routine is not currently used in the module.
 
@@ -1198,7 +1202,7 @@
                 ! do insertion sort on dx( start:endd )
                 insertion: do i = start + 1 , endd
                     do j = i , start + 1 , -1
-                        if ( dx(j)>=dx(j-1) ) exit insertion
+                        if ( dx(j)>=dx(j-1) ) cycle insertion
                         dmnmx   = dx(j)
                         dx(j)   = dx(j-1)
                         dx(j-1) = dmnmx
