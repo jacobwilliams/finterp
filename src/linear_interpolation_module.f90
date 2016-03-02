@@ -158,9 +158,12 @@
 !  Finalizer for a [[linear_interp_1d]] type.
 
     pure elemental subroutine finalize_1d(me)
+
     implicit none
+
     type(linear_interp_1d),intent(inout) :: me
     call me%destroy()
+
     end subroutine finalize_1d
 !*****************************************************************************************
 
@@ -169,9 +172,12 @@
 !  Finalizer for a [[linear_interp_2d]] type.
 
     pure elemental subroutine finalize_2d(me)
+
     implicit none
+
     type(linear_interp_2d),intent(inout) :: me
     call me%destroy()
+
     end subroutine finalize_2d
 !*****************************************************************************************
 
@@ -180,9 +186,12 @@
 !  Finalizer for a [[linear_interp_3d]] type.
 
     pure elemental subroutine finalize_3d(me)
+
     implicit none
+
     type(linear_interp_3d),intent(inout) :: me
     call me%destroy()
+
     end subroutine finalize_3d
 !*****************************************************************************************
 
@@ -191,9 +200,12 @@
 !  Finalizer for a [[linear_interp_4d]] type.
 
     pure elemental subroutine finalize_4d(me)
+
     implicit none
+
     type(linear_interp_4d),intent(inout) :: me
     call me%destroy()
+
     end subroutine finalize_4d
 !*****************************************************************************************
 
@@ -202,9 +214,12 @@
 !  Finalizer for a [[linear_interp_5d]] type.
 
     pure elemental subroutine finalize_5d(me)
+
     implicit none
+
     type(linear_interp_5d),intent(inout) :: me
     call me%destroy()
+
     end subroutine finalize_5d
 !*****************************************************************************************
 
@@ -213,9 +228,12 @@
 !  Finalizer for a [[linear_interp_6d]] type.
 
     pure elemental subroutine finalize_6d(me)
+
     implicit none
+
     type(linear_interp_6d),intent(inout) :: me
     call me%destroy()
+
     end subroutine finalize_6d
 !*****************************************************************************************
 
@@ -411,13 +429,9 @@
     if (istat==0) then
         call check_inputs(x=x,y=y,ierr=istat)
         if (istat==0) then
-            allocate(me%f(size(x),size(y)))
-            allocate(me%x(size(x)))
-            allocate(me%y(size(y)))
-
-            me%f = f
-            me%x = x
-            me%y = y
+            allocate(me%f(size(x),size(y))); me%f = f
+            allocate(me%x(size(x))); me%x = x
+            allocate(me%y(size(y))); me%y = y
         end if
     end if
 
@@ -455,7 +469,6 @@
 
     if (istat==0) then
         call check_inputs(x=x,y=y,z=z,ierr=istat)
-
         if (istat==0) then
             allocate(me%f(size(x),size(y),size(z))); me%f = f
             allocate(me%x(size(x))); me%x = x
@@ -664,10 +677,10 @@
     real(wp),intent(out)                  :: fxy  !! Interpolated \( f(x,y) \)
 
     integer,dimension(2) :: ix, iy
-    real(wp) :: p1,p2
-    real(wp) :: q1,q2
+    real(wp) :: p1, p2
+    real(wp) :: q1, q2
     integer :: mflag
-    real(wp) :: fx1,fx2
+    real(wp) :: fx1, fx2
 
     call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
     call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
@@ -700,10 +713,10 @@
     real(wp),intent(out)                  :: fxyz  !! Interpolated \( f(x,y,z) \)
 
     integer,dimension(2) :: ix, iy, iz
-    real(wp) :: p1,p2,p3
-    real(wp) :: q1,q2,q3
+    real(wp) :: p1, p2, p3
+    real(wp) :: q1, q2, q3
     integer :: mflag
-    real(wp) :: fx11,fx21,fx12,fx22,fxy1,fxy2
+    real(wp) :: fx11, fx21, fx12, fx22, fxy1, fxy2
 
     call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
     call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
@@ -744,8 +757,8 @@
     real(wp),intent(out)                  :: fxyzq  !! Interpolated \( f(x,y,z,q) \)
 
     integer,dimension(2) :: ix, iy, iz, iq
-    real(wp) :: p1,p2,p3,p4
-    real(wp) :: q1,q2,q3,q4
+    real(wp) :: p1, p2, p3, p4
+    real(wp) :: q1, q2, q3, q4
     integer :: mflag
     real(wp) :: fx111,fx211,fx121,fx221,fxy11,fxy21,fxyz1,&
                 fx112,fx212,fx122,fx222,fxy12,fxy22,fxyz2
@@ -768,16 +781,17 @@
     fx211 = p1*me%f(ix(1),iy(2),iz(1),iq(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1))
     fx121 = p1*me%f(ix(1),iy(1),iz(2),iq(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1))
     fx221 = p1*me%f(ix(1),iy(2),iz(2),iq(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1))
-    fxy11 = p2*fx111 + q2*fx211
-    fxy21 = p2*fx121 + q2*fx221
-    fxyz1 = p3*fxy11 + q3*fxy21
-
     fx112 = p1*me%f(ix(1),iy(1),iz(1),iq(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2))
     fx212 = p1*me%f(ix(1),iy(2),iz(1),iq(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2))
     fx122 = p1*me%f(ix(1),iy(1),iz(2),iq(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2))
     fx222 = p1*me%f(ix(1),iy(2),iz(2),iq(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2))
+
+    fxy11 = p2*fx111 + q2*fx211
+    fxy21 = p2*fx121 + q2*fx221
     fxy12 = p2*fx112 + q2*fx212
     fxy22 = p2*fx122 + q2*fx222
+
+    fxyz1 = p3*fxy11 + q3*fxy21
     fxyz2 = p3*fxy12 + q3*fxy22
 
     fxyzq = p4*fxyz1 + q4*fxyz2
@@ -802,9 +816,8 @@
     real(wp),intent(out)                  :: fxyzqr  !! Interpolated \( f(x,y,z,q,r) \)
 
     integer,dimension(2) :: ix, iy, iz, iq, ir
-    real(wp) :: p1,p2,p3,p4,p5
-    real(wp) :: q1,q2,q3,q4,q5
-    real(wp) :: f1, f2
+    real(wp) :: p1, p2, p3, p4, p5
+    real(wp) :: q1, q2, q3, q4, q5
     integer :: mflag
     real(wp) :: fx1111, fx2111, fx1211, fx2211, fx1121, fx2121, fx1221, fx2221, &
                 fxy111, fxy211, fxy121, fxy221, fxyz11, fxyz21, fxyzq1, fx1112, &
@@ -836,14 +849,6 @@
     fx2121 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1))
     fx1221 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1))
     fx2221 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1))
-    fxy111 = p2*( fx1111 ) + q2*( fx2111 )
-    fxy211 = p2*( fx1211 ) + q2*( fx2211 )
-    fxy121 = p2*( fx1121 ) + q2*( fx2121 )
-    fxy221 = p2*( fx1221 ) + q2*( fx2221 )
-    fxyz11 = p3*( fxy111 ) + q3*( fxy211 )
-    fxyz21 = p3*( fxy121 ) + q3*( fxy221 )
-    fxyzq1 = p4*( fxyz11 ) + q4*( fxyz21 )
-
     fx1112 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2))
     fx2112 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2))
     fx1212 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2))
@@ -852,12 +857,22 @@
     fx2122 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2))
     fx1222 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2))
     fx2222 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2))
+
+    fxy111 = p2*( fx1111 ) + q2*( fx2111 )
+    fxy211 = p2*( fx1211 ) + q2*( fx2211 )
+    fxy121 = p2*( fx1121 ) + q2*( fx2121 )
+    fxy221 = p2*( fx1221 ) + q2*( fx2221 )
     fxy112 = p2*( fx1112 ) + q2*( fx2112 )
     fxy212 = p2*( fx1212 ) + q2*( fx2212 )
     fxy122 = p2*( fx1122 ) + q2*( fx2122 )
     fxy222 = p2*( fx1222 ) + q2*( fx2222 )
+
+    fxyz11 = p3*( fxy111 ) + q3*( fxy211 )
+    fxyz21 = p3*( fxy121 ) + q3*( fxy221 )
     fxyz12 = p3*( fxy112 ) + q3*( fxy212 )
     fxyz22 = p3*( fxy122 ) + q3*( fxy222 )
+
+    fxyzq1 = p4*( fxyz11 ) + q4*( fxyz21 )
     fxyzq2 = p4*( fxyz12 ) + q4*( fxyz22 )
 
     fxyzqr = p5*fxyzq1 + q5*fxyzq2
@@ -883,8 +898,8 @@
     real(wp),intent(out)                  :: fxyzqrs  !! Interpolated \( f(x,y,z,q,r,s) \)
 
     integer,dimension(2) :: ix, iy, iz, iq, ir, is
-    real(wp) :: p1,p2,p3,p4,p5,p6
-    real(wp) :: q1,q2,q3,q4,q5,q6
+    real(wp) :: p1, p2, p3, p4, p5, p6
+    real(wp) :: q1, q2, q3, q4, q5, q6
     integer :: mflag
     real(wp) :: fx11111, fx21111, fx12111, fx22111, fx11211, fx21211, fx12211, &
                 fx22211, fxy1111, fxy2111, fxy1211, fxy2211, fxyz111, fxyz211, &
@@ -924,14 +939,6 @@
     fx21211 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1),is(1))
     fx12211 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1),is(1))
     fx22211 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1),is(1))
-    fxy1111 = p2*( fx11111 ) + q2*( fx21111 )
-    fxy2111 = p2*( fx12111 ) + q2*( fx22111 )
-    fxy1211 = p2*( fx11211 ) + q2*( fx21211 )
-    fxy2211 = p2*( fx12211 ) + q2*( fx22211 )
-    fxyz111 = p3*( fxy1111 ) + q3*( fxy2111 )
-    fxyz211 = p3*( fxy1211 ) + q3*( fxy2211 )
-    fxyzq11 = p4*( fxyz111 ) + q4*( fxyz211 )
-
     fx11121 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2),is(1))
     fx21121 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2),is(1))
     fx12121 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2),is(1))
@@ -940,14 +947,6 @@
     fx21221 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2),is(1))
     fx12221 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2),is(1))
     fx22221 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2),is(1))
-    fxy1121 = p2*( fx11121 ) + q2*( fx21121 )
-    fxy2121 = p2*( fx12121 ) + q2*( fx22121 )
-    fxy1221 = p2*( fx11221 ) + q2*( fx21221 )
-    fxy2221 = p2*( fx12221 ) + q2*( fx22221 )
-    fxyz121 = p3*( fxy1121 ) + q3*( fxy2121 )
-    fxyz221 = p3*( fxy1221 ) + q3*( fxy2221 )
-    fxyzq21 = p4*( fxyz121 ) + q4*( fxyz221 )
-
     fx11112 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1),is(2))
     fx21112 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1),is(2))
     fx12112 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1),is(2))
@@ -956,14 +955,6 @@
     fx21212 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1),is(2))
     fx12212 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1),is(2))
     fx22212 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1),is(2))
-    fxy1112 = p2*( fx11112 ) + q2*( fx21112 )
-    fxy2112 = p2*( fx12112 ) + q2*( fx22112 )
-    fxy1212 = p2*( fx11212 ) + q2*( fx21212 )
-    fxy2212 = p2*( fx12212 ) + q2*( fx22212 )
-    fxyz112 = p3*( fxy1112 ) + q3*( fxy2112 )
-    fxyz212 = p3*( fxy1212 ) + q3*( fxy2212 )
-    fxyzq12 = p4*( fxyz112 ) + q4*( fxyz212 )
-
     fx11122 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2),is(2))
     fx21122 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2),is(2))
     fx12122 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2),is(2))
@@ -972,12 +963,36 @@
     fx21222 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2),is(2))
     fx12222 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2),is(2))
     fx22222 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2),is(2))
+
+    fxy1111 = p2*( fx11111 ) + q2*( fx21111 )
+    fxy2111 = p2*( fx12111 ) + q2*( fx22111 )
+    fxy1211 = p2*( fx11211 ) + q2*( fx21211 )
+    fxy2211 = p2*( fx12211 ) + q2*( fx22211 )
+    fxy1121 = p2*( fx11121 ) + q2*( fx21121 )
+    fxy2121 = p2*( fx12121 ) + q2*( fx22121 )
+    fxy1221 = p2*( fx11221 ) + q2*( fx21221 )
+    fxy2221 = p2*( fx12221 ) + q2*( fx22221 )
+    fxy1112 = p2*( fx11112 ) + q2*( fx21112 )
+    fxy2112 = p2*( fx12112 ) + q2*( fx22112 )
+    fxy1212 = p2*( fx11212 ) + q2*( fx21212 )
+    fxy2212 = p2*( fx12212 ) + q2*( fx22212 )
     fxy1122 = p2*( fx11122 ) + q2*( fx21122 )
     fxy2122 = p2*( fx12122 ) + q2*( fx22122 )
     fxy1222 = p2*( fx11222 ) + q2*( fx21222 )
     fxy2222 = p2*( fx12222 ) + q2*( fx22222 )
+
+    fxyz111 = p3*( fxy1111 ) + q3*( fxy2111 )
+    fxyz211 = p3*( fxy1211 ) + q3*( fxy2211 )
+    fxyz121 = p3*( fxy1121 ) + q3*( fxy2121 )
+    fxyz221 = p3*( fxy1221 ) + q3*( fxy2221 )
+    fxyz112 = p3*( fxy1112 ) + q3*( fxy2112 )
+    fxyz212 = p3*( fxy1212 ) + q3*( fxy2212 )
     fxyz122 = p3*( fxy1122 ) + q3*( fxy2122 )
     fxyz222 = p3*( fxy1222 ) + q3*( fxy2222 )
+
+    fxyzq11 = p4*( fxyz111 ) + q4*( fxyz211 )
+    fxyzq21 = p4*( fxyz121 ) + q4*( fxyz221 )
+    fxyzq12 = p4*( fxyz112 ) + q4*( fxyz212 )
     fxyzq22 = p4*( fxyz122 ) + q4*( fxyz222 )
 
     fxyzqr1 = p5*fxyzq11 + q5*fxyzq21
@@ -1179,8 +1194,8 @@
 
     integer,parameter :: select = 20  !! max size for using insertion sort.
 
-    integer :: endd , i , j , n, start , stkpnt
-    real(wp) :: d1 , d2 , d3 , dmnmx , dmnmy, tmp
+    integer :: endd, i, j, n, start, stkpnt
+    real(wp) :: d1, d2, d3, dmnmx, dmnmy, tmp
     integer,dimension(2,32) :: stack
 
     ! number of elements to sort:
@@ -1200,8 +1215,8 @@
             if ( endd-start<=select .and. endd>start ) then
 
                 ! do insertion sort on dx( start:endd )
-                insertion: do i = start + 1 , endd
-                    do j = i , start + 1 , -1
+                insertion: do i = start + 1, endd
+                    do j = i, start + 1, -1
                         if ( dx(j)>=dx(j-1) ) cycle insertion
                         dmnmx   = dx(j)
                         dx(j)   = dx(j-1)
@@ -1304,12 +1319,12 @@
 
     implicit none
 
-    real(wp),dimension(:),intent(in),optional  :: x
-    real(wp),dimension(:),intent(in),optional  :: y
-    real(wp),dimension(:),intent(in),optional  :: z
-    real(wp),dimension(:),intent(in),optional  :: q
-    real(wp),dimension(:),intent(in),optional  :: r
-    real(wp),dimension(:),intent(in),optional  :: s
+    real(wp),dimension(:),intent(in),optional  :: x     !! `x` abscissa vector
+    real(wp),dimension(:),intent(in),optional  :: y     !! `y` abscissa vector
+    real(wp),dimension(:),intent(in),optional  :: z     !! `z` abscissa vector
+    real(wp),dimension(:),intent(in),optional  :: q     !! `q` abscissa vector
+    real(wp),dimension(:),intent(in),optional  :: r     !! `r` abscissa vector
+    real(wp),dimension(:),intent(in),optional  :: s     !! `s` abscissa vector
     integer,intent(out)                        :: ierr  !! `0` : no problems,
                                                         !! `1` : `x` is not strictly increasing,
                                                         !! `2` : `y` is not strictly increasing,
@@ -1338,7 +1353,8 @@
         integer,intent(in)               :: error_code !! error code for check
         integer,intent(inout)            :: ierr       !! will be set to `error_code` if there is a problem
 
-        integer :: i,n
+        integer :: i  !! counter
+        integer :: n  !! size of the input `v` array
 
         n = size(v)
         do i=2,n
