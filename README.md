@@ -9,11 +9,9 @@ finterp
 
 Can be used to perform multidimensional (1D-6D) linear interpolation of data on a regular grid. The code is written in modern Fortran (2003/2008) and is object-oriented and thread safe.
 
-# See also
-
- * [bspline-fortran](https://github.com/jacobwilliams/bspline-fortran), if you need B-spline interpolation.
-
 # Usage
+
+There are six classes (`linear_interp_1d`, `linear_interp_2d`, `linear_interp_3d`, `linear_interp_4d`, `linear_interp_5d`, and `linear_interp_6d`). Each has three methods: `initialize`, `evaluate`, and `destroy`.
 
 ```fortran
 real(wp) :: x(nx),y(ny),z(nz),q(nq),r(nr),s(ns)
@@ -68,3 +66,7 @@ The latest API documentation can be found [here](http://jacobwilliams.github.io/
 # License
 
 The finterp source code and related files and documentation are distributed under a permissive free software [license](https://github.com/jacobwilliams/finterp/blob/master/LICENSE) (BSD-style).
+
+# See also
+
+ * [bspline-fortran](https://github.com/jacobwilliams/bspline-fortran), if you need B-spline interpolation.
