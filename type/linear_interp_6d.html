@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="Modern Fortran Multidimensional Linear Interpolation">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>linear_interp_6d &ndash; finterp </title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="../lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
 				
@@ -69,7 +76,27 @@
 				
 				
             <li><a href="../program/linear_interpolation_test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/linear_interpolation_test.html">Program</a></li>
+
           </ul>
         
         <form action="../search.html" class="navbar-form navbar-right" role="search">
@@ -93,9 +120,9 @@
     <small>Derived Type</small>
     
     </h1>
-	 
+    
 <div class="row">
-<div class="col-lg-12">
+  <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
@@ -104,6 +131,13 @@
      
     
     
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="<p>20.4% of total for derived types.</p>Including implementation: 180 statements, 27.8% of total for derived types.">22 statements</a>
+     </li> 
+     
+     
     <li><i class="fa fa-code"></i><a href="../src/linear_interpolation_module.f90"> Source File</a></li>
      
   </ul>
@@ -118,139 +152,240 @@
 </div>
 </div>
 </div>
-    
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
   </div>
   
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
 <div id="sidebar">
   
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
-    <div id="vars" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-f%7E6">f</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-x%7E6">x</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-y%7E5">y</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-z%7E4">z</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-q%7E3">q</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-r%7E2">r</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-s">s</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilox%7E6">ilox</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloy%7E5">iloy</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloz%7E4">iloz</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloq%7E3">iloq</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilor%7E2">ilor</a>
-        
-        <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilos">ilos</a>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins">Finalization Procedures</a></h3></div>
-    <div id="fins" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../type/linear_interp_6d.html#finalproc-finalize_6d">finalize_6d</a>
-          
-        </div>
-    </div>
-  </div>
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs">Type-Bound Procedures</a></h3></div>
-    <div id="boundprocs" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-initialize%7E6">initialize</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-evaluate%7E6">evaluate</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-destroy%7E7">destroy</a>
-          
-        </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
-      <a class="list-group-item" href="../type/linear_interp_6d.html#src">linear_interp_6d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-f%7E6">f</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-x%7E6">x</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-y%7E5">y</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-z%7E4">z</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-q%7E3">q</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-r%7E2">r</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-s">s</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilox%7E6">ilox</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloy%7E5">iloy</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloz%7E4">iloz</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloq%7E3">iloq</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilor%7E2">ilor</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilos">ilos</a>
+      
     </div>
   </div>
-  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
+  <div id="fins-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#finalproc-finalize_6d">finalize_6d</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-initialize%7E6">initialize</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-evaluate%7E6">evaluate</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-destroy%7E7">destroy</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/linear_interp_6d.html#src">linear_interp_6d</a>
+  </div>
+</div>
+
+
   <hr>
   
-  <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes">All Derived Types</a></h3></div>
-    <div id="alltypes" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../type/linear_interp_1d.html">linear_interp_1d</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_2d.html">linear_interp_2d</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_3d.html">linear_interp_3d</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_4d.html">linear_interp_4d</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_5d.html">linear_interp_5d</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_6d.html">linear_interp_6d</a>
-          
-          <a class="list-group-item" href="../type/linear_interp_class.html">linear_interp_class</a>
-          
-        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
+  <div id="alltypes-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_1d.html">linear_interp_1d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_2d.html">linear_interp_2d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_3d.html">linear_interp_3d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_4d.html">linear_interp_4d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_5d.html">linear_interp_5d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html">linear_interp_6d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_class.html">linear_interp_class</a>
+      
     </div>
   </div>
-  
 </div>
+
+
+</div>  
 
     </div>
     
-    <div class="col-lg-9" id='text'>
-    <h2>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: linear_interp_6d</h2>
+    <div class="col-md-9" id='text'>
+      <h2>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: linear_interp_6d</h2>
     
     <p>Class for 6d linear interpolation.</p>
     <br>
     
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-f%7E6">f</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-x%7E6">x</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-y%7E5">y</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-z%7E4">z</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-q%7E3">q</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-r%7E2">r</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-s">s</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilox%7E6">ilox</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloy%7E5">iloy</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloz%7E4">iloz</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-iloq%7E3">iloq</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilor%7E2">ilor</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-ilos">ilos</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
+  <div id="fins-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#finalproc-finalize_6d">finalize_6d</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-initialize%7E6">initialize</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-evaluate%7E6">evaluate</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-destroy%7E7">destroy</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/linear_interp_6d.html#src">linear_interp_6d</a>
+  </div>
+</div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
     
     <section>
     <h2>Components</h2>
@@ -477,8 +612,17 @@
 private pure elemental subroutine <a href='../proc/finalize_6d.html'>finalize_6d</a>(me)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+
+
+<p>Finalizer for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> type.</p>
     
     <h4>Arguments</h4>
     
@@ -514,15 +658,6 @@ private pure elemental subroutine <a href='../proc/finalize_6d.html'>finalize_6d
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Finalizer for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> type.</p>
-        
 
      </li>
   </ul>
@@ -553,8 +688,17 @@ private pure elemental subroutine <a href='../proc/finalize_6d.html'>finalize_6d
 private pure subroutine <a href='../proc/initialize_6d.html'>initialize_6d</a>(me, x, y, z, q, r, s, f, istat)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+
+
+<p>Constructor for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> class.</p>
     
     <h4>Arguments</h4>
     
@@ -722,15 +866,6 @@ private pure subroutine <a href='../proc/initialize_6d.html'>initialize_6d</a>(m
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Constructor for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> class.</p>
-        
 
       
       </li>
@@ -755,8 +890,17 @@ private pure subroutine <a href='../proc/initialize_6d.html'>initialize_6d</a>(m
 private pure subroutine <a href='../proc/interp_6d.html'>interp_6d</a>(me, x, y, z, q, r, s, fxyzqrs)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+
+
+<p>6D linear interpolation routine.</p>
     
     <h4>Arguments</h4>
     
@@ -897,15 +1041,6 @@ private pure subroutine <a href='../proc/interp_6d.html'>interp_6d</a>(me, x, y,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>6D linear interpolation routine.</p>
-        
 
       
       </li>
@@ -930,8 +1065,17 @@ private pure subroutine <a href='../proc/interp_6d.html'>interp_6d</a>(me, x, y,
 private pure elemental subroutine <a href='../proc/destroy_6d.html'>destroy_6d</a>(me)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+
+
+<p>Destructor for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> class.</p>
     
     <h4>Arguments</h4>
     
@@ -967,15 +1111,6 @@ private pure elemental subroutine <a href='../proc/destroy_6d.html'>destroy_6d</
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Destructor for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> class.</p>
-        
 
       
       </li>
@@ -1021,17 +1156,54 @@ private pure elemental subroutine <a href='../proc/destroy_6d.html'>destroy_6d</
     </div>
   </div>
 
+  <section class="visible-xs visible-sm hidden-md">
     <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> finterp was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
-    </div> <!-- /container -->
+    
 
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
+  <div id="alltypes-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/linear_interp_1d.html">linear_interp_1d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_2d.html">linear_interp_2d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_3d.html">linear_interp_3d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_4d.html">linear_interp_4d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_5d.html">linear_interp_5d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_6d.html">linear_interp_6d</a>
+      
+      <a class="list-group-item" href="../type/linear_interp_class.html">linear_interp_class</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2016 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> finterp was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -1056,6 +1228,6 @@ private pure elemental subroutine <a href='../proc/destroy_6d.html'>destroy_6d</
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>
