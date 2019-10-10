@@ -1,15 +1,15 @@
 finterp
 ======
 
-# Status
+## Status
 
 [![Build Status](https://img.shields.io/travis/jacobwilliams/finterp/master.svg?style=plastic)](https://travis-ci.org/jacobwilliams/finterp)
 
-# Description
+## Description
 
 Can be used to perform multidimensional (1D-6D) linear interpolation of data on a regular grid. The code is written in modern Fortran (2003/2008) and is object-oriented and thread safe.
 
-# Usage
+## Usage
 
 There are six classes (`linear_interp_1d`, `linear_interp_2d`, `linear_interp_3d`, `linear_interp_4d`, `linear_interp_5d`, and `linear_interp_6d`). Each has three methods: `initialize`, `evaluate`, and `destroy`.
 
@@ -59,14 +59,19 @@ call s5%destroy()
 call s6%destroy()
 ```
 
-# Documentation
+## Nearest Neighbor Interpolation
+
+The library also includes a `nearest_interp_1d` class for 1D nearest neighbor interpolation. The interface is the same as `linear_interp_1d`.
+
+
+## Documentation
 
 The latest API documentation can be found [here](http://jacobwilliams.github.io/finterp/). This was generated from the source code using [FORD](https://github.com/cmacmackin/ford) (note that the included `build.sh` script will also generate these files).
 
-# License
+## License
 
 The finterp source code and related files and documentation are distributed under a permissive free software [license](https://github.com/jacobwilliams/finterp/blob/master/LICENSE) (BSD-style).
 
-# See also
+## See also
 
  * [bspline-fortran](https://github.com/jacobwilliams/bspline-fortran), if you need B-spline interpolation.
