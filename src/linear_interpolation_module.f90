@@ -1154,133 +1154,17 @@
     real(wp),intent(in)                    :: x
     real(wp),intent(out)                   :: fx
 
-    integer :: ix
+    integer :: ileft,iright,mflag
 
-    call dintrv_nearest(me%x,x,me%ilox,ix)
+    call dintrv(me%x,x,me%ilox,ileft,iright,mflag)
 
-    fx = me%f(ix)
-
-    end subroutine nearest_1d
-!*****************************************************************************************
-
-!*****************************************************************************************
-!>
-!  Returns the index in `xt` of the element nearest to `x`.
-!
-!### See also
-!  * Based on [[dintrv]]
-!
-!### History
-!  * Jacob Williams, 10/9/2019 : created from [[dintrv]].
-
-    pure subroutine dintrv_nearest(xt,x,ilo,inearest)
-
-    implicit none
-
-    real(wp),dimension(:),intent(in) :: xt       !! a knot or break point vector
-    real(wp),intent(in)              :: x        !! argument
-    integer,intent(inout)            :: ilo      !! an initialization parameter which must be set
-                                                 !! to 1 the first time the array `xt` is
-                                                 !! processed by dintrv. `ilo` contains information for
-                                                 !! efficient processing after the initial call and `ilo`
-                                                 !! must not be changed by the user.  each dimension
-                                                 !! requires a distinct `ilo` parameter.
-    integer,intent(out)              :: inearest !! nearest index
-
-    integer :: ihi, istep, imid, n
-
-    n = size(xt)
-
-    if (n==1) then
-        ! special case of only one point
-        inearest = 1
-        return
+    if ( abs(x-me%x(ileft)) <= abs(x-me%x(iright)) ) then
+        fx = me%f(ileft)
+    else
+        fx = me%f(iright)
     end if
 
-    ihi = ilo + 1
-    if ( ihi>=n ) then
-        if ( x>=xt(n) ) then
-            inearest = n
-            return
-        end if
-        if ( n<=1 ) then
-            inearest = 1
-            return
-        end if
-        ilo = n - 1
-        ihi = n
-    endif
-
-    if ( x>=xt(ihi) ) then
-
-        ! now x >= xt(ilo). find upper bound
-        istep = 1
-        do
-            ilo = ihi
-            ihi = ilo + istep
-            if ( ihi>=n ) then
-                if ( x>=xt(n) ) then
-                    inearest = n
-                    return
-                end if
-                ihi = n
-            elseif ( x>=xt(ihi) ) then
-                istep = istep*2
-                cycle
-            endif
-            exit
-        end do
-
-    else
-
-        if ( x>=xt(ilo) ) then
-            if ( abs(x-xt(ilo)) <= abs(x-xt(ilo+1)) ) then
-                inearest = ilo
-            else
-                inearest = ilo+1
-            end if
-            return
-        end if
-        ! now x <= xt(ihi). find lower bound
-        istep = 1
-        do
-            ihi = ilo
-            ilo = ihi - istep
-            if ( ilo<=1 ) then
-                ilo = 1
-                if ( x<xt(1) ) then
-                    inearest = 1
-                    return
-                end if
-            elseif ( x<xt(ilo) ) then
-                istep = istep*2
-                cycle
-            endif
-            exit
-        end do
-
-    endif
-
-    ! now xt(ilo) <= x < xt(ihi). narrow the interval
-    do
-        imid = (ilo+ihi)/2
-        if ( imid==ilo ) then
-            if ( abs(x-xt(ilo)) <= abs(x-xt(ilo+1)) ) then
-                inearest = ilo
-            else
-                inearest = ilo+1
-            end if
-            return
-        end if
-        ! note. it is assumed that imid = ilo in case ihi = ilo+1
-        if ( x<xt(imid) ) then
-            ihi = imid
-        else
-            ilo = imid
-        endif
-    end do
-
-    end subroutine dintrv_nearest
+    end subroutine nearest_1d
 !*****************************************************************************************
 
 !*****************************************************************************************
