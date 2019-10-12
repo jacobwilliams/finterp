@@ -61,8 +61,7 @@ call s6%destroy()
 
 ## Nearest Neighbor Interpolation
 
-The library also includes a `nearest_interp_1d` class for 1D nearest neighbor interpolation. The interface is the same as `linear_interp_1d`.
-
+The library also includes classes for nearest neighbor interpolation (`nearest_interp_1d`, `nearest_interp_2d`, ...). The interfaces are the same as for the linear classes.
 
 ## Documentation
 
