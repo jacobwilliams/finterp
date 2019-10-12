@@ -1539,8 +1539,6 @@
 
     pure subroutine check_inputs(x,y,z,q,r,s,ierr)
 
-    use iso_fortran_env,    only: error_unit
-
     implicit none
 
     real(wp),dimension(:),intent(in),optional  :: x     !! `x` abscissa vector
