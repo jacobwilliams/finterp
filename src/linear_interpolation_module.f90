@@ -150,6 +150,42 @@
         final :: finalize_6d
     end type linear_interp_6d
 
+    type,extends(linear_interp_1d),public :: nearest_interp_1d
+        !! Class for 1d nearest neighbor interpolation.
+        contains
+        procedure,public :: evaluate => nearest_1d
+    end type nearest_interp_1d
+
+    type,extends(linear_interp_2d),public :: nearest_interp_2d
+        !! Class for 2d nearest neighbor interpolation.
+        contains
+        procedure,public :: evaluate => nearest_2d
+    end type nearest_interp_2d
+
+    type,extends(linear_interp_3d),public :: nearest_interp_3d
+        !! Class for 3d nearest neighbor interpolation.
+        contains
+        procedure,public :: evaluate => nearest_3d
+    end type nearest_interp_3d
+
+    type,extends(linear_interp_4d),public :: nearest_interp_4d
+        !! Class for 4d nearest neighbor interpolation.
+        contains
+        procedure,public :: evaluate => nearest_4d
+    end type nearest_interp_4d
+
+    type,extends(linear_interp_5d),public :: nearest_interp_5d
+        !! Class for 5d nearest neighbor interpolation.
+        contains
+        procedure,public :: evaluate => nearest_5d
+    end type nearest_interp_5d
+
+    type,extends(linear_interp_6d),public :: nearest_interp_6d
+        !! Class for 6d nearest neighbor interpolation.
+        contains
+        procedure,public :: evaluate => nearest_6d
+    end type nearest_interp_6d
+
     contains
 !*****************************************************************************************
 
@@ -1025,22 +1061,24 @@
 !  * Jacob Williams, 2/17/2016 : additional refactoring (eliminated GOTOs).
 !  * Jacob Williams, 2/22/2016 : modified bspline-fortran `dintrv` routine for
 !    linear interpolation/extrapolation use.
+!  * Jacob Williams, 10/9/2019 : added optional `inearest` output.
 
-    pure subroutine dintrv(xt,x,ilo,ileft,iright,mflag)
+    pure subroutine dintrv(xt,x,ilo,ileft,iright,mflag,inearest)
 
     implicit none
 
-    real(wp),dimension(:),intent(in) :: xt     !! a knot or break point vector
-    real(wp),intent(in)              :: x      !! argument
-    integer,intent(inout)            :: ilo    !! an initialization parameter which must be set
-                                               !! to 1 the first time the array `xt` is
-                                               !! processed by dintrv. `ilo` contains information for
-                                               !! efficient processing after the initial call and `ilo`
-                                               !! must not be changed by the user.  each dimension
-                                               !! requires a distinct `ilo` parameter.
-    integer,intent(out)              :: ileft  !! left index
-    integer,intent(out)              :: iright !! right index
-    integer,intent(out)              :: mflag  !! signals when `x` lies out of bounds
+    real(wp),dimension(:),intent(in) :: xt       !! a knot or break point vector
+    real(wp),intent(in)              :: x        !! argument
+    integer,intent(inout)            :: ilo      !! an initialization parameter which must be set
+                                                 !! to 1 the first time the array `xt` is
+                                                 !! processed by dintrv. `ilo` contains information for
+                                                 !! efficient processing after the initial call and `ilo`
+                                                 !! must not be changed by the user.  each dimension
+                                                 !! requires a distinct `ilo` parameter.
+    integer,intent(out)              :: ileft    !! left index
+    integer,intent(out)              :: iright   !! right index
+    integer,intent(out)              :: mflag    !! signals when `x` lies out of bounds
+    integer,intent(out),optional     :: inearest !! nearest index
 
     integer :: ihi, istep, imid, n
 
@@ -1052,12 +1090,14 @@
             mflag = 1
             ileft = n-1
             iright= n
+            if (present(inearest)) inearest = n
             return
         end if
         if ( n<=1 ) then
             mflag = -1
             ileft = 1
             iright= 2
+            if (present(inearest)) inearest = 1
             return
         end if
         ilo = n - 1
@@ -1076,6 +1116,7 @@
                     mflag = 1
                     ileft = n-1
                     iright= n
+                    if (present(inearest)) inearest = n
                     return
                 end if
                 ihi = n
@@ -1092,6 +1133,13 @@
             mflag = 0
             ileft = ilo
             iright= ilo+1
+            if (present(inearest)) then
+                if ( abs(x-xt(ileft)) <= abs(x-xt(iright)) ) then
+                    inearest = ileft
+                else
+                    inearest = iright
+                end if
+            end if
             return
         end if
         ! now x <= xt(ihi). find lower bound
@@ -1105,6 +1153,7 @@
                     mflag = -1
                     ileft = 1
                     iright= 2
+                    if (present(inearest)) inearest = 1
                     return
                 end if
             elseif ( x<xt(ilo) ) then
@@ -1123,6 +1172,13 @@
             mflag = 0
             ileft = ilo
             iright= ilo+1
+            if (present(inearest)) then
+                if ( abs(x-xt(ileft)) <= abs(x-xt(iright)) ) then
+                    inearest = ileft
+                else
+                    inearest = iright
+                end if
+            end if
             return
         end if
         ! note. it is assumed that imid = ilo in case ihi = ilo+1
@@ -1134,6 +1190,174 @@
     end do
 
     end subroutine dintrv
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  1D nearest neighbor interpolation routine.
+
+    pure subroutine nearest_1d(me,x,fx)
+
+    implicit none
+
+    class(nearest_interp_1d),intent(inout) :: me
+    real(wp),intent(in)                    :: x
+    real(wp),intent(out)                   :: fx
+
+    integer :: mflag
+    integer,dimension(2) :: ix
+    integer :: i
+
+    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+
+    fx = me%f(i)
+
+    end subroutine nearest_1d
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  2D nearest neighbor interpolation routine.
+
+    pure subroutine nearest_2d(me,x,y,fxy)
+
+    implicit none
+
+    class(nearest_interp_2d),intent(inout) :: me
+    real(wp),intent(in)                    :: x
+    real(wp),intent(in)                    :: y
+    real(wp),intent(out)                   :: fxy  !! Interpolated \( f(x,y) \)
+
+    integer :: mflag
+    integer,dimension(2) :: ix, iy
+    integer :: i, j
+
+    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+
+    fxy = me%f(i,j)
+
+    end subroutine nearest_2d
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  3D nearest neighbor interpolation routine.
+
+    pure subroutine nearest_3d(me,x,y,z,fxyz)
+
+    implicit none
+
+    class(nearest_interp_3d),intent(inout) :: me
+    real(wp),intent(in)                    :: x
+    real(wp),intent(in)                    :: y
+    real(wp),intent(in)                    :: z
+    real(wp),intent(out)                   :: fxyz  !! Interpolated \( f(x,y,z) \)
+
+    integer :: mflag
+    integer,dimension(2) :: ix, iy, iz
+    integer :: i, j, k
+
+    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+
+    fxyz = me%f(i,j,k)
+
+    end subroutine nearest_3d
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  4D nearest neighbor interpolation routine.
+
+    pure subroutine nearest_4d(me,x,y,z,q,fxyzq)
+
+    implicit none
+
+    class(nearest_interp_4d),intent(inout) :: me
+    real(wp),intent(in)                    :: x
+    real(wp),intent(in)                    :: y
+    real(wp),intent(in)                    :: z
+    real(wp),intent(in)                    :: q
+    real(wp),intent(out)                   :: fxyzq  !! Interpolated \( f(x,y,z,q) \)
+
+    integer :: mflag
+    integer,dimension(2) :: ix, iy, iz, iq
+    integer :: i, j, k, l
+
+    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+
+    fxyzq = me%f(i,j,k,l)
+
+    end subroutine nearest_4d
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  5D nearest neighbor interpolation routine.
+
+    pure subroutine nearest_5d(me,x,y,z,q,r,fxyzqr)
+
+    implicit none
+
+    class(nearest_interp_5d),intent(inout) :: me
+    real(wp),intent(in)                    :: x
+    real(wp),intent(in)                    :: y
+    real(wp),intent(in)                    :: z
+    real(wp),intent(in)                    :: q
+    real(wp),intent(in)                    :: r
+    real(wp),intent(out)                   :: fxyzqr  !! Interpolated \( f(x,y,z,q,r) \)
+
+    integer :: mflag
+    integer,dimension(2) :: ix, iy, iz, iq, ir
+    integer :: i, j, k, l, m
+
+    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+    call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag,m)
+
+    fxyzqr = me%f(i,j,k,l,m)
+
+    end subroutine nearest_5d
+!*****************************************************************************************
+
+!*****************************************************************************************
+!>
+!  6D nearest neighbor interpolation routine.
+
+    pure subroutine nearest_6d(me,x,y,z,q,r,s,fxyzqrs)
+
+    implicit none
+
+    class(nearest_interp_6d),intent(inout) :: me
+    real(wp),intent(in)                    :: x
+    real(wp),intent(in)                    :: y
+    real(wp),intent(in)                    :: z
+    real(wp),intent(in)                    :: q
+    real(wp),intent(in)                    :: r
+    real(wp),intent(in)                    :: s
+    real(wp),intent(out)                   :: fxyzqrs  !! Interpolated \( f(x,y,z,q,r,s) \)
+
+    integer :: mflag
+    integer,dimension(2) :: ix, iy, iz, iq, ir, is
+    integer :: i, j, k, l, m, n
+
+    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+    call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag,m)
+    call dintrv(me%s,s,me%ilos,is(1),is(2),mflag,n)
+
+    fxyzqrs = me%f(i,j,k,l,m,n)
+
+    end subroutine nearest_6d
 !*****************************************************************************************
 
 !*****************************************************************************************
