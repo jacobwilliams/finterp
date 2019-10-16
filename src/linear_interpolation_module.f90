@@ -1181,10 +1181,8 @@
         ! this is only allowed for nearest interpolation
         if (present(inearest)) then
             inearest = 1
-        else
-            error stop 'error in dintrv: n=1'
+            return
         end if
-        return
     end if
 
     ihi = ilo + 1
