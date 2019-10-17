@@ -18,14 +18,17 @@
 
     private
 
-    real(wp),parameter,private :: one = 1.0_wp  !! numeric constant
+    real(wp),parameter,private :: zero = 0.0_wp  !! numeric constant
+    real(wp),parameter,private :: one  = 1.0_wp  !! numeric constant
 
     type,public,abstract :: linear_interp_class
         !! Base class for the linear interpolation types
         private
+        logical :: initialized = .false. !! if the class was properly initialized
     contains
         private
         procedure(destroy_func),deferred,public :: destroy  !! destructor
+        procedure :: check_inputs
     end type linear_interp_class
 
     abstract interface
@@ -286,6 +289,7 @@
     if (allocated(me%f)) deallocate(me%f)
     if (allocated(me%x)) deallocate(me%x)
     me%ilox = 1
+    me%initialized = .false.
 
     end subroutine destroy_1d
 !*****************************************************************************************
@@ -305,6 +309,7 @@
     if (allocated(me%y)) deallocate(me%y)
     me%ilox = 1
     me%iloy = 1
+    me%initialized = .false.
 
     end subroutine destroy_2d
 !*****************************************************************************************
@@ -326,6 +331,7 @@
     me%ilox = 1
     me%iloy = 1
     me%iloz = 1
+    me%initialized = .false.
 
     end subroutine destroy_3d
 !*****************************************************************************************
@@ -349,6 +355,7 @@
     me%iloy = 1
     me%iloz = 1
     me%iloq = 1
+    me%initialized = .false.
 
     end subroutine destroy_4d
 !*****************************************************************************************
@@ -374,6 +381,7 @@
     me%iloz = 1
     me%iloq = 1
     me%ilor = 1
+    me%initialized = .false.
 
     end subroutine destroy_5d
 !*****************************************************************************************
@@ -401,6 +409,7 @@
     me%iloq = 1
     me%ilor = 1
     me%ilos = 1
+    me%initialized = .false.
 
     end subroutine destroy_6d
 !*****************************************************************************************
@@ -416,9 +425,10 @@
     class(linear_interp_1d),intent(inout) :: me
     real(wp),dimension(:),intent(in)      :: x
     real(wp),dimension(:),intent(in)      :: f
-    integer,intent(out)                   :: istat  !! `0`  : no problems,
-                                                    !! `1`  : `x` is not strictly increasing,
-                                                    !! `10` : `x` is not equal to size(f,1).
+    integer,intent(out)                   :: istat  !! `0`   : no problems,
+                                                    !! `1`   : `x` is not strictly increasing,
+                                                    !! `10`  : `x` is not equal to size(f,1),
+                                                    !! `100` : cannot use linear interpolation for only one point.
 
     call me%destroy()
 
@@ -427,10 +437,11 @@
     if (istat==0 .and. size(x)/=size(f,1)) istat = 10
 
     if (istat==0) then
-        call check_inputs(x=x,ierr=istat)
+        call me%check_inputs(x=x,ierr=istat)
         if (istat==0) then
             allocate(me%f(size(x))); me%f = f
             allocate(me%x(size(x))); me%x = x
+            me%initialized = .true.
         end if
     end if
 
@@ -449,11 +460,12 @@
     real(wp),dimension(:),intent(in)      :: x
     real(wp),dimension(:),intent(in)      :: y
     real(wp),dimension(:,:),intent(in)    :: f
-    integer,intent(out)                   :: istat  !! `0`  : no problems,
-                                                    !! `1`  : `x` is not strictly increasing,
-                                                    !! `2`  : `y` is not strictly increasing,
-                                                    !! `10` : `x` is not equal to size(f,1),
-                                                    !! `20` : `y` is not equal to size(f,2).
+    integer,intent(out)                   :: istat  !! `0`   : no problems,
+                                                    !! `1`   : `x` is not strictly increasing,
+                                                    !! `2`   : `y` is not strictly increasing,
+                                                    !! `10`  : `x` is not equal to size(f,1),
+                                                    !! `20`  : `y` is not equal to size(f,2),
+                                                    !! `100` : cannot use linear interpolation for only one point.
 
     call me%destroy()
 
@@ -463,11 +475,12 @@
     if (istat==0 .and. size(y)/=size(f,2)) istat = 20
 
     if (istat==0) then
-        call check_inputs(x=x,y=y,ierr=istat)
+        call me%check_inputs(x=x,y=y,ierr=istat)
         if (istat==0) then
             allocate(me%f(size(x),size(y))); me%f = f
             allocate(me%x(size(x))); me%x = x
             allocate(me%y(size(y))); me%y = y
+            me%initialized = .true.
         end if
     end if
 
@@ -487,13 +500,14 @@
     real(wp),dimension(:),intent(in)      :: y
     real(wp),dimension(:),intent(in)      :: z
     real(wp),dimension(:,:,:),intent(in)  :: f
-    integer,intent(out)                   :: istat  !! `0`  : no problems,
-                                                    !! `1`  : `x` is not strictly increasing,
-                                                    !! `2`  : `y` is not strictly increasing,
-                                                    !! `3`  : `z` is not strictly increasing,
-                                                    !! `10` : `x` is not equal to size(f,1),
-                                                    !! `20` : `y` is not equal to size(f,2),
-                                                    !! `30` : `z` is not equal to size(f,3).
+    integer,intent(out)                   :: istat  !! `0`   : no problems,
+                                                    !! `1`   : `x` is not strictly increasing,
+                                                    !! `2`   : `y` is not strictly increasing,
+                                                    !! `3`   : `z` is not strictly increasing,
+                                                    !! `10`  : `x` is not equal to size(f,1),
+                                                    !! `20`  : `y` is not equal to size(f,2),
+                                                    !! `30`  : `z` is not equal to size(f,3),
+                                                    !! `100` : cannot use linear interpolation for only one point.
 
     call me%destroy()
 
@@ -504,12 +518,13 @@
     if (istat==0 .and. size(z)/=size(f,3)) istat = 30
 
     if (istat==0) then
-        call check_inputs(x=x,y=y,z=z,ierr=istat)
+        call me%check_inputs(x=x,y=y,z=z,ierr=istat)
         if (istat==0) then
             allocate(me%f(size(x),size(y),size(z))); me%f = f
             allocate(me%x(size(x))); me%x = x
             allocate(me%y(size(y))); me%y = y
             allocate(me%z(size(z))); me%z = z
+            me%initialized = .true.
         end if
     end if
 
@@ -530,15 +545,16 @@
     real(wp),dimension(:),intent(in)       :: z
     real(wp),dimension(:),intent(in)       :: q
     real(wp),dimension(:,:,:,:),intent(in) :: f
-    integer,intent(out)                    :: istat !! `0`  : no problems,
-                                                    !! `1`  : `x` is not strictly increasing,
-                                                    !! `2`  : `y` is not strictly increasing,
-                                                    !! `3`  : `z` is not strictly increasing,
-                                                    !! `4`  : `q` is not strictly increasing,
-                                                    !! `10` : `x` is not equal to size(f,1),
-                                                    !! `20` : `y` is not equal to size(f,2),
-                                                    !! `30` : `z` is not equal to size(f,3),
-                                                    !! `40` : `q` is not equal to size(f,4).
+    integer,intent(out)                    :: istat !! `0`   : no problems,
+                                                    !! `1`   : `x` is not strictly increasing,
+                                                    !! `2`   : `y` is not strictly increasing,
+                                                    !! `3`   : `z` is not strictly increasing,
+                                                    !! `4`   : `q` is not strictly increasing,
+                                                    !! `10`  : `x` is not equal to size(f,1),
+                                                    !! `20`  : `y` is not equal to size(f,2),
+                                                    !! `30`  : `z` is not equal to size(f,3),
+                                                    !! `40`  : `q` is not equal to size(f,4),
+                                                    !! `100` : cannot use linear interpolation for only one point.
 
     call me%destroy()
 
@@ -550,13 +566,14 @@
     if (istat==0 .and. size(q)/=size(f,4)) istat = 40
 
     if (istat==0) then
-        call check_inputs(x=x,y=y,z=z,q=q,ierr=istat)
+        call me%check_inputs(x=x,y=y,z=z,q=q,ierr=istat)
         if (istat==0) then
             allocate(me%f(size(x),size(y),size(z),size(q))); me%f = f
             allocate(me%x(size(x))); me%x = x
             allocate(me%y(size(y))); me%y = y
             allocate(me%z(size(z))); me%z = z
             allocate(me%q(size(q))); me%q = q
+            me%initialized = .true.
         end if
     end if
 
@@ -578,17 +595,18 @@
     real(wp),dimension(:),intent(in)         :: q
     real(wp),dimension(:),intent(in)         :: r
     real(wp),dimension(:,:,:,:,:),intent(in) :: f
-    integer,intent(out)                      :: istat   !! `0`  : no problems,
-                                                        !! `1`  : `x` is not strictly increasing,
-                                                        !! `2`  : `y` is not strictly increasing,
-                                                        !! `3`  : `z` is not strictly increasing,
-                                                        !! `4`  : `q` is not strictly increasing,
-                                                        !! `5`  : `r` is not strictly increasing,
-                                                        !! `10` : `x` is not equal to size(f,1),
-                                                        !! `20` : `y` is not equal to size(f,2),
-                                                        !! `30` : `z` is not equal to size(f,3),
-                                                        !! `40` : `q` is not equal to size(f,4),
-                                                        !! `50` : `r` is not equal to size(f,5).
+    integer,intent(out)                      :: istat   !! `0`   : no problems,
+                                                        !! `1`   : `x` is not strictly increasing,
+                                                        !! `2`   : `y` is not strictly increasing,
+                                                        !! `3`   : `z` is not strictly increasing,
+                                                        !! `4`   : `q` is not strictly increasing,
+                                                        !! `5`   : `r` is not strictly increasing,
+                                                        !! `10`  : `x` is not equal to size(f,1),
+                                                        !! `20`  : `y` is not equal to size(f,2),
+                                                        !! `30`  : `z` is not equal to size(f,3),
+                                                        !! `40`  : `q` is not equal to size(f,4),
+                                                        !! `50`  : `r` is not equal to size(f,5),
+                                                        !! `100` : cannot use linear interpolation for only one point.
 
     call me%destroy()
 
@@ -601,7 +619,7 @@
     if (istat==0 .and. size(r)/=size(f,5)) istat = 50
 
     if (istat==0) then
-        call check_inputs(x=x,y=y,z=z,q=q,r=r,ierr=istat)
+        call me%check_inputs(x=x,y=y,z=z,q=q,r=r,ierr=istat)
         if (istat==0) then
             allocate(me%f(size(x),size(y),size(z),size(q),size(r))); me%f = f
             allocate(me%x(size(x))); me%x = x
@@ -609,6 +627,7 @@
             allocate(me%z(size(z))); me%z = z
             allocate(me%q(size(q))); me%q = q
             allocate(me%r(size(r))); me%r = r
+            me%initialized = .true.
         end if
     end if
 
@@ -631,19 +650,20 @@
     real(wp),dimension(:),intent(in)           :: r
     real(wp),dimension(:),intent(in)           :: s
     real(wp),dimension(:,:,:,:,:,:),intent(in) :: f
-    integer,intent(out)                        :: istat !! `0`  : no problems,
-                                                        !! `1`  : `x` is not strictly increasing,
-                                                        !! `2`  : `y` is not strictly increasing,
-                                                        !! `3`  : `z` is not strictly increasing,
-                                                        !! `4`  : `q` is not strictly increasing,
-                                                        !! `5`  : `r` is not strictly increasing,
-                                                        !! `6`  : `s` is not strictly increasing,
-                                                        !! `10` : `x` is not equal to size(f,1),
-                                                        !! `20` : `y` is not equal to size(f,2),
-                                                        !! `30` : `z` is not equal to size(f,3),
-                                                        !! `40` : `q` is not equal to size(f,4),
-                                                        !! `50` : `r` is not equal to size(f,5),
-                                                        !! `60` : `s` is not equal to size(f,6).
+    integer,intent(out)                        :: istat !! `0`   : no problems,
+                                                        !! `1`   : `x` is not strictly increasing,
+                                                        !! `2`   : `y` is not strictly increasing,
+                                                        !! `3`   : `z` is not strictly increasing,
+                                                        !! `4`   : `q` is not strictly increasing,
+                                                        !! `5`   : `r` is not strictly increasing,
+                                                        !! `6`   : `s` is not strictly increasing,
+                                                        !! `10`  : `x` is not equal to size(f,1),
+                                                        !! `20`  : `y` is not equal to size(f,2),
+                                                        !! `30`  : `z` is not equal to size(f,3),
+                                                        !! `40`  : `q` is not equal to size(f,4),
+                                                        !! `50`  : `r` is not equal to size(f,5),
+                                                        !! `60`  : `s` is not equal to size(f,6),
+                                                        !! `100` : cannot use linear interpolation for only one point.
 
     call me%destroy()
 
@@ -657,7 +677,7 @@
     if (istat==0 .and. size(s)/=size(f,6)) istat = 60
 
     if (istat==0) then
-        call check_inputs(x=x,y=y,z=z,q=q,r=r,s=s,ierr=istat)
+        call me%check_inputs(x=x,y=y,z=z,q=q,r=r,s=s,ierr=istat)
         if (istat==0) then
             allocate(me%f(size(x),size(y),size(z),size(q),size(r),size(s))); me%f = f
             allocate(me%x(size(x))); me%x = x
@@ -666,6 +686,7 @@
             allocate(me%q(size(q))); me%q = q
             allocate(me%r(size(r))); me%r = r
             allocate(me%s(size(s))); me%s = s
+            me%initialized = .true.
         end if
     end if
 
@@ -676,25 +697,37 @@
 !>
 !  1D linear interpolation routine.
 
-    pure subroutine interp_1d(me,x,fx)
+    pure subroutine interp_1d(me,x,f,istat)
 
     implicit none
 
     class(linear_interp_1d),intent(inout) :: me
     real(wp),intent(in)                   :: x
-    real(wp),intent(out)                  :: fx  !! Interpolated \( f(x) \)
+    real(wp),intent(out)                  :: f     !! Interpolated \( f(x) \)
+    integer,intent(out),optional          :: istat !! `0`  : no problems,
+                                                   !! `-1` : class has not been initialized
 
     integer,dimension(2) :: ix
     real(wp) :: p1
     real(wp) :: q1
     integer :: mflag
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
+    if (me%initialized) then
 
-    q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
-    p1 = one-q1
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
 
-    fx = p1*me%f(ix(1)) + q1*me%f(ix(2))
+        q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
+        p1 = one-q1
+
+        f = p1*me%f(ix(1)) + q1*me%f(ix(2))
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine interp_1d
 !*****************************************************************************************
@@ -703,14 +736,16 @@
 !>
 !  2D linear interpolation routine.
 
-    pure subroutine interp_2d(me,x,y,fxy)
+    pure subroutine interp_2d(me,x,y,f,istat)
 
     implicit none
 
     class(linear_interp_2d),intent(inout) :: me
     real(wp),intent(in)                   :: x
     real(wp),intent(in)                   :: y
-    real(wp),intent(out)                  :: fxy  !! Interpolated \( f(x,y) \)
+    real(wp),intent(out)                  :: f     !! Interpolated \( f(x,y) \)
+    integer,intent(out),optional          :: istat !! `0`  : no problems,
+                                                   !! `-1` : class has not been initialized
 
     integer,dimension(2) :: ix, iy
     real(wp) :: p1, p2
@@ -718,18 +753,28 @@
     integer :: mflag
     real(wp) :: fx1, fx2
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
+    if (me%initialized) then
 
-    q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
-    q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
-    p1 = one-q1
-    p2 = one-q2
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
 
-    fx1 = p1*me%f(ix(1),iy(1)) + q1*me%f(ix(2),iy(1))
-    fx2 = p1*me%f(ix(1),iy(2)) + q1*me%f(ix(2),iy(2))
+        q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
+        q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
+        p1 = one-q1
+        p2 = one-q2
 
-    fxy = p2*( fx1 ) + q2*( fx2 )
+        fx1 = p1*me%f(ix(1),iy(1)) + q1*me%f(ix(2),iy(1))
+        fx2 = p1*me%f(ix(1),iy(2)) + q1*me%f(ix(2),iy(2))
+
+        f = p2*fx1 + q2*fx2
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine interp_2d
 !*****************************************************************************************
@@ -738,7 +783,7 @@
 !>
 !  3D linear interpolation routine.
 
-    pure subroutine interp_3d(me,x,y,z,fxyz)
+    pure subroutine interp_3d(me,x,y,z,f,istat)
 
     implicit none
 
@@ -746,7 +791,9 @@
     real(wp),intent(in)                   :: x
     real(wp),intent(in)                   :: y
     real(wp),intent(in)                   :: z
-    real(wp),intent(out)                  :: fxyz  !! Interpolated \( f(x,y,z) \)
+    real(wp),intent(out)                  :: f     !! Interpolated \( f(x,y,z) \)
+    integer,intent(out),optional          :: istat !! `0`  : no problems,
+                                                   !! `-1` : class has not been initialized
 
     integer,dimension(2) :: ix, iy, iz
     real(wp) :: p1, p2, p3
@@ -754,25 +801,35 @@
     integer :: mflag
     real(wp) :: fx11, fx21, fx12, fx22, fxy1, fxy2
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
+    if (me%initialized) then
 
-    q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
-    q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
-    q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
-    p1 = one-q1
-    p2 = one-q2
-    p3 = one-q3
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
 
-    fx11 = p1*me%f(ix(1),iy(1),iz(1)) + q1*me%f(ix(2),iy(1),iz(1))
-    fx21 = p1*me%f(ix(1),iy(2),iz(1)) + q1*me%f(ix(2),iy(2),iz(1))
-    fx12 = p1*me%f(ix(1),iy(1),iz(2)) + q1*me%f(ix(2),iy(1),iz(2))
-    fx22 = p1*me%f(ix(1),iy(2),iz(2)) + q1*me%f(ix(2),iy(2),iz(2))
-    fxy1 = p2*( fx11 ) + q2*( fx21 )
-    fxy2 = p2*( fx12 ) + q2*( fx22 )
+        q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
+        q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
+        q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
+        p1 = one-q1
+        p2 = one-q2
+        p3 = one-q3
 
-    fxyz = p3*( fxy1 ) + q3*( fxy2 )
+        fx11 = p1*me%f(ix(1),iy(1),iz(1)) + q1*me%f(ix(2),iy(1),iz(1))
+        fx21 = p1*me%f(ix(1),iy(2),iz(1)) + q1*me%f(ix(2),iy(2),iz(1))
+        fx12 = p1*me%f(ix(1),iy(1),iz(2)) + q1*me%f(ix(2),iy(1),iz(2))
+        fx22 = p1*me%f(ix(1),iy(2),iz(2)) + q1*me%f(ix(2),iy(2),iz(2))
+        fxy1 = p2*fx11 + q2*fx21
+        fxy2 = p2*fx12 + q2*fx22
+
+        f = p3*fxy1 + q3*fxy2
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine interp_3d
 !*****************************************************************************************
@@ -781,7 +838,7 @@
 !>
 !  4D linear interpolation routine.
 
-    pure subroutine interp_4d(me,x,y,z,q,fxyzq)
+    pure subroutine interp_4d(me,x,y,z,q,f,istat)
 
     implicit none
 
@@ -790,7 +847,9 @@
     real(wp),intent(in)                   :: y
     real(wp),intent(in)                   :: z
     real(wp),intent(in)                   :: q
-    real(wp),intent(out)                  :: fxyzq  !! Interpolated \( f(x,y,z,q) \)
+    real(wp),intent(out)                  :: f     !! Interpolated \( f(x,y,z,q) \)
+    integer,intent(out),optional          :: istat  !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer,dimension(2) :: ix, iy, iz, iq
     real(wp) :: p1, p2, p3, p4
@@ -799,38 +858,48 @@
     real(wp) :: fx111,fx211,fx121,fx221,fxy11,fxy21,fxyz1,&
                 fx112,fx212,fx122,fx222,fxy12,fxy22,fxyz2
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
-    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag)
+    if (me%initialized) then
 
-    q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
-    q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
-    q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
-    q4 = (q-me%q(iq(1)))/(me%q(iq(2))-me%q(iq(1)))
-    p1 = one-q1
-    p2 = one-q2
-    p3 = one-q3
-    p4 = one-q4
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
+        call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag)
 
-    fx111 = p1*me%f(ix(1),iy(1),iz(1),iq(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1))
-    fx211 = p1*me%f(ix(1),iy(2),iz(1),iq(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1))
-    fx121 = p1*me%f(ix(1),iy(1),iz(2),iq(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1))
-    fx221 = p1*me%f(ix(1),iy(2),iz(2),iq(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1))
-    fx112 = p1*me%f(ix(1),iy(1),iz(1),iq(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2))
-    fx212 = p1*me%f(ix(1),iy(2),iz(1),iq(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2))
-    fx122 = p1*me%f(ix(1),iy(1),iz(2),iq(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2))
-    fx222 = p1*me%f(ix(1),iy(2),iz(2),iq(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2))
+        q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
+        q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
+        q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
+        q4 = (q-me%q(iq(1)))/(me%q(iq(2))-me%q(iq(1)))
+        p1 = one-q1
+        p2 = one-q2
+        p3 = one-q3
+        p4 = one-q4
 
-    fxy11 = p2*fx111 + q2*fx211
-    fxy21 = p2*fx121 + q2*fx221
-    fxy12 = p2*fx112 + q2*fx212
-    fxy22 = p2*fx122 + q2*fx222
+        fx111 = p1*me%f(ix(1),iy(1),iz(1),iq(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1))
+        fx211 = p1*me%f(ix(1),iy(2),iz(1),iq(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1))
+        fx121 = p1*me%f(ix(1),iy(1),iz(2),iq(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1))
+        fx221 = p1*me%f(ix(1),iy(2),iz(2),iq(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1))
+        fx112 = p1*me%f(ix(1),iy(1),iz(1),iq(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2))
+        fx212 = p1*me%f(ix(1),iy(2),iz(1),iq(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2))
+        fx122 = p1*me%f(ix(1),iy(1),iz(2),iq(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2))
+        fx222 = p1*me%f(ix(1),iy(2),iz(2),iq(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2))
 
-    fxyz1 = p3*fxy11 + q3*fxy21
-    fxyz2 = p3*fxy12 + q3*fxy22
+        fxy11 = p2*fx111 + q2*fx211
+        fxy21 = p2*fx121 + q2*fx221
+        fxy12 = p2*fx112 + q2*fx212
+        fxy22 = p2*fx122 + q2*fx222
 
-    fxyzq = p4*fxyz1 + q4*fxyz2
+        fxyz1 = p3*fxy11 + q3*fxy21
+        fxyz2 = p3*fxy12 + q3*fxy22
+
+        f = p4*fxyz1 + q4*fxyz2
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine interp_4d
 !*****************************************************************************************
@@ -839,7 +908,7 @@
 !>
 !  5D linear interpolation routine.
 
-    pure subroutine interp_5d(me,x,y,z,q,r,fxyzqr)
+    pure subroutine interp_5d(me,x,y,z,q,r,f,istat)
 
     implicit none
 
@@ -849,7 +918,9 @@
     real(wp),intent(in)                   :: z
     real(wp),intent(in)                   :: q
     real(wp),intent(in)                   :: r
-    real(wp),intent(out)                  :: fxyzqr  !! Interpolated \( f(x,y,z,q,r) \)
+    real(wp),intent(out)                  :: f       !! Interpolated \( f(x,y,z,q,r) \)
+    integer,intent(out),optional          :: istat   !! `0`  : no problems,
+                                                     !! `-1` : class has not been initialized
 
     integer,dimension(2) :: ix, iy, iz, iq, ir
     real(wp) :: p1, p2, p3, p4, p5
@@ -860,58 +931,68 @@
                 fx2112, fx1212, fx2212, fx1122, fx2122, fx1222, fx2222, fxy112, &
                 fxy212, fxy122, fxy222, fxyz12, fxyz22, fxyzq2
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
-    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag)
-    call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag)
+    if (me%initialized) then
 
-    q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
-    q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
-    q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
-    q4 = (q-me%q(iq(1)))/(me%q(iq(2))-me%q(iq(1)))
-    q5 = (r-me%r(ir(1)))/(me%r(ir(2))-me%r(ir(1)))
-    p1 = one-q1
-    p2 = one-q2
-    p3 = one-q3
-    p4 = one-q4
-    p5 = one-q5
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
+        call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag)
+        call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag)
 
-    fx1111 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1))
-    fx2111 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1))
-    fx1211 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1))
-    fx2211 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(1))
-    fx1121 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(1))
-    fx2121 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1))
-    fx1221 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1))
-    fx2221 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1))
-    fx1112 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2))
-    fx2112 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2))
-    fx1212 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2))
-    fx2212 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(2))
-    fx1122 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(2))
-    fx2122 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2))
-    fx1222 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2))
-    fx2222 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2))
+        q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
+        q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
+        q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
+        q4 = (q-me%q(iq(1)))/(me%q(iq(2))-me%q(iq(1)))
+        q5 = (r-me%r(ir(1)))/(me%r(ir(2))-me%r(ir(1)))
+        p1 = one-q1
+        p2 = one-q2
+        p3 = one-q3
+        p4 = one-q4
+        p5 = one-q5
 
-    fxy111 = p2*( fx1111 ) + q2*( fx2111 )
-    fxy211 = p2*( fx1211 ) + q2*( fx2211 )
-    fxy121 = p2*( fx1121 ) + q2*( fx2121 )
-    fxy221 = p2*( fx1221 ) + q2*( fx2221 )
-    fxy112 = p2*( fx1112 ) + q2*( fx2112 )
-    fxy212 = p2*( fx1212 ) + q2*( fx2212 )
-    fxy122 = p2*( fx1122 ) + q2*( fx2122 )
-    fxy222 = p2*( fx1222 ) + q2*( fx2222 )
+        fx1111 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1))
+        fx2111 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1))
+        fx1211 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1))
+        fx2211 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(1))
+        fx1121 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(1))
+        fx2121 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1))
+        fx1221 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1))
+        fx2221 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1))
+        fx1112 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2))
+        fx2112 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2))
+        fx1212 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2))
+        fx2212 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(2))
+        fx1122 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(2))
+        fx2122 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2))
+        fx1222 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2))
+        fx2222 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2))
 
-    fxyz11 = p3*( fxy111 ) + q3*( fxy211 )
-    fxyz21 = p3*( fxy121 ) + q3*( fxy221 )
-    fxyz12 = p3*( fxy112 ) + q3*( fxy212 )
-    fxyz22 = p3*( fxy122 ) + q3*( fxy222 )
+        fxy111 = p2*fx1111 + q2*fx2111
+        fxy211 = p2*fx1211 + q2*fx2211
+        fxy121 = p2*fx1121 + q2*fx2121
+        fxy221 = p2*fx1221 + q2*fx2221
+        fxy112 = p2*fx1112 + q2*fx2112
+        fxy212 = p2*fx1212 + q2*fx2212
+        fxy122 = p2*fx1122 + q2*fx2122
+        fxy222 = p2*fx1222 + q2*fx2222
 
-    fxyzq1 = p4*( fxyz11 ) + q4*( fxyz21 )
-    fxyzq2 = p4*( fxyz12 ) + q4*( fxyz22 )
+        fxyz11 = p3*fxy111 + q3*fxy211
+        fxyz21 = p3*fxy121 + q3*fxy221
+        fxyz12 = p3*fxy112 + q3*fxy212
+        fxyz22 = p3*fxy122 + q3*fxy222
 
-    fxyzqr = p5*fxyzq1 + q5*fxyzq2
+        fxyzq1 = p4*fxyz11 + q4*fxyz21
+        fxyzq2 = p4*fxyz12 + q4*fxyz22
+
+        f = p5*fxyzq1 + q5*fxyzq2
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine interp_5d
 !*****************************************************************************************
@@ -920,7 +1001,7 @@
 !>
 !  6D linear interpolation routine.
 
-    pure subroutine interp_6d(me,x,y,z,q,r,s,fxyzqrs)
+    pure subroutine interp_6d(me,x,y,z,q,r,s,f,istat)
 
     implicit none
 
@@ -931,7 +1012,9 @@
     real(wp),intent(in)                   :: q
     real(wp),intent(in)                   :: r
     real(wp),intent(in)                   :: s
-    real(wp),intent(out)                  :: fxyzqrs  !! Interpolated \( f(x,y,z,q,r,s) \)
+    real(wp),intent(out)                  :: f        !! Interpolated \( f(x,y,z,q,r,s) \)
+    integer,intent(out),optional          :: istat    !! `0`  : no problems,
+                                                      !! `-1` : class has not been initialized
 
     integer,dimension(2) :: ix, iy, iz, iq, ir, is
     real(wp) :: p1, p2, p3, p4, p5, p6
@@ -947,94 +1030,104 @@
                 fx11222, fx21222, fx12222, fx22222, fxy1122, fxy2122, fxy1222, &
                 fxy2222, fxyz122, fxyz222, fxyzq22, fxyzqr1, fxyzqr2
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
-    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag)
-    call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag)
-    call dintrv(me%s,s,me%ilos,is(1),is(2),mflag)
+    if (me%initialized) then
 
-    q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
-    q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
-    q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
-    q4 = (q-me%q(iq(1)))/(me%q(iq(2))-me%q(iq(1)))
-    q5 = (r-me%r(ir(1)))/(me%r(ir(2))-me%r(ir(1)))
-    q6 = (s-me%s(is(1)))/(me%s(is(2))-me%s(is(1)))
-    p1 = one-q1
-    p2 = one-q2
-    p3 = one-q3
-    p4 = one-q4
-    p5 = one-q5
-    p6 = one-q6
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag)
+        call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag)
+        call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag)
+        call dintrv(me%s,s,me%ilos,is(1),is(2),mflag)
 
-    fx11111 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1),is(1))
-    fx21111 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1),is(1))
-    fx12111 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1),is(1))
-    fx22111 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(1),is(1))
-    fx11211 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(1),is(1))
-    fx21211 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1),is(1))
-    fx12211 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1),is(1))
-    fx22211 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1),is(1))
-    fx11121 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2),is(1))
-    fx21121 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2),is(1))
-    fx12121 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2),is(1))
-    fx22121 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(2),is(1))
-    fx11221 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(2),is(1))
-    fx21221 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2),is(1))
-    fx12221 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2),is(1))
-    fx22221 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2),is(1))
-    fx11112 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1),is(2))
-    fx21112 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1),is(2))
-    fx12112 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1),is(2))
-    fx22112 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(1),is(2))
-    fx11212 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(1),is(2))
-    fx21212 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1),is(2))
-    fx12212 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1),is(2))
-    fx22212 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1),is(2))
-    fx11122 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2),is(2))
-    fx21122 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2),is(2))
-    fx12122 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2),is(2))
-    fx22122 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(2),is(2))
-    fx11222 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(2),is(2))
-    fx21222 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2),is(2))
-    fx12222 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2),is(2))
-    fx22222 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2),is(2))
+        q1 = (x-me%x(ix(1)))/(me%x(ix(2))-me%x(ix(1)))
+        q2 = (y-me%y(iy(1)))/(me%y(iy(2))-me%y(iy(1)))
+        q3 = (z-me%z(iz(1)))/(me%z(iz(2))-me%z(iz(1)))
+        q4 = (q-me%q(iq(1)))/(me%q(iq(2))-me%q(iq(1)))
+        q5 = (r-me%r(ir(1)))/(me%r(ir(2))-me%r(ir(1)))
+        q6 = (s-me%s(is(1)))/(me%s(is(2))-me%s(is(1)))
+        p1 = one-q1
+        p2 = one-q2
+        p3 = one-q3
+        p4 = one-q4
+        p5 = one-q5
+        p6 = one-q6
 
-    fxy1111 = p2*( fx11111 ) + q2*( fx21111 )
-    fxy2111 = p2*( fx12111 ) + q2*( fx22111 )
-    fxy1211 = p2*( fx11211 ) + q2*( fx21211 )
-    fxy2211 = p2*( fx12211 ) + q2*( fx22211 )
-    fxy1121 = p2*( fx11121 ) + q2*( fx21121 )
-    fxy2121 = p2*( fx12121 ) + q2*( fx22121 )
-    fxy1221 = p2*( fx11221 ) + q2*( fx21221 )
-    fxy2221 = p2*( fx12221 ) + q2*( fx22221 )
-    fxy1112 = p2*( fx11112 ) + q2*( fx21112 )
-    fxy2112 = p2*( fx12112 ) + q2*( fx22112 )
-    fxy1212 = p2*( fx11212 ) + q2*( fx21212 )
-    fxy2212 = p2*( fx12212 ) + q2*( fx22212 )
-    fxy1122 = p2*( fx11122 ) + q2*( fx21122 )
-    fxy2122 = p2*( fx12122 ) + q2*( fx22122 )
-    fxy1222 = p2*( fx11222 ) + q2*( fx21222 )
-    fxy2222 = p2*( fx12222 ) + q2*( fx22222 )
+        fx11111 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1),is(1))
+        fx21111 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1),is(1))
+        fx12111 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1),is(1))
+        fx22111 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(1),is(1))
+        fx11211 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(1),is(1))
+        fx21211 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1),is(1))
+        fx12211 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1),is(1))
+        fx22211 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1),is(1))
+        fx11121 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2),is(1))
+        fx21121 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2),is(1))
+        fx12121 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2),is(1))
+        fx22121 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(2),is(1))
+        fx11221 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(2),is(1))
+        fx21221 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2),is(1))
+        fx12221 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2),is(1))
+        fx22221 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2),is(1)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2),is(1))
+        fx11112 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(1),is(2))
+        fx21112 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(1),is(2))
+        fx12112 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(1),is(2))
+        fx22112 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(1),is(2))
+        fx11212 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(1),is(2))
+        fx21212 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(1),is(2))
+        fx12212 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(1),is(2))
+        fx22212 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(1),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(1),is(2))
+        fx11122 = p1*me%f(ix(1),iy(1),iz(1),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(1),ir(2),is(2))
+        fx21122 = p1*me%f(ix(1),iy(2),iz(1),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(1),ir(2),is(2))
+        fx12122 = p1*me%f(ix(1),iy(1),iz(2),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(1),ir(2),is(2))
+        fx22122 = p1*me%f(ix(1),iy(2),iz(2),iq(1),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(1),ir(2),is(2))
+        fx11222 = p1*me%f(ix(1),iy(1),iz(1),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(1),iq(2),ir(2),is(2))
+        fx21222 = p1*me%f(ix(1),iy(2),iz(1),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(1),iq(2),ir(2),is(2))
+        fx12222 = p1*me%f(ix(1),iy(1),iz(2),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(1),iz(2),iq(2),ir(2),is(2))
+        fx22222 = p1*me%f(ix(1),iy(2),iz(2),iq(2),ir(2),is(2)) + q1*me%f(ix(2),iy(2),iz(2),iq(2),ir(2),is(2))
 
-    fxyz111 = p3*( fxy1111 ) + q3*( fxy2111 )
-    fxyz211 = p3*( fxy1211 ) + q3*( fxy2211 )
-    fxyz121 = p3*( fxy1121 ) + q3*( fxy2121 )
-    fxyz221 = p3*( fxy1221 ) + q3*( fxy2221 )
-    fxyz112 = p3*( fxy1112 ) + q3*( fxy2112 )
-    fxyz212 = p3*( fxy1212 ) + q3*( fxy2212 )
-    fxyz122 = p3*( fxy1122 ) + q3*( fxy2122 )
-    fxyz222 = p3*( fxy1222 ) + q3*( fxy2222 )
+        fxy1111 = p2*fx11111 + q2*fx21111
+        fxy2111 = p2*fx12111 + q2*fx22111
+        fxy1211 = p2*fx11211 + q2*fx21211
+        fxy2211 = p2*fx12211 + q2*fx22211
+        fxy1121 = p2*fx11121 + q2*fx21121
+        fxy2121 = p2*fx12121 + q2*fx22121
+        fxy1221 = p2*fx11221 + q2*fx21221
+        fxy2221 = p2*fx12221 + q2*fx22221
+        fxy1112 = p2*fx11112 + q2*fx21112
+        fxy2112 = p2*fx12112 + q2*fx22112
+        fxy1212 = p2*fx11212 + q2*fx21212
+        fxy2212 = p2*fx12212 + q2*fx22212
+        fxy1122 = p2*fx11122 + q2*fx21122
+        fxy2122 = p2*fx12122 + q2*fx22122
+        fxy1222 = p2*fx11222 + q2*fx21222
+        fxy2222 = p2*fx12222 + q2*fx22222
 
-    fxyzq11 = p4*( fxyz111 ) + q4*( fxyz211 )
-    fxyzq21 = p4*( fxyz121 ) + q4*( fxyz221 )
-    fxyzq12 = p4*( fxyz112 ) + q4*( fxyz212 )
-    fxyzq22 = p4*( fxyz122 ) + q4*( fxyz222 )
+        fxyz111 = p3*fxy1111 + q3*fxy2111
+        fxyz211 = p3*fxy1211 + q3*fxy2211
+        fxyz121 = p3*fxy1121 + q3*fxy2121
+        fxyz221 = p3*fxy1221 + q3*fxy2221
+        fxyz112 = p3*fxy1112 + q3*fxy2112
+        fxyz212 = p3*fxy1212 + q3*fxy2212
+        fxyz122 = p3*fxy1122 + q3*fxy2122
+        fxyz222 = p3*fxy1222 + q3*fxy2222
 
-    fxyzqr1 = p5*fxyzq11 + q5*fxyzq21
-    fxyzqr2 = p5*fxyzq12 + q5*fxyzq22
+        fxyzq11 = p4*fxyz111 + q4*fxyz211
+        fxyzq21 = p4*fxyz121 + q4*fxyz221
+        fxyzq12 = p4*fxyz112 + q4*fxyz212
+        fxyzq22 = p4*fxyz122 + q4*fxyz222
 
-    fxyzqrs = p6*fxyzqr1 + q6*fxyzqr2
+        fxyzqr1 = p5*fxyzq11 + q5*fxyzq21
+        fxyzqr2 = p5*fxyzq12 + q5*fxyzq22
+
+        f = p6*fxyzqr1 + q6*fxyzqr2
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine interp_6d
 !*****************************************************************************************
@@ -1083,6 +1176,14 @@
     integer :: ihi, istep, imid, n
 
     n = size(xt)
+
+    if (n==1) then
+        ! this is only allowed for nearest interpolation
+        if (present(inearest)) then
+            inearest = 1
+            return
+        end if
+    end if
 
     ihi = ilo + 1
     if ( ihi>=n ) then
@@ -1196,21 +1297,33 @@
 !>
 !  1D nearest neighbor interpolation routine.
 
-    pure subroutine nearest_1d(me,x,fx)
+    pure subroutine nearest_1d(me,x,f,istat)
 
     implicit none
 
     class(nearest_interp_1d),intent(inout) :: me
     real(wp),intent(in)                    :: x
-    real(wp),intent(out)                   :: fx
+    real(wp),intent(out)                   :: f     !! Nearest \( f(x) \)
+    integer,intent(out),optional           :: istat !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer :: mflag
     integer,dimension(2) :: ix
     integer :: i
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+    if (me%initialized) then
 
-    fx = me%f(i)
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+
+        f = me%f(i)
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine nearest_1d
 !*****************************************************************************************
@@ -1219,23 +1332,35 @@
 !>
 !  2D nearest neighbor interpolation routine.
 
-    pure subroutine nearest_2d(me,x,y,fxy)
+    pure subroutine nearest_2d(me,x,y,f,istat)
 
     implicit none
 
     class(nearest_interp_2d),intent(inout) :: me
     real(wp),intent(in)                    :: x
     real(wp),intent(in)                    :: y
-    real(wp),intent(out)                   :: fxy  !! Interpolated \( f(x,y) \)
+    real(wp),intent(out)                   :: f     !! Nearest \( f(x,y) \)
+    integer,intent(out),optional           :: istat !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer :: mflag
     integer,dimension(2) :: ix, iy
     integer :: i, j
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+    if (me%initialized) then
 
-    fxy = me%f(i,j)
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+
+        f = me%f(i,j)
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine nearest_2d
 !*****************************************************************************************
@@ -1244,7 +1369,7 @@
 !>
 !  3D nearest neighbor interpolation routine.
 
-    pure subroutine nearest_3d(me,x,y,z,fxyz)
+    pure subroutine nearest_3d(me,x,y,z,f,istat)
 
     implicit none
 
@@ -1252,17 +1377,29 @@
     real(wp),intent(in)                    :: x
     real(wp),intent(in)                    :: y
     real(wp),intent(in)                    :: z
-    real(wp),intent(out)                   :: fxyz  !! Interpolated \( f(x,y,z) \)
+    real(wp),intent(out)                   :: f     !! Nearest \( f(x,y,z) \)
+    integer,intent(out),optional           :: istat !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer :: mflag
     integer,dimension(2) :: ix, iy, iz
     integer :: i, j, k
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+    if (me%initialized) then
 
-    fxyz = me%f(i,j,k)
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+
+        f = me%f(i,j,k)
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine nearest_3d
 !*****************************************************************************************
@@ -1271,7 +1408,7 @@
 !>
 !  4D nearest neighbor interpolation routine.
 
-    pure subroutine nearest_4d(me,x,y,z,q,fxyzq)
+    pure subroutine nearest_4d(me,x,y,z,q,f,istat)
 
     implicit none
 
@@ -1280,18 +1417,30 @@
     real(wp),intent(in)                    :: y
     real(wp),intent(in)                    :: z
     real(wp),intent(in)                    :: q
-    real(wp),intent(out)                   :: fxyzq  !! Interpolated \( f(x,y,z,q) \)
+    real(wp),intent(out)                   :: f     !! Nearest \( f(x,y,z,q) \)
+    integer,intent(out),optional           :: istat !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer :: mflag
     integer,dimension(2) :: ix, iy, iz, iq
     integer :: i, j, k, l
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
-    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+    if (me%initialized) then
 
-    fxyzq = me%f(i,j,k,l)
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+        call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+
+        f = me%f(i,j,k,l)
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine nearest_4d
 !*****************************************************************************************
@@ -1300,7 +1449,7 @@
 !>
 !  5D nearest neighbor interpolation routine.
 
-    pure subroutine nearest_5d(me,x,y,z,q,r,fxyzqr)
+    pure subroutine nearest_5d(me,x,y,z,q,r,f,istat)
 
     implicit none
 
@@ -1310,19 +1459,31 @@
     real(wp),intent(in)                    :: z
     real(wp),intent(in)                    :: q
     real(wp),intent(in)                    :: r
-    real(wp),intent(out)                   :: fxyzqr  !! Interpolated \( f(x,y,z,q,r) \)
+    real(wp),intent(out)                   :: f     !! Nearest \( f(x,y,z,q,r) \)
+    integer,intent(out),optional           :: istat !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer :: mflag
     integer,dimension(2) :: ix, iy, iz, iq, ir
     integer :: i, j, k, l, m
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
-    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
-    call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag,m)
+    if (me%initialized) then
 
-    fxyzqr = me%f(i,j,k,l,m)
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+        call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+        call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag,m)
+
+        f = me%f(i,j,k,l,m)
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine nearest_5d
 !*****************************************************************************************
@@ -1331,7 +1492,7 @@
 !>
 !  6D nearest neighbor interpolation routine.
 
-    pure subroutine nearest_6d(me,x,y,z,q,r,s,fxyzqrs)
+    pure subroutine nearest_6d(me,x,y,z,q,r,s,f,istat)
 
     implicit none
 
@@ -1342,20 +1503,32 @@
     real(wp),intent(in)                    :: q
     real(wp),intent(in)                    :: r
     real(wp),intent(in)                    :: s
-    real(wp),intent(out)                   :: fxyzqrs  !! Interpolated \( f(x,y,z,q,r,s) \)
+    real(wp),intent(out)                   :: f     !! Nearest \( f(x,y,z,q,r,s) \)
+    integer,intent(out),optional           :: istat !! `0`  : no problems,
+                                                    !! `-1` : class has not been initialized
 
     integer :: mflag
     integer,dimension(2) :: ix, iy, iz, iq, ir, is
     integer :: i, j, k, l, m, n
 
-    call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
-    call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
-    call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
-    call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
-    call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag,m)
-    call dintrv(me%s,s,me%ilos,is(1),is(2),mflag,n)
+    if (me%initialized) then
 
-    fxyzqrs = me%f(i,j,k,l,m,n)
+        call dintrv(me%x,x,me%ilox,ix(1),ix(2),mflag,i)
+        call dintrv(me%y,y,me%iloy,iy(1),iy(2),mflag,j)
+        call dintrv(me%z,z,me%iloz,iz(1),iz(2),mflag,k)
+        call dintrv(me%q,q,me%iloq,iq(1),iq(2),mflag,l)
+        call dintrv(me%r,r,me%ilor,ir(1),ir(2),mflag,m)
+        call dintrv(me%s,s,me%ilos,is(1),is(2),mflag,n)
+
+        f = me%f(i,j,k,l,m,n)
+        if (present(istat)) istat = 0
+
+    else
+
+        if (present(istat)) istat = -1
+        f = zero
+
+    end if
 
     end subroutine nearest_6d
 !*****************************************************************************************
@@ -1537,23 +1710,25 @@
 !  * Jacob Williams, 2/24/2015 : Created this routine.
 !  * Jacob Williams, 2/23/2016 : modified for linear interp module.
 
-    pure subroutine check_inputs(x,y,z,q,r,s,ierr)
+    pure subroutine check_inputs(me,x,y,z,q,r,s,ierr)
 
     implicit none
 
+    class(linear_interp_class),intent(in)      :: me
     real(wp),dimension(:),intent(in),optional  :: x     !! `x` abscissa vector
     real(wp),dimension(:),intent(in),optional  :: y     !! `y` abscissa vector
     real(wp),dimension(:),intent(in),optional  :: z     !! `z` abscissa vector
     real(wp),dimension(:),intent(in),optional  :: q     !! `q` abscissa vector
     real(wp),dimension(:),intent(in),optional  :: r     !! `r` abscissa vector
     real(wp),dimension(:),intent(in),optional  :: s     !! `s` abscissa vector
-    integer,intent(out)                        :: ierr  !! `0` : no problems,
-                                                        !! `1` : `x` is not strictly increasing,
-                                                        !! `2` : `y` is not strictly increasing,
-                                                        !! `3` : `z` is not strictly increasing,
-                                                        !! `4` : `q` is not strictly increasing,
-                                                        !! `5` : `r` is not strictly increasing,
-                                                        !! `6` : `s` is not strictly increasing,
+    integer,intent(out)                        :: ierr  !! `0`   : no problems,
+                                                        !! `1`   : `x` is not strictly increasing,
+                                                        !! `2`   : `y` is not strictly increasing,
+                                                        !! `3`   : `z` is not strictly increasing,
+                                                        !! `4`   : `q` is not strictly increasing,
+                                                        !! `5`   : `r` is not strictly increasing,
+                                                        !! `6`   : `s` is not strictly increasing,
+                                                        !! `100` : cannot use linear interpolation for only one point.
 
     ierr = 0  ! initialize
 
@@ -1563,6 +1738,20 @@
     if (present(q)) call check(q,4,ierr); if (ierr/=0) return
     if (present(r)) call check(r,5,ierr); if (ierr/=0) return
     if (present(s)) call check(s,6,ierr); if (ierr/=0) return
+
+    if (ierr == 0) then
+        select type (me)
+        class is (nearest_interp_1d)
+        class is (nearest_interp_2d)
+        class is (nearest_interp_3d)
+        class is (nearest_interp_4d)
+        class is (nearest_interp_5d)
+        class is (nearest_interp_6d)
+        class default
+            ! need at least two points for linear interpolation:
+            if (size(x)==1) ierr = 100
+        end select
+    end if
 
     contains
 !*****************************************************************************************
