@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="Modern Fortran Multidimensional Linear Interpolation">
+   
+   <meta name="description" content="Modern Fortran Multidimensional Linear Interpolation">
     
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
@@ -19,6 +19,9 @@ All Procedures &ndash; finterp
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,13 +31,6 @@ All Procedures &ndash; finterp
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -54,35 +50,37 @@ All Procedures &ndash; finterp
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
-            <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+            <li><a href="../sourcefile/linear_interpolation_module.f90.html">Source File</a></li>
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-				
+        
+        
             <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
-								
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/linear_interpolation_test.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/linear_interpolation_module.f90.html">Source File</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -96,8 +94,6 @@ All Procedures &ndash; finterp
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/linear_interpolation_test.html">Program</a></li>
 
           </ul>
         
@@ -124,11 +120,11 @@ All Procedures &ndash; finterp
 			 <tbody>
 			 
 			   <tr><td><a href='../proc/check_if_unique.html'>check_if_unique</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Function</td><td><p>Returns true if all the elements in the array <code>x</code> are unique.
-  Note: the array must be sorted.</p></td></tr>
+  Note: the array must be sorted.</p><a href="../proc/check_if_unique.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
 			 
 			   <tr><td><a href='../proc/check_inputs.html'>check_inputs</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>Check the validity of the inputs to the initialize routines.
   Prints warning message if there is an error,
-  and also sets <code>ierr</code> (/=0 if there were any errors).</p></td></tr>
+  and also sets <code>ierr</code> (/=0 if there were any errors).</p><a href="../proc/check_inputs.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
 			 
 			   <tr><td><a href='../proc/destroy_1d.html'>destroy_1d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>Destructor for a <a href="../type/linear_interp_1d.html">linear_interp_1d</a> class.</p></td></tr>
 			 
@@ -145,19 +141,7 @@ All Procedures &ndash; finterp
 			   <tr><td><a href='../proc/dintrv.html'>dintrv</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>Returns the indices in <code>xt</code> that bound <code>x</code>, to use for interpolation.
   If outside the range, then the indices are returned that can
   be used for extrapolation.
-  Precisely,</p></td></tr>
-			 
-			   <tr><td><a href='../proc/f1.html'>f1</a></td><td><a href='../program/linear_interpolation_test.html'>linear_interpolation_test</a></td><td>Function</td><td><p>1d test function</p></td></tr>
-			 
-			   <tr><td><a href='../proc/f2.html'>f2</a></td><td><a href='../program/linear_interpolation_test.html'>linear_interpolation_test</a></td><td>Function</td><td><p>2d test function</p></td></tr>
-			 
-			   <tr><td><a href='../proc/f3.html'>f3</a></td><td><a href='../program/linear_interpolation_test.html'>linear_interpolation_test</a></td><td>Function</td><td><p>3d test function</p></td></tr>
-			 
-			   <tr><td><a href='../proc/f4.html'>f4</a></td><td><a href='../program/linear_interpolation_test.html'>linear_interpolation_test</a></td><td>Function</td><td><p>4d test function</p></td></tr>
-			 
-			   <tr><td><a href='../proc/f5.html'>f5</a></td><td><a href='../program/linear_interpolation_test.html'>linear_interpolation_test</a></td><td>Function</td><td><p>5d test function</p></td></tr>
-			 
-			   <tr><td><a href='../proc/f6.html'>f6</a></td><td><a href='../program/linear_interpolation_test.html'>linear_interpolation_test</a></td><td>Function</td><td><p>6d test function</p></td></tr>
+  Precisely,</p><a href="../proc/dintrv.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
 			 
 			   <tr><td><a href='../proc/finalize_1d.html'>finalize_1d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>Finalizer for a <a href="../type/linear_interp_1d.html">linear_interp_1d</a> type.</p></td></tr>
 			 
@@ -195,8 +179,20 @@ All Procedures &ndash; finterp
 			 
 			   <tr><td><a href='../proc/interp_6d.html'>interp_6d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>6D linear interpolation routine.</p></td></tr>
 			 
+			   <tr><td><a href='../proc/nearest_1d.html'>nearest_1d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>1D nearest neighbor interpolation routine.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/nearest_2d.html'>nearest_2d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>2D nearest neighbor interpolation routine.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/nearest_3d.html'>nearest_3d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>3D nearest neighbor interpolation routine.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/nearest_4d.html'>nearest_4d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>4D nearest neighbor interpolation routine.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/nearest_5d.html'>nearest_5d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>5D nearest neighbor interpolation routine.</p></td></tr>
+			 
+			   <tr><td><a href='../proc/nearest_6d.html'>nearest_6d</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>6D nearest neighbor interpolation routine.</p></td></tr>
+			 
 			   <tr><td><a href='../proc/sort.html'>sort</a></td><td><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></td><td>Subroutine</td><td><p>Sorts an array <code>dx</code> in increasing order,
-  carrying along an additional array <code>dy</code>.</p></td></tr>
+  carrying along an additional array <code>dy</code>.</p><a href="../proc/sort.html" class="pull-right"><emph>Read more&hellip;</emph></a></td></tr>
 			 
 			 </tbody></table>
              
@@ -208,7 +204,8 @@ All Procedures &ndash; finterp
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -239,12 +236,17 @@ All Procedures &ndash; finterp
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>

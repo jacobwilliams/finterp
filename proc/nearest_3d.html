@@ -10,7 +10,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>interp_1d &ndash; finterp</title>
+    <title>nearest_3d &ndash; finterp</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -112,7 +112,7 @@
     
   
   <div class="row">
-    <h1>interp_1d
+    <h1>nearest_3d
       <small>Subroutine</small>
     
     </h1>
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.1% of total for procedures.">21 statements</a>
+    title=" 2.2% of total for procedures.">22 statements</a>
      </li> 
      
      
@@ -147,7 +147,7 @@
      <li><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
     
   
-     <li class="active">interp_1d</li>
+     <li class="active">nearest_3d</li>
   </ol>
 </div>
 </div>
@@ -191,7 +191,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../proc/interp_1d.html#src">interp_1d</a>
+    <a class="list-group-item" href="../proc/nearest_3d.html#src">nearest_3d</a>
   </div>
 </div>
 
@@ -203,7 +203,7 @@
     
     <div class="col-md-9" id='text'>
     <h2>
-private pure subroutine interp_1d(me, x, f, istat)
+private pure subroutine nearest_3d(me, x, y, z, f, istat)
     
     
    
@@ -213,7 +213,7 @@ private pure subroutine interp_1d(me, x, f, istat)
 
 
     
-    <p>1D linear interpolation routine.</p>
+    <p>3D nearest neighbor interpolation routine.</p>
     
 
     <h3>Arguments</h3>
@@ -234,7 +234,7 @@ private pure subroutine interp_1d(me, x, f, istat)
   
 <tr>
   
-  <td><span class="anchor" id="variable-me~20"></span>class(<a href='../type/linear_interp_1d.html'>linear_interp_1d</a>),</td>
+  <td><span class="anchor" id="variable-me~28"></span>class(<a href='../type/nearest_interp_3d.html'>nearest_interp_3d</a>),</td>
   <td>intent(inout)</td>
   <td></td>
   
@@ -249,7 +249,7 @@ private pure subroutine interp_1d(me, x, f, istat)
   
 <tr>
   
-  <td><span class="anchor" id="variable-x~14"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-x~23"></span>real(kind=wp),</td>
   <td>intent(in)</td>
   <td></td>
   
@@ -264,12 +264,42 @@ private pure subroutine interp_1d(me, x, f, istat)
   
 <tr>
   
-  <td><span class="anchor" id="variable-f~13"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-y~17"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>y</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-z~13"></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>z</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-f~21"></span>real(kind=wp),</td>
   <td>intent(out)</td>
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>f</strong></td><td><p>Interpolated <script type="math/tex"> f(x) </script>
+  <td><strong>f</strong></td><td><p>Nearest <script type="math/tex"> f(x,y,z) </script>
 </p></td>
   
 </tr>
@@ -280,7 +310,7 @@ private pure subroutine interp_1d(me, x, f, istat)
   
 <tr>
   
-  <td><span class="anchor" id="variable-istat~7"></span>integer,</td>
+  <td><span class="anchor" id="variable-istat~15"></span>integer,</td>
   <td>intent(out),</td>
   <td>optional</td>
   
@@ -328,7 +358,7 @@ private pure subroutine interp_1d(me, x, f, istat)
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../proc/interp_1d.html#src">interp_1d</a>
+    <a class="list-group-item" href="../proc/nearest_3d.html#src">nearest_3d</a>
   </div>
 </div>
 
@@ -357,29 +387,29 @@ private pure subroutine interp_1d(me, x, f, istat)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">pure subroutine </span><span class="n">interp_1d</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">istat</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>    <span class="k">pure subroutine </span><span class="n">nearest_3d</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">istat</span><span class="p">)</span>
 
     <span class="k">implicit none</span>
 
-<span class="k">    class</span><span class="p">(</span><span class="n">linear_interp_1d</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                   <span class="kd">::</span> <span class="n">x</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>                  <span class="kd">::</span> <span class="n">f</span>     <span class="c">!! Interpolated \( f(x) \)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span>          <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! `0`  : no problems,</span>
-                                                   <span class="c">!! `-1` : class has not been initialized</span>
+<span class="k">    class</span><span class="p">(</span><span class="n">nearest_interp_3d</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                    <span class="kd">::</span> <span class="n">x</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                    <span class="kd">::</span> <span class="n">y</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                    <span class="kd">::</span> <span class="n">z</span>
+    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>                   <span class="kd">::</span> <span class="n">f</span>     <span class="c">!! Nearest \( f(x,y,z) \)</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span>           <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! `0`  : no problems,</span>
+                                                    <span class="c">!! `-1` : class has not been initialized</span>
 
-    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ix</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p1</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">q1</span>
     <span class="kt">integer</span> <span class="kd">::</span> <span class="n">mflag</span>
+    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">,</span> <span class="n">iz</span>
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">initialized</span><span class="p">)</span> <span class="k">then</span>
 
-<span class="k">        call </span><span class="n">dintrv</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">ilox</span><span class="p">,</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">mflag</span><span class="p">)</span>
+<span class="k">        call </span><span class="n">dintrv</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">ilox</span><span class="p">,</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">mflag</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">dintrv</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">iloy</span><span class="p">,</span><span class="n">iy</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">iy</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">mflag</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+        <span class="k">call </span><span class="n">dintrv</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">iloz</span><span class="p">,</span><span class="n">iz</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">iz</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">mflag</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
 
-        <span class="n">q1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-        <span class="n">p1</span> <span class="o">=</span> <span class="n">one</span><span class="o">-</span><span class="n">q1</span>
-
-        <span class="n">f</span> <span class="o">=</span> <span class="n">p1</span><span class="o">*</span><span class="n">me</span><span class="p">%</span><span class="n">f</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">q1</span><span class="o">*</span><span class="n">me</span><span class="p">%</span><span class="n">f</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">me</span><span class="p">%</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">else</span>
@@ -389,7 +419,7 @@ private pure subroutine interp_1d(me, x, f, istat)
 
     <span class="k">end if</span>
 
-<span class="k">    end subroutine </span><span class="n">interp_1d</span>
+<span class="k">    end subroutine </span><span class="n">nearest_3d</span>
 </pre></div>
 
     </section>

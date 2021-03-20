@@ -10,7 +10,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>interp_1d &ndash; finterp</title>
+    <title>nearest_interp_1d &ndash; finterp </title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -112,8 +112,8 @@
     
   
   <div class="row">
-    <h1>interp_1d
-      <small>Subroutine</small>
+    <h1>nearest_interp_1d
+    <small>Derived Type</small>
     
     </h1>
     
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.1% of total for procedures.">21 statements</a>
+    title="<p> 3.0% of total for derived types.</p>Including implementation: 50 statements,  4.3% of total for derived types.">4 statements</a>
      </li> 
      
      
@@ -147,7 +147,7 @@
      <li><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
     
   
-     <li class="active">interp_1d</li>
+     <li class="active">nearest_interp_1d</li>
   </ol>
 </div>
 </div>
@@ -186,12 +186,28 @@
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/nearest_interp_1d.html#boundprocedure-initialize">initialize</a>
+      
+      <a class="list-group-item" href="../type/nearest_interp_1d.html#boundprocedure-destroy~2">destroy</a>
+      
+      <a class="list-group-item" href="../type/nearest_interp_1d.html#boundprocedure-evaluate~7">evaluate</a>
+      
+    </div>
+  </div>
+</div>
+
+
 
 
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../proc/interp_1d.html#src">interp_1d</a>
+    <a class="list-group-item" href="../type/nearest_interp_1d.html#src">nearest_interp_1d</a>
   </div>
 </div>
 
@@ -202,102 +218,11 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>
-private pure subroutine interp_1d(me, x, f, istat)
-    
-    
-   
-</h2>
-    
-  
-
-
-    
-    <p>1D linear interpolation routine.</p>
-    
-
-    <h3>Arguments</h3>
-    
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-me~20"></span>class(<a href='../type/linear_interp_1d.html'>linear_interp_1d</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>me</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-x~14"></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>x</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-f~13"></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>f</strong></td><td><p>Interpolated <script type="math/tex"> f(x) </script>
-</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-istat~7"></span>integer,</td>
-  <td>intent(out),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
-  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
-  
-</tr>
-
-</tbody>
-</table>
-
+      <h2>type, public, extends(<a href='../type/linear_interp_1d.html'>linear_interp_1d</a>) :: nearest_interp_1d</h2>
+    <p>Class for 1d nearest neighbor interpolation.</p>
     
     
     
-    
-     
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
@@ -323,12 +248,28 @@ private pure subroutine interp_1d(me, x, f, istat)
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/nearest_interp_1d.html#boundprocedure-initialize">initialize</a>
+      
+      <a class="list-group-item" href="../type/nearest_interp_1d.html#boundprocedure-destroy~2">destroy</a>
+      
+      <a class="list-group-item" href="../type/nearest_interp_1d.html#boundprocedure-evaluate~7">evaluate</a>
+      
+    </div>
+  </div>
+</div>
+
+
 
 
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../proc/interp_1d.html#src">interp_1d</a>
+    <a class="list-group-item" href="../type/nearest_interp_1d.html#src">nearest_interp_1d</a>
   </div>
 </div>
 
@@ -338,62 +279,340 @@ private pure subroutine interp_1d(me, x, f, istat)
     <br class="visible-xs visible-sm hidden-md">
 
     
+    
+    
+    
+    
+    
+     
+    <section>
+    <h2>Type-Bound Procedures</h2>
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initialize"></span><h3>procedure, public :: <strong>initialize</strong>  => <a href='../proc/initialize_1d.html'>initialize_1d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(me, x, f, istat)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p>Constructor for a <a href="../type/linear_interp_1d.html">linear_interp_1d</a> class.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_1d.html'>linear_interp_1d</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>f</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
+ <code>1</code>   : <code>x</code> is not strictly increasing,
+ <code>10</code>  : <code>x</code> is not equal to size(f,1),
+ <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
 
     
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy~2"></span><h3>procedure, public :: <strong>destroy</strong>  => <a href='../proc/destroy_1d.html'>destroy_1d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private pure elemental subroutine <a href='../proc/destroy_1d.html'>destroy_1d</a>(me)
     
     
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p>Destructor for a <a href="../type/linear_interp_1d.html">linear_interp_1d</a> class.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_1d.html'>linear_interp_1d</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
     
     
 
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-evaluate~7"></span><h3>procedure, public :: <strong>evaluate</strong>  => <a href='../proc/nearest_1d.html'>nearest_1d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private pure subroutine <a href='../proc/nearest_1d.html'>nearest_1d</a>(me, x, f, istat)
     
     
-    
-    
+   
+</h3>
     
 
 
+
+
+
+
+
+<p>1D nearest neighbor interpolation routine.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/nearest_interp_1d.html'>nearest_interp_1d</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>x</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>f</strong></td><td><p>Nearest <script type="math/tex"> f(x) </script>
+</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
+ <code>-1</code> : class has not been initialized</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+    </section>
     
     
     
     <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre><span></span>    <span class="k">pure subroutine </span><span class="n">interp_1d</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">istat</span><span class="p">)</span>
-
-    <span class="k">implicit none</span>
-
-<span class="k">    class</span><span class="p">(</span><span class="n">linear_interp_1d</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                   <span class="kd">::</span> <span class="n">x</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>                  <span class="kd">::</span> <span class="n">f</span>     <span class="c">!! Interpolated \( f(x) \)</span>
-    <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span>          <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! `0`  : no problems,</span>
-                                                   <span class="c">!! `-1` : class has not been initialized</span>
-
-    <span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ix</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">p1</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">q1</span>
-    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">mflag</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">initialized</span><span class="p">)</span> <span class="k">then</span>
-
-<span class="k">        call </span><span class="n">dintrv</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">ilox</span><span class="p">,</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">mflag</span><span class="p">)</span>
-
-        <span class="n">q1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-        <span class="n">p1</span> <span class="o">=</span> <span class="n">one</span><span class="o">-</span><span class="n">q1</span>
-
-        <span class="n">f</span> <span class="o">=</span> <span class="n">p1</span><span class="o">*</span><span class="n">me</span><span class="p">%</span><span class="n">f</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">q1</span><span class="o">*</span><span class="n">me</span><span class="p">%</span><span class="n">f</span><span class="p">(</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">else</span>
-
-<span class="k">        if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span> <span class="n">istat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">zero</span>
-
-    <span class="k">end if</span>
-
-<span class="k">    end subroutine </span><span class="n">interp_1d</span>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span><span class="k">extends</span><span class="p">(</span><span class="n">linear_interp_1d</span><span class="p">),</span><span class="k">public</span> <span class="kd">::</span> <span class="n">nearest_interp_1d</span>
+        <span class="c">!! Class for 1d nearest neighbor interpolation.</span>
+        <span class="k">contains</span>
+<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">evaluate</span> <span class="o">=&gt;</span> <span class="n">nearest_1d</span>
+    <span class="k">end type </span><span class="n">nearest_interp_1d</span>
 </pre></div>
 
     </section>
-    <br>
     
     
     </div>

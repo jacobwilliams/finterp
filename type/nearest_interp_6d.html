@@ -10,7 +10,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>linear_interp_class &ndash; finterp </title>
+    <title>nearest_interp_6d &ndash; finterp </title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -112,7 +112,7 @@
     
   
   <div class="row">
-    <h1>linear_interp_class
+    <h1>nearest_interp_6d
     <small>Derived Type</small>
     
     </h1>
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p> 6.0% of total for derived types.</p>Including implementation: 60 statements,  5.1% of total for derived types.">8 statements</a>
+    title="<p> 3.0% of total for derived types.</p>Including implementation: 90 statements,  7.7% of total for derived types.">4 statements</a>
      </li> 
      
      
@@ -147,7 +147,7 @@
      <li><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
     
   
-     <li class="active">linear_interp_class</li>
+     <li class="active">nearest_interp_6d</li>
   </ol>
 </div>
 </div>
@@ -168,18 +168,6 @@
 <h3>Contents</h3>
  
 
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_class.html#variable-initialized">initialized</a>
-      
-    </div>
-  </div>
-</div>
 
 
 
@@ -203,9 +191,11 @@
   <div id="boundprocs-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../type/linear_interp_class.html#boundprocedure-destroy">destroy</a>
+      <a class="list-group-item" href="../type/nearest_interp_6d.html#boundprocedure-initialize~6">initialize</a>
       
-      <a class="list-group-item" href="../type/linear_interp_class.html#boundprocedure-check_inputs">check_inputs</a>
+      <a class="list-group-item" href="../type/nearest_interp_6d.html#boundprocedure-destroy~7">destroy</a>
+      
+      <a class="list-group-item" href="../type/nearest_interp_6d.html#boundprocedure-evaluate~12">evaluate</a>
       
     </div>
   </div>
@@ -217,7 +207,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../type/linear_interp_class.html#src">linear_interp_class</a>
+    <a class="list-group-item" href="../type/nearest_interp_6d.html#src">nearest_interp_6d</a>
   </div>
 </div>
 
@@ -228,8 +218,8 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, public, abstract :: linear_interp_class</h2>
-    <p>Base class for the linear interpolation types</p>
+      <h2>type, public, extends(<a href='../type/linear_interp_6d.html'>linear_interp_6d</a>) :: nearest_interp_6d</h2>
+    <p>Class for 6d nearest neighbor interpolation.</p>
     
     
     
@@ -240,18 +230,6 @@
 <h3>Contents</h3>
  
 
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_class.html#variable-initialized">initialized</a>
-      
-    </div>
-  </div>
-</div>
 
 
 
@@ -275,9 +253,11 @@
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../type/linear_interp_class.html#boundprocedure-destroy">destroy</a>
+      <a class="list-group-item" href="../type/nearest_interp_6d.html#boundprocedure-initialize~6">initialize</a>
       
-      <a class="list-group-item" href="../type/linear_interp_class.html#boundprocedure-check_inputs">check_inputs</a>
+      <a class="list-group-item" href="../type/nearest_interp_6d.html#boundprocedure-destroy~7">destroy</a>
+      
+      <a class="list-group-item" href="../type/nearest_interp_6d.html#boundprocedure-evaluate~12">evaluate</a>
       
     </div>
   </div>
@@ -289,7 +269,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../type/linear_interp_class.html#src">linear_interp_class</a>
+    <a class="list-group-item" href="../type/nearest_interp_6d.html#src">nearest_interp_6d</a>
   </div>
 </div>
 
@@ -298,38 +278,6 @@
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
-    
-    <section>
-    <h2>Components</h2>
-    
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th>
-
-<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
-  
-  <td>private</td>
-  <td></td><td>::</td>
-  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-    </section>
-    <br>
     
     
     
@@ -342,35 +290,32 @@
     
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy"></span><h3>procedure(<a href='../interface/destroy_func.html'>destroy_func</a>), public, deferred :: <strong>destroy</strong>  
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initialize~6"></span><h3>procedure, public :: <strong>initialize</strong>  => <a href='../proc/initialize_6d.html'>initialize_6d</a> 
     
   </h3></div>
-  
-  <div class="panel-body">
-    
-
-
-    <p>destructor</p>
-  </div>
   
   <ul class="list-group">
     
       <li class="list-group-item">
       
-         
-            
+        
+          
     
     <h3>
-pure elemental subroutine destroy_func(me)
+private pure subroutine <a href='../proc/initialize_6d.html'>initialize_6d</a>(me, x, y, z, q, r, s, f, istat)
     
     
    
-<small>Prototype</small></h3>
+</h3>
     
 
 
 
-<p>interface for bspline destructor routines</p>
+
+
+
+
+<p>Constructor for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> class.</p>
     
     <h4>Arguments</h4>
     
@@ -391,7 +336,212 @@ pure elemental subroutine destroy_func(me)
   
 <tr>
   
-  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_class.html'>linear_interp_class</a>),</td>
+  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_6d.html'>linear_interp_6d</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>z</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>q</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>r</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:)</td><td>::</td>
+  <td><strong>s</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in),</td>
+  <td></td>
+  
+  <td>dimension(:,:,:,:,:,:)</td><td>::</td>
+  <td><strong>f</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
+ <code>1</code>   : <code>x</code> is not strictly increasing,
+ <code>2</code>   : <code>y</code> is not strictly increasing,
+ <code>3</code>   : <code>z</code> is not strictly increasing,
+ <code>4</code>   : <code>q</code> is not strictly increasing,
+ <code>5</code>   : <code>r</code> is not strictly increasing,
+ <code>6</code>   : <code>s</code> is not strictly increasing,
+ <code>10</code>  : <code>x</code> is not equal to size(f,1),
+ <code>20</code>  : <code>y</code> is not equal to size(f,2),
+ <code>30</code>  : <code>z</code> is not equal to size(f,3),
+ <code>40</code>  : <code>q</code> is not equal to size(f,4),
+ <code>50</code>  : <code>r</code> is not equal to size(f,5),
+ <code>60</code>  : <code>s</code> is not equal to size(f,6),
+ <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy~7"></span><h3>procedure, public :: <strong>destroy</strong>  => <a href='../proc/destroy_6d.html'>destroy_6d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private pure elemental subroutine <a href='../proc/destroy_6d.html'>destroy_6d</a>(me)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p>Destructor for a <a href="../type/linear_interp_6d.html">linear_interp_6d</a> class.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_6d.html'>linear_interp_6d</a>),</td>
   <td>intent(inout)</td>
   <td></td>
   
@@ -407,7 +557,7 @@ pure elemental subroutine destroy_func(me)
     
     
 
-         
+        
       
       </li>
     
@@ -417,7 +567,7 @@ pure elemental subroutine destroy_func(me)
     
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-check_inputs"></span><h3>procedure, private :: <strong>check_inputs</strong>  
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-evaluate~12"></span><h3>procedure, public :: <strong>evaluate</strong>  => <a href='../proc/nearest_6d.html'>nearest_6d</a> 
     
   </h3></div>
   
@@ -429,7 +579,7 @@ pure elemental subroutine destroy_func(me)
           
     
     <h3>
-private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me, x, y, z, q, r, s, ierr)
+private pure subroutine <a href='../proc/nearest_6d.html'>nearest_6d</a>(me, x, y, z, q, r, s, f, istat)
     
     
    
@@ -442,9 +592,7 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
 
 
 
-<p>Check the validity of the inputs to the initialize routines.
-  Prints warning message if there is an error,
-  and also sets <code>ierr</code> (/=0 if there were any errors).</p><a href="../proc/check_inputs.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>6D nearest neighbor interpolation routine.</p>
     
     <h4>Arguments</h4>
     
@@ -465,8 +613,8 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
   
 <tr>
   
-  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_class.html'>linear_interp_class</a>),</td>
-  <td>intent(in)</td>
+  <td><span class="anchor" ></span>class(<a href='../type/nearest_interp_6d.html'>nearest_interp_6d</a>),</td>
+  <td>intent(inout)</td>
   <td></td>
   
   <td></td><td>::</td>
@@ -481,26 +629,11 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
 <tr>
   
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
+  <td>intent(in)</td>
+  <td></td>
   
-  <td>dimension(:)</td><td>::</td>
-  <td><strong>x</strong></td><td><p><code>x</code> abscissa vector</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><code>y</code> abscissa vector</p></td>
+  <td></td><td>::</td>
+  <td><strong>x</strong></td><td></td>
   
 </tr>
 
@@ -511,26 +644,11 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
 <tr>
   
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
+  <td>intent(in)</td>
+  <td></td>
   
-  <td>dimension(:)</td><td>::</td>
-  <td><strong>z</strong></td><td><p><code>z</code> abscissa vector</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
-  
-  <td>dimension(:)</td><td>::</td>
-  <td><strong>q</strong></td><td><p><code>q</code> abscissa vector</p></td>
+  <td></td><td>::</td>
+  <td><strong>y</strong></td><td></td>
   
 </tr>
 
@@ -541,11 +659,11 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
 <tr>
   
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
+  <td>intent(in)</td>
+  <td></td>
   
-  <td>dimension(:)</td><td>::</td>
-  <td><strong>r</strong></td><td><p><code>r</code> abscissa vector</p></td>
+  <td></td><td>::</td>
+  <td><strong>z</strong></td><td></td>
   
 </tr>
 
@@ -556,11 +674,57 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
 <tr>
   
   <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in),</td>
-  <td>optional</td>
+  <td>intent(in)</td>
+  <td></td>
   
-  <td>dimension(:)</td><td>::</td>
-  <td><strong>s</strong></td><td><p><code>s</code> abscissa vector</p></td>
+  <td></td><td>::</td>
+  <td><strong>q</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>r</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>s</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>f</strong></td><td><p>Nearest <script type="math/tex"> f(x,y,z,q,r,s) </script>
+</p></td>
   
 </tr>
 
@@ -571,18 +735,12 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
 <tr>
   
   <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out)</td>
-  <td></td>
+  <td>intent(out),</td>
+  <td>optional</td>
   
   <td></td><td>::</td>
-  <td><strong>ierr</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>3</code>   : <code>z</code> is not strictly increasing,
- <code>4</code>   : <code>q</code> is not strictly increasing,
- <code>5</code>   : <code>r</code> is not strictly increasing,
- <code>6</code>   : <code>s</code> is not strictly increasing,
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
+ <code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -607,15 +765,11 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
     
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
-    <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span><span class="k">public</span><span class="p">,</span><span class="k">abstract</span> <span class="kd">::</span> <span class="n">linear_interp_class</span>
-        <span class="c">!! Base class for the linear interpolation types</span>
-        <span class="k">private</span>
-<span class="k">        </span><span class="kt">logical</span> <span class="kd">::</span> <span class="n">initialized</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span> <span class="c">!! if the class was properly initialized</span>
-    <span class="k">contains</span>
-<span class="k">        private</span>
-<span class="k">        procedure</span><span class="p">(</span><span class="n">destroy_func</span><span class="p">),</span><span class="k">deferred</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">destroy</span>  <span class="c">!! destructor</span>
-        <span class="k">procedure</span> <span class="kd">::</span> <span class="n">check_inputs</span>
-    <span class="k">end type </span><span class="n">linear_interp_class</span>
+    <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span><span class="k">extends</span><span class="p">(</span><span class="n">linear_interp_6d</span><span class="p">),</span><span class="k">public</span> <span class="kd">::</span> <span class="n">nearest_interp_6d</span>
+        <span class="c">!! Class for 6d nearest neighbor interpolation.</span>
+        <span class="k">contains</span>
+<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">evaluate</span> <span class="o">=&gt;</span> <span class="n">nearest_6d</span>
+    <span class="k">end type </span><span class="n">nearest_interp_6d</span>
 </pre></div>
 
     </section>

@@ -10,7 +10,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>linear_interp_3d &ndash; finterp </title>
+    <title>nearest_interp_3d &ndash; finterp </title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -112,7 +112,7 @@
     
   
   <div class="row">
-    <h1>linear_interp_3d
+    <h1>nearest_interp_3d
     <small>Derived Type</small>
     
     </h1>
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>11.9% of total for derived types.</p>Including implementation: 97 statements,  8.3% of total for derived types.">16 statements</a>
+    title="<p> 3.0% of total for derived types.</p>Including implementation: 66 statements,  5.6% of total for derived types.">4 statements</a>
      </li> 
      
      
@@ -147,7 +147,7 @@
      <li><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
     
   
-     <li class="active">linear_interp_3d</li>
+     <li class="active">nearest_interp_3d</li>
   </ol>
 </div>
 </div>
@@ -170,28 +170,6 @@
 
 
 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-f~3">f</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-x~3">x</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-y~2">y</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-z">z</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-ilox~3">ilox</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-iloy~2">iloy</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-iloz">iloz</a>
-      
-    </div>
-  </div>
-</div>
 
 
 
@@ -205,20 +183,6 @@
 
 
 
-
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
-  <div id="fins-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#finalproc-finalize_3d">finalize_3d</a>
-      
-    </div>
-  </div>
-</div>
 
 
 
@@ -227,11 +191,11 @@
   <div id="boundprocs-0" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../type/linear_interp_3d.html#boundprocedure-initialize~3">initialize</a>
+      <a class="list-group-item" href="../type/nearest_interp_3d.html#boundprocedure-initialize~3">initialize</a>
       
-      <a class="list-group-item" href="../type/linear_interp_3d.html#boundprocedure-evaluate~3">evaluate</a>
+      <a class="list-group-item" href="../type/nearest_interp_3d.html#boundprocedure-destroy~4">destroy</a>
       
-      <a class="list-group-item" href="../type/linear_interp_3d.html#boundprocedure-destroy~4">destroy</a>
+      <a class="list-group-item" href="../type/nearest_interp_3d.html#boundprocedure-evaluate~9">evaluate</a>
       
     </div>
   </div>
@@ -243,7 +207,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../type/linear_interp_3d.html#src">linear_interp_3d</a>
+    <a class="list-group-item" href="../type/nearest_interp_3d.html#src">nearest_interp_3d</a>
   </div>
 </div>
 
@@ -254,8 +218,8 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: linear_interp_3d</h2>
-    <p>Class for 3d linear interpolation.</p>
+      <h2>type, public, extends(<a href='../type/linear_interp_3d.html'>linear_interp_3d</a>) :: nearest_interp_3d</h2>
+    <p>Class for 3d nearest neighbor interpolation.</p>
     
     
     
@@ -268,28 +232,6 @@
 
 
 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-f~3">f</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-x~3">x</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-y~2">y</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-z">z</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-ilox~3">ilox</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-iloy~2">iloy</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#variable-iloz">iloz</a>
-      
-    </div>
-  </div>
-</div>
 
 
 
@@ -303,20 +245,6 @@
 
 
 
-
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
-  <div id="fins-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html#finalproc-finalize_3d">finalize_3d</a>
-      
-    </div>
-  </div>
-</div>
 
 
 
@@ -325,11 +253,11 @@
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
       
-      <a class="list-group-item" href="../type/linear_interp_3d.html#boundprocedure-initialize~3">initialize</a>
+      <a class="list-group-item" href="../type/nearest_interp_3d.html#boundprocedure-initialize~3">initialize</a>
       
-      <a class="list-group-item" href="../type/linear_interp_3d.html#boundprocedure-evaluate~3">evaluate</a>
+      <a class="list-group-item" href="../type/nearest_interp_3d.html#boundprocedure-destroy~4">destroy</a>
       
-      <a class="list-group-item" href="../type/linear_interp_3d.html#boundprocedure-destroy~4">destroy</a>
+      <a class="list-group-item" href="../type/nearest_interp_3d.html#boundprocedure-evaluate~9">evaluate</a>
       
     </div>
   </div>
@@ -341,7 +269,7 @@
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
   <div class="list-group">
-    <a class="list-group-item" href="../type/linear_interp_3d.html#src">linear_interp_3d</a>
+    <a class="list-group-item" href="../type/nearest_interp_3d.html#src">nearest_interp_3d</a>
   </div>
 </div>
 
@@ -351,201 +279,9 @@
     <br class="visible-xs visible-sm hidden-md">
 
     
-    <section>
-    <h2>Components</h2>
-    
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th>
-
-<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-f~3"></span>real(kind=wp),</td>
-  
-  <td>private,</td>
-  <td>dimension(:,:,:), allocatable</td><td>::</td>
-  <td><strong>f</strong></td><td></td><td></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-x~3"></span>real(kind=wp),</td>
-  
-  <td>private,</td>
-  <td>dimension(:), allocatable</td><td>::</td>
-  <td><strong>x</strong></td><td></td><td></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-y~2"></span>real(kind=wp),</td>
-  
-  <td>private,</td>
-  <td>dimension(:), allocatable</td><td>::</td>
-  <td><strong>y</strong></td><td></td><td></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-z"></span>real(kind=wp),</td>
-  
-  <td>private,</td>
-  <td>dimension(:), allocatable</td><td>::</td>
-  <td><strong>z</strong></td><td></td><td></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-ilox~3"></span>integer,</td>
-  
-  <td>private</td>
-  <td></td><td>::</td>
-  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-iloy~2"></span>integer,</td>
-  
-  <td>private</td>
-  <td></td><td>::</td>
-  <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-iloz"></span>integer,</td>
-  
-  <td>private</td>
-  <td></td><td>::</td>
-  <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-    </section>
-    <br>
     
     
     
-    
-    
-    <section>
-    <h2>Finalization Procedures</h2>
-     
-         
-<div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="finalproc-finalize_3d"></span><h3>final :: <strong>finalize_3d</strong> 
-    </h3></div>
-  <div class="panel-body">
-    
-
-
-    
-  </div>
-  <ul class="list-group">
-     <li class="list-group-item">
-       
-    
-    <h3>
-private pure elemental subroutine <a href='../proc/finalize_3d.html'>finalize_3d</a>(me)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
-<p>Finalizer for a <a href="../type/linear_interp_3d.html">linear_interp_3d</a> type.</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>type(<a href='../type/linear_interp_3d.html'>linear_interp_3d</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>me</strong></td><td></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-     </li>
-  </ul>
-</div>
-
-         
-    </section>
-    <br>
     
     
      
@@ -708,155 +444,6 @@ private pure subroutine <a href='../proc/initialize_3d.html'>initialize_3d</a>(m
     
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-evaluate~3"></span><h3>procedure, public :: <strong>evaluate</strong>  => <a href='../proc/interp_3d.html'>interp_3d</a> 
-    
-  </h3></div>
-  
-  <ul class="list-group">
-    
-      <li class="list-group-item">
-      
-        
-          
-    
-    <h3>
-private pure subroutine <a href='../proc/interp_3d.html'>interp_3d</a>(me, x, y, z, f, istat)
-    
-    
-   
-</h3>
-    
-
-
-
-
-
-
-
-<p>3D linear interpolation routine.</p>
-    
-    <h4>Arguments</h4>
-    
-      
-      
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th>
-<th>Intent</th><th>Optional</th>
-<th>Attributes</th><th></th><th>Name</th><th></th></thead>
-
-
-
-<tbody>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_3d.html'>linear_interp_3d</a>),</td>
-  <td>intent(inout)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>me</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>x</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>y</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(in)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>z</strong></td><td></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>real(kind=wp),</td>
-  <td>intent(out)</td>
-  <td></td>
-  
-  <td></td><td>::</td>
-  <td><strong>f</strong></td><td><p>Interpolated <script type="math/tex"> f(x,y,z) </script>
-</p></td>
-  
-</tr>
-
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" ></span>integer,</td>
-  <td>intent(out),</td>
-  <td>optional</td>
-  
-  <td></td><td>::</td>
-  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
-  
-</tr>
-
-</tbody>
-</table>
-
-      
-    
-    
-
-        
-      
-      </li>
-    
-  </ul>
-</div>
-
-    
-     
-<div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy~4"></span><h3>procedure, public :: <strong>destroy</strong>  => <a href='../proc/destroy_3d.html'>destroy_3d</a> 
     
   </h3></div>
@@ -927,29 +514,166 @@ private pure elemental subroutine <a href='../proc/destroy_3d.html'>destroy_3d</
 </div>
 
     
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-evaluate~9"></span><h3>procedure, public :: <strong>evaluate</strong>  => <a href='../proc/nearest_3d.html'>nearest_3d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private pure subroutine <a href='../proc/nearest_3d.html'>nearest_3d</a>(me, x, y, z, f, istat)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p>3D nearest neighbor interpolation routine.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/nearest_interp_3d.html'>nearest_interp_3d</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>x</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>y</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>z</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>f</strong></td><td><p>Nearest <script type="math/tex"> f(x,y,z) </script>
+</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
+ <code>-1</code> : class has not been initialized</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
     </section>
     
     
     
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
-    <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span><span class="k">extends</span><span class="p">(</span><span class="n">linear_interp_class</span><span class="p">),</span><span class="k">public</span> <span class="kd">::</span> <span class="n">linear_interp_3d</span>
-        <span class="c">!! Class for 3d linear interpolation.</span>
-        <span class="k">private</span>
-<span class="k">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:,:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">f</span>
-        <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">x</span>
-        <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">y</span>
-        <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">z</span>
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ilox</span>  <span class="o">=</span> <span class="mi">1</span>
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">iloy</span>  <span class="o">=</span> <span class="mi">1</span>
-        <span class="kt">integer</span> <span class="kd">::</span> <span class="n">iloz</span>  <span class="o">=</span> <span class="mi">1</span>
+    <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span><span class="k">extends</span><span class="p">(</span><span class="n">linear_interp_3d</span><span class="p">),</span><span class="k">public</span> <span class="kd">::</span> <span class="n">nearest_interp_3d</span>
+        <span class="c">!! Class for 3d nearest neighbor interpolation.</span>
         <span class="k">contains</span>
-<span class="k">        private</span>
-<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">initialize</span> <span class="o">=&gt;</span> <span class="n">initialize_3d</span>
-        <span class="k">procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">evaluate</span>   <span class="o">=&gt;</span> <span class="n">interp_3d</span>
-        <span class="k">procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">destroy</span>    <span class="o">=&gt;</span> <span class="n">destroy_3d</span>
-        <span class="k">final</span> <span class="kd">::</span> <span class="n">finalize_3d</span>
-    <span class="k">end type </span><span class="n">linear_interp_3d</span>
+<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span> <span class="kd">::</span> <span class="n">evaluate</span> <span class="o">=&gt;</span> <span class="n">nearest_3d</span>
+    <span class="k">end type </span><span class="n">nearest_interp_3d</span>
 </pre></div>
 
     </section>

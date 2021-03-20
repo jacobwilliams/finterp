@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="Modern Fortran Multidimensional Linear Interpolation">
+   
+   <meta name="description" content="Modern Fortran Multidimensional Linear Interpolation">
     
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,35 +48,37 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
-            <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+            <li><a href="../sourcefile/linear_interpolation_module.f90.html">Source File</a></li>
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-				
+        
+        
             <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
-								
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/linear_interpolation_test.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/linear_interpolation_module.f90.html">Source File</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -94,8 +92,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/linear_interpolation_test.html">Program</a></li>
 
           </ul>
         
@@ -133,19 +129,23 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="<p>11.1% of total for derived types.</p>Including implementation: 57 statements,  8.8% of total for derived types.">12 statements</a>
+    data-placement="bottom" data-html="true"
+    title="<p> 9.0% of total for derived types.</p>Including implementation: 66 statements,  5.6% of total for derived types.">12 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/linear_interpolation_module.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/linear_interpolation_module.f90.html'>linear_interpolation_module.f90</a></li>
-  
+    
      <li><a href='../module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
+    
   
      <li class="active">linear_interp_1d</li>
   </ol>
@@ -165,6 +165,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -197,6 +200,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
   <div id="fins-0" class="panel-collapse collapse">
@@ -209,6 +213,7 @@
 </div>
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-0" class="panel-collapse collapse">
@@ -218,11 +223,12 @@
       
       <a class="list-group-item" href="../type/linear_interp_1d.html#boundprocedure-evaluate">evaluate</a>
       
-      <a class="list-group-item" href="../type/linear_interp_1d.html#boundprocedure-destroy%7E2">destroy</a>
+      <a class="list-group-item" href="../type/linear_interp_1d.html#boundprocedure-destroy~2">destroy</a>
       
     </div>
   </div>
 </div>
+
 
 
 
@@ -234,46 +240,24 @@
 </div>
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
-  <div id="alltypes-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_1d.html">linear_interp_1d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_2d.html">linear_interp_2d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html">linear_interp_3d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_4d.html">linear_interp_4d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_5d.html">linear_interp_5d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_6d.html">linear_interp_6d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_class.html">linear_interp_class</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     
     <div class="col-md-9" id='text'>
       <h2>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: linear_interp_1d</h2>
-    
     <p>Class for 1d linear interpolation.</p>
-    <br>
     
+    
+    
+    <br>
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 <div class="panel panel-primary">
@@ -306,6 +290,7 @@
 
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
   <div id="fins-1" class="panel-collapse collapse">
@@ -318,6 +303,7 @@
 </div>
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
@@ -327,11 +313,12 @@
       
       <a class="list-group-item" href="../type/linear_interp_1d.html#boundprocedure-evaluate">evaluate</a>
       
-      <a class="list-group-item" href="../type/linear_interp_1d.html#boundprocedure-destroy%7E2">destroy</a>
+      <a class="list-group-item" href="../type/linear_interp_1d.html#boundprocedure-destroy~2">destroy</a>
       
     </div>
   </div>
 </div>
+
 
 
 
@@ -341,6 +328,7 @@
     <a class="list-group-item" href="../type/linear_interp_1d.html#src">linear_interp_1d</a>
   </div>
 </div>
+
 
 
     </section>
@@ -413,7 +401,7 @@
     
     <section>
     <h2>Finalization Procedures</h2>
-	   
+     
          
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="finalproc-finalize_1d"></span><h3>final :: <strong>finalize_1d</strong> 
@@ -432,7 +420,7 @@
 private pure elemental subroutine <a href='../proc/finalize_1d.html'>finalize_1d</a>(me)
     
     
-	 
+   
 </h3>
     
 
@@ -492,7 +480,7 @@ private pure elemental subroutine <a href='../proc/finalize_1d.html'>finalize_1d
     <section>
     <h2>Type-Bound Procedures</h2>
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initialize"></span><h3>procedure, public :: <strong>initialize</strong>  => <a href='../proc/initialize_1d.html'>initialize_1d</a> 
     
@@ -502,13 +490,14 @@ private pure elemental subroutine <a href='../proc/finalize_1d.html'>finalize_1d
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(me, x, f, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -589,9 +578,10 @@ private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(m
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>1</code>  : <code>x</code> is not strictly increasing,
- <code>10</code> : <code>x</code> is not equal to size(f,1).</p></td>
+  <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
+ <code>1</code>   : <code>x</code> is not strictly increasing,
+ <code>10</code>  : <code>x</code> is not equal to size(f,1),
+ <code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -602,6 +592,7 @@ private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(m
     
     
 
+        
       
       </li>
     
@@ -609,7 +600,7 @@ private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(m
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-evaluate"></span><h3>procedure, public :: <strong>evaluate</strong>  => <a href='../proc/interp_1d.html'>interp_1d</a> 
     
@@ -619,13 +610,14 @@ private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(m
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
-private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, fx)
+private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, f, istat)
     
     
-	 
+   
 </h3>
     
 
@@ -691,7 +683,24 @@ private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, fx
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>fx</strong></td><td><p>Interpolated \( f(x) \)</p></td>
+  <td><strong>f</strong></td><td><p>Interpolated <script type="math/tex"> f(x) </script>
+</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
+ <code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -702,6 +711,7 @@ private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, fx
     
     
 
+        
       
       </li>
     
@@ -709,9 +719,9 @@ private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, fx
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy%7E2"></span><h3>procedure, public :: <strong>destroy</strong>  => <a href='../proc/destroy_1d.html'>destroy_1d</a> 
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy~2"></span><h3>procedure, public :: <strong>destroy</strong>  => <a href='../proc/destroy_1d.html'>destroy_1d</a> 
     
   </h3></div>
   
@@ -719,13 +729,14 @@ private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, fx
     
       <li class="list-group-item">
       
-         
+        
+          
     
     <h3>
 private pure elemental subroutine <a href='../proc/destroy_1d.html'>destroy_1d</a>(me)
     
     
-	 
+   
 </h3>
     
 
@@ -772,6 +783,7 @@ private pure elemental subroutine <a href='../proc/destroy_1d.html'>destroy_1d</
     
     
 
+        
       
       </li>
     
@@ -784,7 +796,7 @@ private pure elemental subroutine <a href='../proc/destroy_1d.html'>destroy_1d</
     
     
     <section>
-    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="highlight"><pre><span></span>    <span class="k">type</span><span class="p">,</span><span class="k">extends</span><span class="p">(</span><span class="n">linear_interp_class</span><span class="p">),</span><span class="k">public</span> <span class="kd">::</span> <span class="n">linear_interp_1d</span>
         <span class="c">!! Class for 1d linear interpolation.</span>
         <span class="k">private</span>
@@ -806,42 +818,14 @@ private pure elemental subroutine <a href='../proc/destroy_1d.html'>destroy_1d</
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
-  <div id="alltypes-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../type/linear_interp_1d.html">linear_interp_1d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_2d.html">linear_interp_2d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_3d.html">linear_interp_3d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_4d.html">linear_interp_4d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_5d.html">linear_interp_5d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_6d.html">linear_interp_6d</a>
-      
-      <a class="list-group-item" href="../type/linear_interp_class.html">linear_interp_class</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -872,12 +856,17 @@ private pure elemental subroutine <a href='../proc/destroy_1d.html'>destroy_1d</
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>
