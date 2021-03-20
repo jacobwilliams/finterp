@@ -1,4 +1,5 @@
 name = "finterp"
+version = "1.2.0"
 author = "Jacob Williams"
 license = "BSD"
 description = "Modern Fortran Multidimensional Linear Interpolation"
