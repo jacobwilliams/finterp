@@ -44,8 +44,9 @@ jobs:
         gfortran -O2 ./src/linear_interpolation_module.f90 ./test/test_nearest.f90 -o ./bin/test_nearest
 
     - name: Run tests
-      run: ./bin/test
-      run: ./bin/test_nearest
+      run: |
+        ./bin/test
+        ./bin/test_nearest
 
     - name: Build documentation
       run: ford ./finterp.md
