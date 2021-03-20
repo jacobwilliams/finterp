@@ -3,7 +3,7 @@ finterp
 
 ## Status
 
-[![Build Status](https://img.shields.io/travis/jacobwilliams/finterp/master.svg?style=plastic)](https://travis-ci.org/jacobwilliams/finterp)
+![Build Status](https://github.com/jacobwilliams/finterp/actions/workflows/CI.yml/badge.svg?branch=master)
 
 ## Description
 
