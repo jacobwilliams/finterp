@@ -1,0 +1,16 @@
+name = "finterp"
+author = "Jacob Williams"
+license = "BSD"
+description = "Modern Fortran Multidimensional Linear Interpolation"
+homepage = "https://github.com/jacobwilliams/finterp"
+
+[library]
+source-dir = "src"
+
+[install]
+library = true
+
+[build]
+auto-executables = true
+auto-examples = true
+auto-tests = true
