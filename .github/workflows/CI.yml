@@ -15,20 +15,29 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
 
     - name: Set up Python 3.x
       uses: actions/setup-python@v1 # Use pip to install latest CMake, & FORD/Jin2For, etc.
       with:
         python-version: 3.x
-        
+
+    - name: Setup Fortran Package Manager
+      uses: fortran-lang/setup-fpm@v3
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Setup Graphviz
       uses: ts-graphviz/setup-graphviz@v1
 
-    - name: Install other tools
+    - name: Install Python dependencies
       if: contains( matrix.os, 'ubuntu')
       run: |
-        sudo -H pip install ford && ford --version
+        python -m pip install --upgrade pip
+        pip install ford matplotlib
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Install GFortran Linux
       if: contains( matrix.os, 'ubuntu')
@@ -41,21 +50,16 @@ jobs:
         --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
 
     - name: Compile
-      run: |
-        mkdir bin
-        gfortran -O2 ./src/linear_interpolation_module.f90 ./test/test.f90 -o ./bin/test
-        gfortran -O2 ./src/linear_interpolation_module.f90 ./test/test_nearest.f90 -o ./bin/test_nearest
+      run: fpm build --profile release
 
     - name: Run tests
-      run: |
-        ./bin/test
-        ./bin/test_nearest
+      run: fpm test
 
     - name: Build documentation
       run: ford ./finterp.md
 
     - name: Deploy Documentation
-      if: github.ref == 'refs/heads/master' 
+      if: github.ref == 'refs/heads/master'
       uses: JamesIves/github-pages-deploy-action@4.1.0
       with:
         branch: gh-pages # The branch the action should deploy to.

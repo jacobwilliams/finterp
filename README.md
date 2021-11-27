@@ -1,5 +1,7 @@
-finterp
-======
+![finterp](media/logo.png)
+============
+
+FINTERP: Multidimensional Linear Interpolation with Modern Fortran
 
 ## Status
 
@@ -65,7 +67,7 @@ The library also includes classes for nearest neighbor interpolation (`nearest_i
 
 ## Documentation
 
-The latest API documentation can be found [here](http://jacobwilliams.github.io/finterp/). This was generated from the source code using [FORD](https://github.com/cmacmackin/ford) (note that the included `build.sh` script will also generate these files).
+The latest API documentation can be found [here](https://jacobwilliams.github.io/finterp/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford) (note that the included `build.sh` script will also generate these files).
 
 ## License
 
@@ -73,4 +75,5 @@ The finterp source code and related files and documentation are distributed unde
 
 ## See also
 
- * [bspline-fortran](https://github.com/jacobwilliams/bspline-fortran), if you need B-spline interpolation.
+ * [bspline-fortran](https://github.com/jacobwilliams/bspline-fortran), B-spline interpolation.
+ * [PCHIP](https://github.com/jacobwilliams/PCHIP), Piecewise Cubic Hermite Interpolation.

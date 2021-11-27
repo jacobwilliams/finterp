@@ -1,6 +1,7 @@
 project: finterp
 project_dir: ./src
 output_dir: ./doc
+media_dir: ./media
 project_github: https://github.com/jacobwilliams/finterp
 summary: Modern Fortran Multidimensional Linear Interpolation
 author: Jacob Williams
@@ -14,13 +15,7 @@ display: public
          protected
 source: true
 graph: true
-exclude: pyplot_module.f90
-extra_mods: pyplot_module:https://github.com/jacobwilliams/pyplot-fortran
-            iso_fortran_env:https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html
+exclude_dir: ./tests
+extra_mods: iso_fortran_env:https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html
 
-Brief description
----------------
-
-# License
-
-The finterp source code and related files and documentation are distributed under a permissive free software [license](https://github.com/jacobwilliams/finterp/blob/master/LICENSE) (BSD-style).
+{!README.md!}
