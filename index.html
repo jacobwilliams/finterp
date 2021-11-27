@@ -72,8 +72,11 @@
                
             <li><a href="./lists/types.html">Derived Types</a></li>
         
+               
+        
         
             </ul>
+        
             </li>
 
 
@@ -91,6 +94,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/absint.html">Abstract Interfaces</a></li>
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
 
 
           </ul>
@@ -116,8 +121,9 @@
         	 
 	<p> Find us on&hellip;</p>
         <p>
-        	 
+			 
           <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/finterp" role="button">GitHub</a>
+			 
 			 
 			 
 			 
@@ -132,9 +138,70 @@
         <div class="col-md-8">
 		  
           <h1>finterp</h1>
-          <h2>Brief description</h2>
-<h1>License</h1>
+          <h1><img alt="finterp" src="media/logo.png"></h1>
+<p>FINTERP: Multidimensional Linear Interpolation with Modern Fortran</p>
+<h2>Status</h2>
+<p><img alt="Build Status" src="https://github.com/jacobwilliams/finterp/actions/workflows/CI.yml/badge.svg?branch=master"></p>
+<h2>Description</h2>
+<p>Can be used to perform multidimensional (1D-6D) linear interpolation of data on a regular grid. The code is written in modern Fortran (2003/2008) and is object-oriented and thread safe.</p>
+<h2>Usage</h2>
+<p>There are six classes (<code>linear_interp_1d</code>, <code>linear_interp_2d</code>, <code>linear_interp_3d</code>, <code>linear_interp_4d</code>, <code>linear_interp_5d</code>, and <code>linear_interp_6d</code>). Each has three methods: <code>initialize</code>, <code>evaluate</code>, and <code>destroy</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">x</span><span class="p">(</span><span class="n">nx</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">ny</span><span class="p">),</span><span class="n">z</span><span class="p">(</span><span class="n">nz</span><span class="p">),</span><span class="n">q</span><span class="p">(</span><span class="n">nq</span><span class="p">),</span><span class="n">r</span><span class="p">(</span><span class="n">nr</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_1d</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_2d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_3d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_4d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_5d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">,</span><span class="n">nr</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_6d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">,</span><span class="n">nr</span><span class="p">,</span><span class="n">ns</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">sval</span><span class="p">,</span><span class="n">fval</span>
+<span class="kt">integer</span> <span class="kd">::</span> <span class="n">iflag</span>
+
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_1d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s1</span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_2d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s2</span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_3d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s3</span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_4d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s4</span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_5d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s5</span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_6d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s6</span>
+
+<span class="c">!populate the arrays</span>
+<span class="c">!...</span>
+
+<span class="c">!initialize the class:</span>
+<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fcn_1d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">fcn_2d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">fcn_3d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">fcn_4d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">fcn_5d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">fcn_6d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+
+<span class="c">!interpolate:</span>
+<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">sval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+
+<span class="c">!free memory:</span>
+<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+</code></pre></div>
+
+<h2>Nearest Neighbor Interpolation</h2>
+<p>The library also includes classes for nearest neighbor interpolation (<code>nearest_interp_1d</code>, <code>nearest_interp_2d</code>, ...). The interfaces are the same as for the linear classes.</p>
+<h2>Documentation</h2>
+<p>The latest API documentation can be found <a href="https://jacobwilliams.github.io/finterp/">here</a>. This was generated from the source code using <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a> (note that the included <code>build.sh</code> script will also generate these files).</p>
+<h2>License</h2>
 <p>The finterp source code and related files and documentation are distributed under a permissive free software <a href="https://github.com/jacobwilliams/finterp/blob/master/LICENSE">license</a> (BSD-style).</p>
+<h2>See also</h2>
+<ul>
+<li><a href="https://github.com/jacobwilliams/bspline-fortran">bspline-fortran</a>, B-spline interpolation.</li>
+<li><a href="https://github.com/jacobwilliams/PCHIP">PCHIP</a>, Piecewise Cubic Hermite Interpolation.</li>
+</ul>
         </div>
 		  
         <div class="col-md-4">
@@ -149,7 +216,8 @@
               
               
               <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams"><i class="fa fa-github fa-lg"></i></a>
-				  
+              
+              
 				  
               
               
@@ -165,201 +233,98 @@
       
       
       
+      
+      
 		
+        
       <div class="row">
+        
         <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
               <ul>
-                
-                  
                     <li><a href='./sourcefile/linear_interpolation_module.f90.html'>linear_interpolation_module.f90</a></li>
-                  
-                
-              </ul>
+                  </ul>
           </div>
+        
           
 		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
               <ul>
-                
-                  
                     <li><a href='./module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
-                  
-                
-              </ul>
+                  </ul>
           </div>
           
           
 		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
               <ul>
-                
-                  
                     <li><a href='./proc/check_if_unique.html'>check_if_unique</a></li>
-                  
-                
                   
                     <li><a href='./proc/check_inputs.html'>check_inputs</a></li>
                   
-                
-                  
                     <li><a href='./proc/destroy_1d.html'>destroy_1d</a></li>
-                  
-                
                   
                     <li><a href='./proc/destroy_2d.html'>destroy_2d</a></li>
                   
-                
-                  
                     <li><a href='./proc/destroy_3d.html'>destroy_3d</a></li>
-                  
-                
                   
                     <li><a href='./proc/destroy_4d.html'>destroy_4d</a></li>
                   
-                
-                  
                     <li><a href='./proc/destroy_5d.html'>destroy_5d</a></li>
-                  
-                
                   
                     <li><a href='./proc/destroy_6d.html'>destroy_6d</a></li>
                   
-                
-                  
                     <li><a href='./proc/dintrv.html'>dintrv</a></li>
                   
-                
-                  
                     <li><a href='./proc/finalize_1d.html'>finalize_1d</a></li>
-                  
-                
-                  
-                    <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-                  
-                
-              </ul>
+                  </ul>
           </div>
           
           
 		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
               <ul>
-                
-                  
                     <li><a href='./type/linear_interp_1d.html'>linear_interp_1d</a></li>
-                  
-                
                   
                     <li><a href='./type/linear_interp_2d.html'>linear_interp_2d</a></li>
                   
-                
-                  
                     <li><a href='./type/linear_interp_3d.html'>linear_interp_3d</a></li>
-                  
-                
                   
                     <li><a href='./type/linear_interp_4d.html'>linear_interp_4d</a></li>
                   
-                
-                  
                     <li><a href='./type/linear_interp_5d.html'>linear_interp_5d</a></li>
-                  
-                
                   
                     <li><a href='./type/linear_interp_6d.html'>linear_interp_6d</a></li>
                   
-                
-                  
                     <li><a href='./type/linear_interp_class.html'>linear_interp_class</a></li>
-                  
-                
                   
                     <li><a href='./type/nearest_interp_1d.html'>nearest_interp_1d</a></li>
                   
-                
-                  
                     <li><a href='./type/nearest_interp_2d.html'>nearest_interp_2d</a></li>
                   
-                
-                  
                     <li><a href='./type/nearest_interp_3d.html'>nearest_interp_3d</a></li>
-                  
-                
-                  
-                    <li><a href="./lists/types.html"><em>All derived types&hellip;</em></a></li>
-                  
-                
-                  
-                
-                  
-                
-              </ul>
+                  </ul>
           </div>
           
       </div>
+      
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>finterp was developed by Jacob Williams<br>&copy; 2021 
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
             
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> finterp was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    

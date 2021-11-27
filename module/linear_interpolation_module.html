@@ -72,8 +72,11 @@
                
             <li><a href="../lists/types.html">Derived Types</a></li>
         
+               
+        
         
             </ul>
+        
             </li>
 
 
@@ -91,6 +94,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
 
 
           </ul>
@@ -127,6 +132,7 @@
      
      
     <li><i class="fa fa-legal"></i> BSD</li>
+     
      
      
     
@@ -348,10 +354,10 @@
     <div class="col-md-9" id='text'>
     <p>Multidimensional linear interpolation/extrapolation.</p>
 <p>Uses repeated linear interpolation to evaluate
-  functions <script type="math/tex">f(x), f(x,y), f(x,y,z), f(x,y,z,q), f(x,y,z,q,r), f(x,y,z,q,r,s) </script>
-  which have been tabulated at the nodes of an n-dimensional rectangular grid.
-  If any coordinate <script type="math/tex"> (x_i, y_i, ...) </script> lies outside the range of the corresponding
-  variable, then extrapolation is performed using the two nearest points.</p>
+ functions <script type="math/tex">f(x), f(x,y), f(x,y,z), f(x,y,z,q), f(x,y,z,q,r), f(x,y,z,q,r,s) </script>
+ which have been tabulated at the nodes of an n-dimensional rectangular grid.
+ If any coordinate <script type="math/tex"> (x_i, y_i, ...) </script> lies outside the range of the corresponding
+ variable, then extrapolation is performed using the two nearest points.</p>
       <br>
     
   
@@ -784,7 +790,7 @@ private pure elemental subroutine destroy_func(me)
    
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_class"></span><h3>type, public, abstract :: <a href='../type/linear_interp_class.html'>linear_interp_class</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_class"></span><h3>type, private, abstract :: <a href='../type/linear_interp_class.html'>linear_interp_class</a>
     
   </h3></div>
   <div class="panel-body">
@@ -844,7 +850,7 @@ private pure elemental subroutine destroy_func(me)
      
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_1d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_1d.html'>linear_interp_1d</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_1d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_1d.html'>linear_interp_1d</a>
     
   </h3></div>
   <div class="panel-body">
@@ -944,7 +950,7 @@ private pure elemental subroutine destroy_func(me)
      
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_2d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_2d.html'>linear_interp_2d</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_2d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_2d.html'>linear_interp_2d</a>
     
   </h3></div>
   <div class="panel-body">
@@ -1072,7 +1078,7 @@ private pure elemental subroutine destroy_func(me)
      
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_3d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_3d.html'>linear_interp_3d</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_3d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_3d.html'>linear_interp_3d</a>
     
   </h3></div>
   <div class="panel-body">
@@ -1228,7 +1234,7 @@ private pure elemental subroutine destroy_func(me)
      
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_4d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_4d.html'>linear_interp_4d</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_4d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_4d.html'>linear_interp_4d</a>
     
   </h3></div>
   <div class="panel-body">
@@ -1412,7 +1418,7 @@ private pure elemental subroutine destroy_func(me)
      
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_5d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_5d.html'>linear_interp_5d</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_5d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_5d.html'>linear_interp_5d</a>
     
   </h3></div>
   <div class="panel-body">
@@ -1624,7 +1630,7 @@ private pure elemental subroutine destroy_func(me)
      
      
 <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_6d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_6d.html'>linear_interp_6d</a>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_6d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_6d.html'>linear_interp_6d</a>
     
   </h3></div>
   <div class="panel-body">
@@ -2949,9 +2955,9 @@ private pure subroutine <a href='../proc/initialize_1d.html'>initialize_1d</a>(m
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>10</code>  : <code>x</code> is not equal to size(f,1),
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>10</code>  : <code>x</code> is not equal to size(f,1),
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -3071,11 +3077,11 @@ private pure subroutine <a href='../proc/initialize_2d.html'>initialize_2d</a>(m
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>10</code>  : <code>x</code> is not equal to size(f,1),
- <code>20</code>  : <code>y</code> is not equal to size(f,2),
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>10</code>  : <code>x</code> is not equal to size(f,1),
+<code>20</code>  : <code>y</code> is not equal to size(f,2),
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -3210,13 +3216,13 @@ private pure subroutine <a href='../proc/initialize_3d.html'>initialize_3d</a>(m
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>3</code>   : <code>z</code> is not strictly increasing,
- <code>10</code>  : <code>x</code> is not equal to size(f,1),
- <code>20</code>  : <code>y</code> is not equal to size(f,2),
- <code>30</code>  : <code>z</code> is not equal to size(f,3),
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>3</code>   : <code>z</code> is not strictly increasing,
+<code>10</code>  : <code>x</code> is not equal to size(f,1),
+<code>20</code>  : <code>y</code> is not equal to size(f,2),
+<code>30</code>  : <code>z</code> is not equal to size(f,3),
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -3366,15 +3372,15 @@ private pure subroutine <a href='../proc/initialize_4d.html'>initialize_4d</a>(m
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>3</code>   : <code>z</code> is not strictly increasing,
- <code>4</code>   : <code>q</code> is not strictly increasing,
- <code>10</code>  : <code>x</code> is not equal to size(f,1),
- <code>20</code>  : <code>y</code> is not equal to size(f,2),
- <code>30</code>  : <code>z</code> is not equal to size(f,3),
- <code>40</code>  : <code>q</code> is not equal to size(f,4),
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>3</code>   : <code>z</code> is not strictly increasing,
+<code>4</code>   : <code>q</code> is not strictly increasing,
+<code>10</code>  : <code>x</code> is not equal to size(f,1),
+<code>20</code>  : <code>y</code> is not equal to size(f,2),
+<code>30</code>  : <code>z</code> is not equal to size(f,3),
+<code>40</code>  : <code>q</code> is not equal to size(f,4),
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -3539,17 +3545,17 @@ private pure subroutine <a href='../proc/initialize_5d.html'>initialize_5d</a>(m
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>3</code>   : <code>z</code> is not strictly increasing,
- <code>4</code>   : <code>q</code> is not strictly increasing,
- <code>5</code>   : <code>r</code> is not strictly increasing,
- <code>10</code>  : <code>x</code> is not equal to size(f,1),
- <code>20</code>  : <code>y</code> is not equal to size(f,2),
- <code>30</code>  : <code>z</code> is not equal to size(f,3),
- <code>40</code>  : <code>q</code> is not equal to size(f,4),
- <code>50</code>  : <code>r</code> is not equal to size(f,5),
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>3</code>   : <code>z</code> is not strictly increasing,
+<code>4</code>   : <code>q</code> is not strictly increasing,
+<code>5</code>   : <code>r</code> is not strictly increasing,
+<code>10</code>  : <code>x</code> is not equal to size(f,1),
+<code>20</code>  : <code>y</code> is not equal to size(f,2),
+<code>30</code>  : <code>z</code> is not equal to size(f,3),
+<code>40</code>  : <code>q</code> is not equal to size(f,4),
+<code>50</code>  : <code>r</code> is not equal to size(f,5),
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -3729,19 +3735,19 @@ private pure subroutine <a href='../proc/initialize_6d.html'>initialize_6d</a>(m
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>3</code>   : <code>z</code> is not strictly increasing,
- <code>4</code>   : <code>q</code> is not strictly increasing,
- <code>5</code>   : <code>r</code> is not strictly increasing,
- <code>6</code>   : <code>s</code> is not strictly increasing,
- <code>10</code>  : <code>x</code> is not equal to size(f,1),
- <code>20</code>  : <code>y</code> is not equal to size(f,2),
- <code>30</code>  : <code>z</code> is not equal to size(f,3),
- <code>40</code>  : <code>q</code> is not equal to size(f,4),
- <code>50</code>  : <code>r</code> is not equal to size(f,5),
- <code>60</code>  : <code>s</code> is not equal to size(f,6),
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>3</code>   : <code>z</code> is not strictly increasing,
+<code>4</code>   : <code>q</code> is not strictly increasing,
+<code>5</code>   : <code>r</code> is not strictly increasing,
+<code>6</code>   : <code>s</code> is not strictly increasing,
+<code>10</code>  : <code>x</code> is not equal to size(f,1),
+<code>20</code>  : <code>y</code> is not equal to size(f,2),
+<code>30</code>  : <code>z</code> is not equal to size(f,3),
+<code>40</code>  : <code>q</code> is not equal to size(f,4),
+<code>50</code>  : <code>r</code> is not equal to size(f,5),
+<code>60</code>  : <code>s</code> is not equal to size(f,6),
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -3847,7 +3853,7 @@ private pure subroutine <a href='../proc/interp_1d.html'>interp_1d</a>(me, x, f,
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -3968,7 +3974,7 @@ private pure subroutine <a href='../proc/interp_2d.html'>interp_2d</a>(me, x, y,
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -4104,7 +4110,7 @@ private pure subroutine <a href='../proc/interp_3d.html'>interp_3d</a>(me, x, y,
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -4255,7 +4261,7 @@ private pure subroutine <a href='../proc/interp_4d.html'>interp_4d</a>(me, x, y,
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -4421,7 +4427,7 @@ private pure subroutine <a href='../proc/interp_5d.html'>interp_5d</a>(me, x, y,
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -4602,7 +4608,7 @@ private pure subroutine <a href='../proc/interp_6d.html'>interp_6d</a>(me, x, y,
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -4695,11 +4701,11 @@ private pure subroutine <a href='../proc/dintrv.html'>dintrv</a>(xt, x, ilo, ile
   
   <td></td><td>::</td>
   <td><strong>ilo</strong></td><td><p>an initialization parameter which must be set
- to 1 the first time the array <code>xt</code> is
- processed by dintrv. <code>ilo</code> contains information for
- efficient processing after the initial call and <code>ilo</code>
- must not be changed by the user.  each dimension
- requires a distinct <code>ilo</code> parameter.</p></td>
+to 1 the first time the array <code>xt</code> is
+processed by dintrv. <code>ilo</code> contains information for
+efficient processing after the initial call and <code>ilo</code>
+must not be changed by the user.  each dimension
+requires a distinct <code>ilo</code> parameter.</p></td>
   
 </tr>
 
@@ -4865,7 +4871,7 @@ private pure subroutine <a href='../proc/nearest_1d.html'>nearest_1d</a>(me, x, 
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -4986,7 +4992,7 @@ private pure subroutine <a href='../proc/nearest_2d.html'>nearest_2d</a>(me, x, 
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -5122,7 +5128,7 @@ private pure subroutine <a href='../proc/nearest_3d.html'>nearest_3d</a>(me, x, 
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -5273,7 +5279,7 @@ private pure subroutine <a href='../proc/nearest_4d.html'>nearest_4d</a>(me, x, 
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -5439,7 +5445,7 @@ private pure subroutine <a href='../proc/nearest_5d.html'>nearest_5d</a>(me, x, 
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -5620,7 +5626,7 @@ private pure subroutine <a href='../proc/nearest_6d.html'>nearest_6d</a>(me, x, 
   
   <td></td><td>::</td>
   <td><strong>istat</strong></td><td><p><code>0</code>  : no problems,
- <code>-1</code> : class has not been initialized</p></td>
+<code>-1</code> : class has not been initialized</p></td>
   
 </tr>
 
@@ -5681,9 +5687,9 @@ private pure subroutine <a href='../proc/sort.html'>sort</a>(dx, dy)
   
   <td>dimension(:)</td><td>::</td>
   <td><strong>dx</strong></td><td><p>on entry, the array to be sorted.
- on exit, <code>dx</code> has been sorted into increasing order
- (<code>dx(1) &lt;= ... &lt;= dx(n)</code>) or into decreasing order
- (<code>dx(1) &gt;= ... &gt;= dx(n)</code>), depending on <code>id</code>.</p></td>
+on exit, <code>dx</code> has been sorted into increasing order
+(<code>dx(1) &lt;= ... &lt;= dx(n)</code>) or into decreasing order
+(<code>dx(1) &gt;= ... &gt;= dx(n)</code>), depending on <code>id</code>.</p></td>
   
 </tr>
 
@@ -5865,13 +5871,13 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
   
   <td></td><td>::</td>
   <td><strong>ierr</strong></td><td><p><code>0</code>   : no problems,
- <code>1</code>   : <code>x</code> is not strictly increasing,
- <code>2</code>   : <code>y</code> is not strictly increasing,
- <code>3</code>   : <code>z</code> is not strictly increasing,
- <code>4</code>   : <code>q</code> is not strictly increasing,
- <code>5</code>   : <code>r</code> is not strictly increasing,
- <code>6</code>   : <code>s</code> is not strictly increasing,
- <code>100</code> : cannot use linear interpolation for only one point.</p></td>
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>3</code>   : <code>z</code> is not strictly increasing,
+<code>4</code>   : <code>q</code> is not strictly increasing,
+<code>5</code>   : <code>r</code> is not strictly increasing,
+<code>6</code>   : <code>s</code> is not strictly increasing,
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
   
 </tr>
 
@@ -5900,16 +5906,17 @@ private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me,
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>finterp was developed by Jacob Williams<br>&copy; 2021 
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
             
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> finterp was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
