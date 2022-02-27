@@ -5,7 +5,9 @@ FINTERP: Multidimensional Linear Interpolation with Modern Fortran
 
 ## Status
 
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/finterp.svg?style=plastic)](https://github.com/jacobwilliams/finterp/releases/latest)
 ![Build Status](https://github.com/jacobwilliams/finterp/actions/workflows/CI.yml/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/jacobwilliams/finterp/branch/master/graph/badge.svg?token=BHtd51oUTE)](https://codecov.io/gh/jacobwilliams/finterp)
 
 ## Description
 
@@ -64,6 +66,48 @@ call s6%destroy()
 ## Nearest Neighbor Interpolation
 
 The library also includes classes for nearest neighbor interpolation (`nearest_interp_1d`, `nearest_interp_2d`, ...). The interfaces are the same as for the linear classes.
+
+## Compiling
+
+A `fmp.toml` file is provided for compiling finterp with the [Fortran Package Manager](https://github.com/fortran-lang/fpm). For example, to build:
+
+```
+fpm build --profile release
+```
+
+By default, the library is built with double precision (`real64`) real values. Explicitly specifying the real kind can be done using the following processor flags:
+
+Preprocessor flag | Kind  | Number of bytes
+----------------- | ----- | ---------------
+`REAL32`  | `real(kind=real32)`  | 4
+`REAL64`  | `real(kind=real64)`  | 8
+`REAL128` | `real(kind=real128)` | 16
+
+For example, to build a single precision version of the library, use:
+
+```
+fpm build --profile release --flag "-DREAL32"
+```
+
+To run the unit tests:
+
+```
+fpm test
+```
+
+To use `finterp` within your fpm project, add the following to your `fpm.toml` file:
+```toml
+[dependencies]
+finterp = { git="https://github.com/jacobwilliams/finterp.git" }
+```
+
+or, to use a specific version:
+```toml
+[dependencies]
+finterp = { git="https://github.com/jacobwilliams/finterp.git", tag = "1.2.4"  }
+```
+
+To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```ford finterp.md```
 
 ## Documentation
 

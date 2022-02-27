@@ -9,14 +9,39 @@
 !  which have been tabulated at the nodes of an n-dimensional rectangular grid.
 !  If any coordinate \( (x_i, y_i, ...) \) lies outside the range of the corresponding
 !  variable, then extrapolation is performed using the two nearest points.
+!
+!@note The default real kind (`wp`) can be
+!      changed using optional preprocessor flags.
+!      This library was built with real kind:
+#ifdef REAL32
+!      `real(kind=real32)` [4 bytes]
+#elif REAL64
+!      `real(kind=real64)` [8 bytes]
+#elif REAL128
+!      `real(kind=real128)` [16 bytes]
+#else
+!      `real(kind=real64)` [8 bytes]
+#endif
 
     module linear_interpolation_module
 
-    use iso_fortran_env,    only: wp => real64   ! working precision
+    use iso_fortran_env
 
     implicit none
 
     private
+
+#ifdef REAL32
+    integer,parameter,public :: finterp_rk = real32   !! real kind used by this module [4 bytes]
+#elif REAL64
+    integer,parameter,public :: finterp_rk = real64   !! real kind used by this module [8 bytes]
+#elif REAL128
+    integer,parameter,public :: finterp_rk = real128  !! real kind used by this module [16 bytes]
+#else
+    integer,parameter,public :: finterp_rk = real64   !! real kind used by this module [8 bytes]
+#endif
+
+    integer,parameter :: wp = finterp_rk  !! local copy of `finterp_rk` with a shorter name
 
     real(wp),parameter,private :: zero = 0.0_wp  !! numeric constant
     real(wp),parameter,private :: one  = 1.0_wp  !! numeric constant

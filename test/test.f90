@@ -4,8 +4,7 @@
 
     program linear_interpolation_test
 
-    use linear_interpolation_module
-    use,intrinsic :: iso_fortran_env, only: wp => real64
+    use linear_interpolation_module, wp => finterp_rk
 
     implicit none
 
@@ -17,12 +16,12 @@
     integer,parameter :: ns = 6     !! number of points in s
 
     real(wp) :: x(nx),y(ny),z(nz),q(nq),r(nr),s(ns)
-    real(wp) :: fcn_1d(nx)
-    real(wp) :: fcn_2d(nx,ny)
-    real(wp) :: fcn_3d(nx,ny,nz)
-    real(wp) :: fcn_4d(nx,ny,nz,nq)
-    real(wp) :: fcn_5d(nx,ny,nz,nq,nr)
-    real(wp) :: fcn_6d(nx,ny,nz,nq,nr,ns)
+    real(wp),dimension(:),allocatable           :: fcn_1d
+    real(wp),dimension(:,:),allocatable         :: fcn_2d
+    real(wp),dimension(:,:,:),allocatable       :: fcn_3d
+    real(wp),dimension(:,:,:,:),allocatable     :: fcn_4d
+    real(wp),dimension(:,:,:,:,:),allocatable   :: fcn_5d
+    real(wp),dimension(:,:,:,:,:,:),allocatable :: fcn_6d
 
     type(linear_interp_1d) :: s1
     type(linear_interp_2d) :: s2
@@ -34,8 +33,15 @@
     real(wp) :: tol,rnd
     real(wp),dimension(6) :: val,tru,err,errmax
     logical :: fail
-    integer :: i,j,k,l,m,n,idx,idy,idz,idq,idr,ids
+    integer :: i,j,k,l,m,n
     integer,dimension(6) :: iflag
+
+    allocate(fcn_1d(nx))
+    allocate(fcn_2d(nx,ny))
+    allocate(fcn_3d(nx,ny,nz))
+    allocate(fcn_4d(nx,ny,nz,nq))
+    allocate(fcn_5d(nx,ny,nz,nq,nr))
+    allocate(fcn_6d(nx,ny,nz,nq,nr,ns))
 
     fail = .false.
     tol = 1.0e-14_wp
