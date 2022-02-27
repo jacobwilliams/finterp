@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="Modern Fortran Multidimensional Linear Interpolation">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="./favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="./css/pygments.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/local.css" rel="stylesheet">
-    
     <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="./sourcefile/linear_interpolation_module.f90.html">Source File</a></li>
-        
-        
-        
             <li><a href="./lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="./lists/procedures.html">Procedures</a></li>
-        
-        
             <li><a href="./lists/absint.html">Abstract Interfaces</a></li>
-               
-            <li><a href="./lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="./lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./sourcefile/linear_interpolation_module.f90.html">Source File</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/absint.html">Abstract Interfaces</a></li>
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="./search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,35 +72,22 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <p>Modern Fortran Multidimensional Linear Interpolation</p>
-        	 
 	<p> Find us on&hellip;</p>
         <p>
-			 
           <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/finterp" role="button">GitHub</a>
-			 
-			 
-			 
-			 
-			 
-	         
-			 
         </p>
       </div>
 
       <div class="row" id='text'>
-		  
         <div class="col-md-8">
-		  
           <h1>finterp</h1>
           <h1><img alt="finterp" src="media/logo.png"></h1>
 <p>FINTERP: Multidimensional Linear Interpolation with Modern Fortran</p>
@@ -146,49 +97,49 @@
 <p>Can be used to perform multidimensional (1D-6D) linear interpolation of data on a regular grid. The code is written in modern Fortran (2003/2008) and is object-oriented and thread safe.</p>
 <h2>Usage</h2>
 <p>There are six classes (<code>linear_interp_1d</code>, <code>linear_interp_2d</code>, <code>linear_interp_3d</code>, <code>linear_interp_4d</code>, <code>linear_interp_5d</code>, and <code>linear_interp_6d</code>). Each has three methods: <code>initialize</code>, <code>evaluate</code>, and <code>destroy</code>.</p>
-<div class="codehilite"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">x</span><span class="p">(</span><span class="n">nx</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">ny</span><span class="p">),</span><span class="n">z</span><span class="p">(</span><span class="n">nz</span><span class="p">),</span><span class="n">q</span><span class="p">(</span><span class="n">nq</span><span class="p">),</span><span class="n">r</span><span class="p">(</span><span class="n">nr</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_1d</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_2d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_3d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_4d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_5d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">,</span><span class="n">nr</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fcn_6d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">,</span><span class="n">nr</span><span class="p">,</span><span class="n">ns</span><span class="p">)</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">sval</span><span class="p">,</span><span class="n">fval</span>
-<span class="kt">integer</span> <span class="kd">::</span> <span class="n">iflag</span>
+<div class="codehilite"><pre><span></span><code><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">nx</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="n">ny</span><span class="p">),</span><span class="n">z</span><span class="p">(</span><span class="n">nz</span><span class="p">),</span><span class="n">q</span><span class="p">(</span><span class="n">nq</span><span class="p">),</span><span class="n">r</span><span class="p">(</span><span class="n">nr</span><span class="p">),</span><span class="n">s</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn_1d</span><span class="p">(</span><span class="n">nx</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn_2d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn_3d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn_4d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn_5d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">,</span><span class="n">nr</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn_6d</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">nq</span><span class="p">,</span><span class="n">nr</span><span class="p">,</span><span class="n">ns</span><span class="p">)</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">sval</span><span class="p">,</span><span class="n">fval</span><span class="w"></span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iflag</span><span class="w"></span>
 
-<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_1d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s1</span>
-<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_2d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s2</span>
-<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_3d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s3</span>
-<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_4d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s4</span>
-<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_5d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s5</span>
-<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_6d</span><span class="p">)</span> <span class="kd">::</span> <span class="n">s6</span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_1d</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s1</span><span class="w"></span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_2d</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s2</span><span class="w"></span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_3d</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s3</span><span class="w"></span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_4d</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s4</span><span class="w"></span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_5d</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s5</span><span class="w"></span>
+<span class="k">type</span><span class="p">(</span><span class="n">linear_interp_6d</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s6</span><span class="w"></span>
 
 <span class="c">!populate the arrays</span>
 <span class="c">!...</span>
 
 <span class="c">!initialize the class:</span>
-<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fcn_1d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">fcn_2d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">fcn_3d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">fcn_4d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">fcn_5d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">fcn_6d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fcn_1d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">fcn_2d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">fcn_3d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">fcn_4d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">fcn_5d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">fcn_6d</span><span class="p">,</span><span class="n">iflag</span><span class="p">)</span><span class="w"></span>
 
 <span class="c">!interpolate:</span>
-<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
-<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">sval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span>
+<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">evaluate</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">yval</span><span class="p">,</span><span class="n">zval</span><span class="p">,</span><span class="n">qval</span><span class="p">,</span><span class="n">rval</span><span class="p">,</span><span class="n">sval</span><span class="p">,</span><span class="n">fval</span><span class="p">)</span><span class="w"></span>
 
 <span class="c">!free memory:</span>
-<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
-<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
-<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
-<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
-<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
-<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
+<span class="k">call </span><span class="n">s1</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">s2</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">s3</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">s4</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">s5</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
+<span class="k">call </span><span class="n">s6</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 
 <h2>Nearest Neighbor Interpolation</h2>
@@ -203,126 +154,69 @@
 <li><a href="https://github.com/jacobwilliams/PCHIP">PCHIP</a>, Piecewise Cubic Hermite Interpolation.</li>
 </ul>
         </div>
-		  
         <div class="col-md-4">
 	  <div class="well">
           <h2>Developer Info</h2>
           <h4>Jacob Williams</h4>
           
-          
-			   
             <div class="text-center"><div class="btn-group" role="group">
-              
-              
-              
               <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams"><i class="fa fa-github fa-lg"></i></a>
-              
-              
-				  
-              
-              
-              
-              
             </div></div>
-            
        </div>
        </div>
-       
       </div>
-      
-      
-      
-      
-      
-      
-		
-        
       <div class="row">
-        
         <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
-              <ul>
-                    <li><a href='./sourcefile/linear_interpolation_module.f90.html'>linear_interpolation_module.f90</a></li>
-                  </ul>
+              <ul>                    <li><a href='./sourcefile/linear_interpolation_module.f90.html'>linear_interpolation_module.f90</a></li>
+</ul>
           </div>
-        
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
-              <ul>
-                    <li><a href='./module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
-                  </ul>
+              <ul>                    <li><a href='./module/linear_interpolation_module.html'>linear_interpolation_module</a></li>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
-              <ul>
-                    <li><a href='./proc/check_if_unique.html'>check_if_unique</a></li>
-                  
-                    <li><a href='./proc/check_inputs.html'>check_inputs</a></li>
-                  
+              <ul>                    <li><a href='./proc/check_inputs.html'>check_inputs</a></li>
                     <li><a href='./proc/destroy_1d.html'>destroy_1d</a></li>
-                  
                     <li><a href='./proc/destroy_2d.html'>destroy_2d</a></li>
-                  
                     <li><a href='./proc/destroy_3d.html'>destroy_3d</a></li>
-                  
                     <li><a href='./proc/destroy_4d.html'>destroy_4d</a></li>
-                  
                     <li><a href='./proc/destroy_5d.html'>destroy_5d</a></li>
-                  
                     <li><a href='./proc/destroy_6d.html'>destroy_6d</a></li>
-                  
                     <li><a href='./proc/dintrv.html'>dintrv</a></li>
-                  
                     <li><a href='./proc/finalize_1d.html'>finalize_1d</a></li>
-                  </ul>
+                    <li><a href='./proc/finalize_2d.html'>finalize_2d</a></li>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
-              <ul>
-                    <li><a href='./type/linear_interp_1d.html'>linear_interp_1d</a></li>
-                  
+              <ul>                    <li><a href='./type/linear_interp_1d.html'>linear_interp_1d</a></li>
                     <li><a href='./type/linear_interp_2d.html'>linear_interp_2d</a></li>
-                  
                     <li><a href='./type/linear_interp_3d.html'>linear_interp_3d</a></li>
-                  
                     <li><a href='./type/linear_interp_4d.html'>linear_interp_4d</a></li>
-                  
                     <li><a href='./type/linear_interp_5d.html'>linear_interp_5d</a></li>
-                  
                     <li><a href='./type/linear_interp_6d.html'>linear_interp_6d</a></li>
-                  
                     <li><a href='./type/linear_interp_class.html'>linear_interp_class</a></li>
-                  
                     <li><a href='./type/nearest_interp_1d.html'>nearest_interp_1d</a></li>
-                  
                     <li><a href='./type/nearest_interp_2d.html'>nearest_interp_2d</a></li>
-                  
                     <li><a href='./type/nearest_interp_3d.html'>nearest_interp_3d</a></li>
-                  </ul>
+</ul>
           </div>
-          
       </div>
-      
-
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>finterp was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>finterp was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -350,14 +244,11 @@
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="./tipuesearch/tipuesearch_content.js"></script>
     <script src="./tipuesearch/tipuesearch_set.js"></script>
     <script src="./tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>
