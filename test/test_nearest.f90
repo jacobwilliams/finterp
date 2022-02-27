@@ -4,8 +4,7 @@
 
     program nearest_neighbor_test
 
-    use linear_interpolation_module
-    use,intrinsic :: iso_fortran_env, only: wp => real64
+    use linear_interpolation_module, wp => finterp_rk
 
     implicit none
 
@@ -17,7 +16,7 @@
 
     type(nearest_interp_1d) :: s1
     real(wp) :: val,tru,err,errmax
-    integer :: i,idx,iflag
+    integer :: i,iflag
 
     ! initialize
     call s1%initialize(x,fcn_1d,iflag)
