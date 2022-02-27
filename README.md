@@ -104,7 +104,7 @@ finterp = { git="https://github.com/jacobwilliams/finterp.git" }
 or, to use a specific version:
 ```toml
 [dependencies]
-finterp = { git="https://github.com/jacobwilliams/finterp.git", tag = "1.2.4"  }
+finterp = { git="https://github.com/jacobwilliams/finterp.git", tag = "1.3.0"  }
 ```
 
 To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run: ```ford finterp.md```
