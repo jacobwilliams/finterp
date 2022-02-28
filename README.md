@@ -121,3 +121,4 @@ The finterp source code and related files and documentation are distributed unde
 
  * [bspline-fortran](https://github.com/jacobwilliams/bspline-fortran), B-spline interpolation.
  * [PCHIP](https://github.com/jacobwilliams/PCHIP), Piecewise Cubic Hermite Interpolation.
+ * [Regridpack](https://github.com/jacobwilliams/regridpack), Linear or cubic interpolation for 1D-4D grids.
