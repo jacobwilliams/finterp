@@ -469,7 +469,7 @@
     <section>
      <h2>Derived Types</h2>
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_class"></span><h3>type, private, abstract :: <a href='../type/linear_interp_class.html'>linear_interp_class</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_class"></span><h3>type, public, abstract :: <a href='../type/linear_interp_class.html'>linear_interp_class</a>  </h3></div>
   <div class="panel-body">
     <p>Base class for the linear interpolation types</p>
      <h4>Components</h4>
@@ -478,7 +478,7 @@
 <tbody>
 <tr>
   <td><span class="anchor" id="variable-initialized"></span>logical,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
 </tr>
 </tbody>
@@ -490,7 +490,7 @@
       <tbody>
        <tr><td>procedure(destroy_func), public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-destroy'>destroy</a></strong>  </td>
        <td><p>destructor</p></td></tr>
-       <tr><td>procedure, private :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
        <td></td></tr>
        </tbody>
        </table>
@@ -498,7 +498,7 @@
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_1d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_1d.html'>linear_interp_1d</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_1d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_1d.html'>linear_interp_1d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 1d linear interpolation.</p>
      <h4>Components</h4>
@@ -506,18 +506,23 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -533,6 +538,8 @@
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_1d.html#boundprocedure-initialize'>initialize</a></strong>  => initialize_1d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_1d.html#boundprocedure-evaluate'>evaluate</a></strong>  => interp_1d </td>
@@ -545,7 +552,7 @@
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_2d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_2d.html'>linear_interp_2d</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_2d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_2d.html'>linear_interp_2d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 2d linear interpolation.</p>
      <h4>Components</h4>
@@ -553,28 +560,33 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:,:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:,:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-y"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>y</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox~2"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloy"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -590,6 +602,8 @@
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_2d.html#boundprocedure-initialize~2'>initialize</a></strong>  => initialize_2d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_2d.html#boundprocedure-evaluate~2'>evaluate</a></strong>  => interp_2d </td>
@@ -602,7 +616,7 @@
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_3d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_3d.html'>linear_interp_3d</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_3d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_3d.html'>linear_interp_3d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 3d linear interpolation.</p>
      <h4>Components</h4>
@@ -610,38 +624,43 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f~3"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:,:,:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:,:,:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x~3"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-y~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>y</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-z"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>z</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox~3"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloy~2"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloz"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -657,6 +676,8 @@
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_3d.html#boundprocedure-initialize~3'>initialize</a></strong>  => initialize_3d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_3d.html#boundprocedure-evaluate~3'>evaluate</a></strong>  => interp_3d </td>
@@ -669,7 +690,7 @@
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_4d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_4d.html'>linear_interp_4d</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_4d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_4d.html'>linear_interp_4d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 4d linear interpolation.</p>
      <h4>Components</h4>
@@ -677,48 +698,53 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f~4"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:,:,:,:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:,:,:,:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x~4"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-y~3"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>y</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-z~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>z</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-q"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>q</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox~4"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloy~3"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloz~2"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloq"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -734,6 +760,8 @@
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_4d.html#boundprocedure-initialize~4'>initialize</a></strong>  => initialize_4d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_4d.html#boundprocedure-evaluate~4'>evaluate</a></strong>  => interp_4d </td>
@@ -746,7 +774,7 @@
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_5d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_5d.html'>linear_interp_5d</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_5d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_5d.html'>linear_interp_5d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 5d linear interpolation.</p>
      <h4>Components</h4>
@@ -754,58 +782,63 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f~5"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:,:,:,:,:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:,:,:,:,:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x~5"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-y~4"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>y</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-z~3"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>z</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-q~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>q</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-r"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>r</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox~5"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloy~4"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloz~3"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloq~2"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilor"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilor</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -821,6 +854,8 @@
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_5d.html#boundprocedure-initialize~5'>initialize</a></strong>  => initialize_5d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_5d.html#boundprocedure-evaluate~5'>evaluate</a></strong>  => interp_5d </td>
@@ -833,7 +868,7 @@
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_6d"></span><h3>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_6d.html'>linear_interp_6d</a>  </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="type-linear_interp_6d"></span><h3>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: <a href='../type/linear_interp_6d.html'>linear_interp_6d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 6d linear interpolation.</p>
      <h4>Components</h4>
@@ -841,68 +876,73 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f~6"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:,:,:,:,:,:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:,:,:,:,:,:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x~6"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-y~5"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>y</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-z~4"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>z</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-q~3"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>q</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-r~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>r</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-s"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>s</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox~6"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloy~5"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloz~4"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloq~3"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilor~2"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilor</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilos"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilos</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -918,6 +958,8 @@
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_6d.html#boundprocedure-initialize~6'>initialize</a></strong>  => initialize_6d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_6d.html#boundprocedure-evaluate~6'>evaluate</a></strong>  => interp_6d </td>
@@ -933,10 +975,39 @@
   <div class="panel-heading codesum"><span class="anchor" id="type-nearest_interp_1d"></span><h3>type, public, extends(<a href='../type/linear_interp_1d.html'>linear_interp_1d</a>) :: <a href='../type/nearest_interp_1d.html'>nearest_interp_1d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 1d nearest neighbor interpolation.</p>
+     <h4>Components</h4>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-f"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>f</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-x"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>x</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilox"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+</tbody>
+</table>
+
      
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_1d.html#boundprocedure-initialize'>initialize</a></strong>  => initialize_1d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_1d.html#boundprocedure-destroy~2'>destroy</a></strong>  => destroy_1d </td>
@@ -952,10 +1023,49 @@
   <div class="panel-heading codesum"><span class="anchor" id="type-nearest_interp_2d"></span><h3>type, public, extends(<a href='../type/linear_interp_2d.html'>linear_interp_2d</a>) :: <a href='../type/nearest_interp_2d.html'>nearest_interp_2d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 2d nearest neighbor interpolation.</p>
+     <h4>Components</h4>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-f~2"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:,:), allocatable</td><td>::</td>
+  <td><strong>f</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-x~2"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>x</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-y"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>y</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilox~2"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloy"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+</tbody>
+</table>
+
      
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_2d.html#boundprocedure-initialize~2'>initialize</a></strong>  => initialize_2d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_2d.html#boundprocedure-destroy~3'>destroy</a></strong>  => destroy_2d </td>
@@ -971,10 +1081,59 @@
   <div class="panel-heading codesum"><span class="anchor" id="type-nearest_interp_3d"></span><h3>type, public, extends(<a href='../type/linear_interp_3d.html'>linear_interp_3d</a>) :: <a href='../type/nearest_interp_3d.html'>nearest_interp_3d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 3d nearest neighbor interpolation.</p>
+     <h4>Components</h4>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-f~3"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:,:,:), allocatable</td><td>::</td>
+  <td><strong>f</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-x~3"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>x</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-y~2"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>y</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-z"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>z</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilox~3"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloy~2"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloz"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+</tbody>
+</table>
+
      
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_3d.html#boundprocedure-initialize~3'>initialize</a></strong>  => initialize_3d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_3d.html#boundprocedure-destroy~4'>destroy</a></strong>  => destroy_3d </td>
@@ -990,10 +1149,69 @@
   <div class="panel-heading codesum"><span class="anchor" id="type-nearest_interp_4d"></span><h3>type, public, extends(<a href='../type/linear_interp_4d.html'>linear_interp_4d</a>) :: <a href='../type/nearest_interp_4d.html'>nearest_interp_4d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 4d nearest neighbor interpolation.</p>
+     <h4>Components</h4>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-f~4"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:,:,:,:), allocatable</td><td>::</td>
+  <td><strong>f</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-x~4"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>x</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-y~3"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>y</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-z~2"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>z</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-q"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>q</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilox~4"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloy~3"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloz~2"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloq"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+</tbody>
+</table>
+
      
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_4d.html#boundprocedure-initialize~4'>initialize</a></strong>  => initialize_4d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_4d.html#boundprocedure-destroy~5'>destroy</a></strong>  => destroy_4d </td>
@@ -1009,10 +1227,79 @@
   <div class="panel-heading codesum"><span class="anchor" id="type-nearest_interp_5d"></span><h3>type, public, extends(<a href='../type/linear_interp_5d.html'>linear_interp_5d</a>) :: <a href='../type/nearest_interp_5d.html'>nearest_interp_5d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 5d nearest neighbor interpolation.</p>
+     <h4>Components</h4>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-f~5"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:,:,:,:,:), allocatable</td><td>::</td>
+  <td><strong>f</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-x~5"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>x</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-y~4"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>y</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-z~3"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>z</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-q~2"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>q</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-r"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>r</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilox~5"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloy~4"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloz~3"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloq~2"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilor"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilor</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+</tbody>
+</table>
+
      
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_5d.html#boundprocedure-initialize~5'>initialize</a></strong>  => initialize_5d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_5d.html#boundprocedure-destroy~6'>destroy</a></strong>  => destroy_5d </td>
@@ -1028,10 +1315,89 @@
   <div class="panel-heading codesum"><span class="anchor" id="type-nearest_interp_6d"></span><h3>type, public, extends(<a href='../type/linear_interp_6d.html'>linear_interp_6d</a>) :: <a href='../type/nearest_interp_6d.html'>nearest_interp_6d</a>  </h3></div>
   <div class="panel-body">
     <p>Class for 6d nearest neighbor interpolation.</p>
+     <h4>Components</h4>
+    <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-f~6"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:,:,:,:,:,:), allocatable</td><td>::</td>
+  <td><strong>f</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-x~6"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>x</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-y~5"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>y</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-z~4"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>z</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-q~3"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>q</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-r~2"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>r</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-s"></span>real(kind=wp),</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>s</strong></td><td></td><td></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilox~6"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloy~5"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloz~4"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iloq~3"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilor~2"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilor</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-ilos"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>ilos</strong></td><td> =</td><td>1</td><td></td>
+</tr>
+</tbody>
+</table>
+
      
      <h4>Type-Bound Procedures</h4>
       <table class="table table-striped varlist">
       <tbody>
+       <tr><td>procedure, public :: <strong><a href='../type/linear_interp_class.html#boundprocedure-check_inputs'>check_inputs</a></strong>  </td>
+       <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_6d.html#boundprocedure-initialize~6'>initialize</a></strong>  => initialize_6d </td>
        <td></td></tr>
        <tr><td>procedure, public :: <strong><a href='../type/linear_interp_6d.html#boundprocedure-destroy~7'>destroy</a></strong>  => destroy_6d </td>

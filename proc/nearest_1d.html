@@ -114,13 +114,9 @@
   <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/nearest_1d.html#variable-mflag~8">mflag</a>
-      <a class="list-group-item" href="../proc/nearest_1d.html#variable-ix~7">ix</a>
-      <a class="list-group-item" href="../proc/nearest_1d.html#variable-i">i</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/nearest_1d.html#src">nearest_1d</a>
   </div>
 </div>
 
@@ -274,13 +270,9 @@
       <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/nearest_1d.html#variable-mflag~8">mflag</a>
-      <a class="list-group-item" href="../proc/nearest_1d.html#variable-ix~7">ix</a>
-      <a class="list-group-item" href="../proc/nearest_1d.html#variable-i">i</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/nearest_1d.html#src">nearest_1d</a>
   </div>
 </div>
 
@@ -288,39 +280,49 @@
     <br class="visible-xs visible-sm hidden-md">
 
 
-    <section>    
-      <h2>Variables</h2>
-    <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-mflag~8"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>mflag</strong></td><td></td><td></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-ix~7"></span>integer,</td>
-<td>private,</td>  <td>dimension(2)</td><td>::</td>
-  <td><strong>ix</strong></td><td></td><td></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-i"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>i</strong></td><td></td><td></td><td></td>
-</tr>
-</tbody>
-</table>
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">pure subroutine </span><span class="n">nearest_1d</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">istat</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    class</span><span class="p">(</span><span class="n">nearest_interp_1d</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w">     </span><span class="c">!! Nearest \( f(x) \)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="c">!! `0`  : no problems,</span>
+<span class="w">                                                    </span><span class="c">!! `-1` : class has not been initialized</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mflag</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ix</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">initialized</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        call </span><span class="n">dintrv</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">ilox</span><span class="p">,</span><span class="n">ix</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">ix</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">mflag</span><span class="p">,</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">else</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">istat</span><span class="p">))</span><span class="w"> </span><span class="n">istat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    end subroutine </span><span class="n">nearest_1d</span><span class="w"></span>
+</pre></div>
 
     </section>
     <br>
-    
-    
-
-    
-    
-
-
-    
     
     </div>
   </div>

@@ -114,14 +114,9 @@
   <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
-  <div id="vars-0" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/dintrv.html#variable-ihi">ihi</a>
-      <a class="list-group-item" href="../proc/dintrv.html#variable-istep">istep</a>
-      <a class="list-group-item" href="../proc/dintrv.html#variable-imid">imid</a>
-      <a class="list-group-item" href="../proc/dintrv.html#variable-n">n</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/dintrv.html#src">dintrv</a>
   </div>
 </div>
 
@@ -194,7 +189,7 @@ requires a distinct <code>ilo</code> parameter.</p></td>
   <td><strong>iright</strong></td><td><p>right index</p></td>
 </tr>
 <tr>
-  <td><span class="anchor" id="variable-mflag~7"></span>integer,</td>
+  <td><span class="anchor" id="variable-mflag"></span>integer,</td>
 <td>intent(out)</td>
   <td></td>  <td></td><td>::</td>
   <td><strong>mflag</strong></td><td><p>signals when <code>x</code> lies out of bounds</p></td>
@@ -231,95 +226,95 @@ requires a distinct <code>ilo</code> parameter.</p></td>
 <polygon fill="none" stroke="black" points="161,-255 107,-255 107,-231 161,-231 161,-255"/>
 <text text-anchor="middle" x="134" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50">dintrv</text>
 </g>
-<!-- proc~interp_4d -->
-<g id="proc~~dintrv~~CalledByGraph_node2" class="node">
-<title>proc~interp_4d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node2"><a xlink:href=".././proc/interp_4d.html" xlink:title="interp_4d">
-<polygon fill="#d9534f" stroke="#d9534f" points="67,-486 4,-486 4,-462 67,-462 67,-486"/>
-<text text-anchor="middle" x="35.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_4d</text>
-</a>
-</g>
-</g>
-<!-- proc~interp_4d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge1" class="edge">
-<title>proc~interp_4d&#45;&gt;proc~dintrv</title>
-<path fill="none" stroke="#000000" d="M61.69,-461.78C65.18,-459.26 68.44,-456.34 71,-453 115.36,-395.31 128.05,-306.46 131.62,-265.32"/>
-<polygon fill="#000000" stroke="#000000" points="135.12,-265.51 132.4,-255.27 128.14,-264.97 135.12,-265.51"/>
-</g>
-<!-- proc~nearest_2d -->
-<g id="proc~~dintrv~~CalledByGraph_node3" class="node">
-<title>proc~nearest_2d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node3"><a xlink:href=".././proc/nearest_2d.html" xlink:title="nearest_2d">
-<polygon fill="#d9534f" stroke="#d9534f" points="71,-444 0,-444 0,-420 71,-420 71,-444"/>
-<text text-anchor="middle" x="35.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_2d</text>
-</a>
-</g>
-</g>
-<!-- proc~nearest_2d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge2" class="edge">
-<title>proc~nearest_2d&#45;&gt;proc~dintrv</title>
-<path fill="none" stroke="#000000" d="M61.15,-419.88C64.79,-417.32 68.24,-414.36 71,-411 107.2,-367.03 123.34,-299.97 129.59,-265.38"/>
-<polygon fill="#000000" stroke="#000000" points="133.07,-265.8 131.29,-255.36 126.17,-264.63 133.07,-265.8"/>
-</g>
 <!-- proc~nearest_5d -->
-<g id="proc~~dintrv~~CalledByGraph_node4" class="node">
+<g id="proc~~dintrv~~CalledByGraph_node2" class="node">
 <title>proc~nearest_5d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node4"><a xlink:href=".././proc/nearest_5d.html" xlink:title="nearest_5d">
-<polygon fill="#d9534f" stroke="#d9534f" points="71,-402 0,-402 0,-378 71,-378 71,-402"/>
-<text text-anchor="middle" x="35.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_5d</text>
+<g id="a_proc~~dintrv~~CalledByGraph_node2"><a xlink:href=".././proc/nearest_5d.html" xlink:title="nearest_5d">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-486 0,-486 0,-462 71,-462 71,-486"/>
+<text text-anchor="middle" x="35.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_5d</text>
 </a>
 </g>
 </g>
 <!-- proc~nearest_5d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge3" class="edge">
+<g id="proc~~dintrv~~CalledByGraph_edge2" class="edge">
 <title>proc~nearest_5d&#45;&gt;proc~dintrv</title>
+<path fill="none" stroke="#000000" d="M61.69,-461.78C65.18,-459.26 68.44,-456.34 71,-453 115.36,-395.31 128.05,-306.46 131.62,-265.32"/>
+<polygon fill="#000000" stroke="#000000" points="135.12,-265.51 132.4,-255.27 128.14,-264.97 135.12,-265.51"/>
+</g>
+<!-- proc~interp_4d -->
+<g id="proc~~dintrv~~CalledByGraph_node3" class="node">
+<title>proc~interp_4d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node3"><a xlink:href=".././proc/interp_4d.html" xlink:title="interp_4d">
+<polygon fill="#d9534f" stroke="#d9534f" points="67,-444 4,-444 4,-420 67,-420 67,-444"/>
+<text text-anchor="middle" x="35.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_4d</text>
+</a>
+</g>
+</g>
+<!-- proc~interp_4d&#45;&gt;proc~dintrv -->
+<g id="proc~~dintrv~~CalledByGraph_edge3" class="edge">
+<title>proc~interp_4d&#45;&gt;proc~dintrv</title>
+<path fill="none" stroke="#000000" d="M61.15,-419.88C64.79,-417.32 68.24,-414.36 71,-411 107.2,-367.03 123.34,-299.97 129.59,-265.38"/>
+<polygon fill="#000000" stroke="#000000" points="133.07,-265.8 131.29,-255.36 126.17,-264.63 133.07,-265.8"/>
+</g>
+<!-- proc~nearest_2d -->
+<g id="proc~~dintrv~~CalledByGraph_node4" class="node">
+<title>proc~nearest_2d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node4"><a xlink:href=".././proc/nearest_2d.html" xlink:title="nearest_2d">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-402 0,-402 0,-378 71,-378 71,-402"/>
+<text text-anchor="middle" x="35.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_2d</text>
+</a>
+</g>
+</g>
+<!-- proc~nearest_2d&#45;&gt;proc~dintrv -->
+<g id="proc~~dintrv~~CalledByGraph_edge4" class="edge">
+<title>proc~nearest_2d&#45;&gt;proc~dintrv</title>
 <path fill="none" stroke="#000000" d="M60.5,-377.87C64.3,-375.28 67.97,-372.31 71,-369 99.32,-338.03 117.59,-291.73 126.52,-264.73"/>
 <polygon fill="#000000" stroke="#000000" points="129.89,-265.67 129.58,-255.08 123.22,-263.55 129.89,-265.67"/>
 </g>
-<!-- proc~nearest_6d -->
+<!-- proc~interp_1d -->
 <g id="proc~~dintrv~~CalledByGraph_node5" class="node">
-<title>proc~nearest_6d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node5"><a xlink:href=".././proc/nearest_6d.html" xlink:title="nearest_6d">
-<polygon fill="#d9534f" stroke="#d9534f" points="71,-360 0,-360 0,-336 71,-336 71,-360"/>
-<text text-anchor="middle" x="35.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_6d</text>
+<title>proc~interp_1d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node5"><a xlink:href=".././proc/interp_1d.html" xlink:title="interp_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="67,-360 4,-360 4,-336 67,-336 67,-360"/>
+<text text-anchor="middle" x="35.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_1d</text>
 </a>
 </g>
 </g>
-<!-- proc~nearest_6d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge4" class="edge">
-<title>proc~nearest_6d&#45;&gt;proc~dintrv</title>
+<!-- proc~interp_1d&#45;&gt;proc~dintrv -->
+<g id="proc~~dintrv~~CalledByGraph_edge5" class="edge">
+<title>proc~interp_1d&#45;&gt;proc~dintrv</title>
 <path fill="none" stroke="#000000" d="M59.3,-335.86C63.4,-333.21 67.48,-330.22 71,-327 91.39,-308.35 109.48,-282.13 120.78,-263.97"/>
 <polygon fill="#000000" stroke="#000000" points="123.85,-265.65 126.04,-255.28 117.87,-262.02 123.85,-265.65"/>
 </g>
-<!-- proc~nearest_4d -->
+<!-- proc~interp_3d -->
 <g id="proc~~dintrv~~CalledByGraph_node6" class="node">
-<title>proc~nearest_4d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node6"><a xlink:href=".././proc/nearest_4d.html" xlink:title="nearest_4d">
-<polygon fill="#d9534f" stroke="#d9534f" points="71,-318 0,-318 0,-294 71,-294 71,-318"/>
-<text text-anchor="middle" x="35.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_4d</text>
+<title>proc~interp_3d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node6"><a xlink:href=".././proc/interp_3d.html" xlink:title="interp_3d">
+<polygon fill="#d9534f" stroke="#d9534f" points="67,-318 4,-318 4,-294 67,-294 67,-318"/>
+<text text-anchor="middle" x="35.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_3d</text>
 </a>
 </g>
 </g>
-<!-- proc~nearest_4d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge5" class="edge">
-<title>proc~nearest_4d&#45;&gt;proc~dintrv</title>
+<!-- proc~interp_3d&#45;&gt;proc~dintrv -->
+<g id="proc~~dintrv~~CalledByGraph_edge11" class="edge">
+<title>proc~interp_3d&#45;&gt;proc~dintrv</title>
 <path fill="none" stroke="#000000" d="M56.67,-293.95C61.4,-291.06 66.4,-287.96 71,-285 83,-277.29 96.09,-268.48 107.15,-260.92"/>
 <polygon fill="#000000" stroke="#000000" points="109.25,-263.72 115.51,-255.18 105.29,-257.95 109.25,-263.72"/>
 </g>
-<!-- proc~interp_6d -->
+<!-- proc~nearest_3d -->
 <g id="proc~~dintrv~~CalledByGraph_node7" class="node">
-<title>proc~interp_6d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node7"><a xlink:href=".././proc/interp_6d.html" xlink:title="interp_6d">
-<polygon fill="#d9534f" stroke="#d9534f" points="67,-276 4,-276 4,-252 67,-252 67,-276"/>
-<text text-anchor="middle" x="35.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_6d</text>
+<title>proc~nearest_3d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node7"><a xlink:href=".././proc/nearest_3d.html" xlink:title="nearest_3d">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-276 0,-276 0,-252 71,-252 71,-276"/>
+<text text-anchor="middle" x="35.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_3d</text>
 </a>
 </g>
 </g>
-<!-- proc~interp_6d&#45;&gt;proc~dintrv -->
+<!-- proc~nearest_3d&#45;&gt;proc~dintrv -->
 <g id="proc~~dintrv~~CalledByGraph_edge6" class="edge">
-<title>proc~interp_6d&#45;&gt;proc~dintrv</title>
-<path fill="none" stroke="#000000" d="M67.03,-257.36C76.54,-255.29 87.11,-252.99 96.96,-250.84"/>
-<polygon fill="#000000" stroke="#000000" points="97.86,-254.23 106.89,-248.68 96.37,-247.39 97.86,-254.23"/>
+<title>proc~nearest_3d&#45;&gt;proc~dintrv</title>
+<path fill="none" stroke="#000000" d="M71.07,-256.48C79.45,-254.65 88.43,-252.7 96.88,-250.86"/>
+<polygon fill="#000000" stroke="#000000" points="97.82,-254.24 106.85,-248.69 96.34,-247.4 97.82,-254.24"/>
 </g>
 <!-- proc~interp_2d -->
 <g id="proc~~dintrv~~CalledByGraph_node8" class="node">
@@ -336,63 +331,63 @@ requires a distinct <code>ilo</code> parameter.</p></td>
 <path fill="none" stroke="#000000" d="M67.03,-228.64C76.54,-230.71 87.11,-233.01 96.96,-235.16"/>
 <polygon fill="#000000" stroke="#000000" points="96.37,-238.61 106.89,-237.32 97.86,-231.77 96.37,-238.61"/>
 </g>
-<!-- proc~nearest_3d -->
+<!-- proc~interp_6d -->
 <g id="proc~~dintrv~~CalledByGraph_node9" class="node">
-<title>proc~nearest_3d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node9"><a xlink:href=".././proc/nearest_3d.html" xlink:title="nearest_3d">
-<polygon fill="#d9534f" stroke="#d9534f" points="71,-192 0,-192 0,-168 71,-168 71,-192"/>
-<text text-anchor="middle" x="35.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_3d</text>
+<title>proc~interp_6d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node9"><a xlink:href=".././proc/interp_6d.html" xlink:title="interp_6d">
+<polygon fill="#d9534f" stroke="#d9534f" points="67,-192 4,-192 4,-168 67,-168 67,-192"/>
+<text text-anchor="middle" x="35.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_6d</text>
 </a>
 </g>
 </g>
-<!-- proc~nearest_3d&#45;&gt;proc~dintrv -->
+<!-- proc~interp_6d&#45;&gt;proc~dintrv -->
 <g id="proc~~dintrv~~CalledByGraph_edge8" class="edge">
-<title>proc~nearest_3d&#45;&gt;proc~dintrv</title>
+<title>proc~interp_6d&#45;&gt;proc~dintrv</title>
 <path fill="none" stroke="#000000" d="M56.67,-192.05C61.4,-194.94 66.4,-198.04 71,-201 83,-208.71 96.09,-217.52 107.15,-225.08"/>
 <polygon fill="#000000" stroke="#000000" points="105.29,-228.05 115.51,-230.82 109.25,-222.28 105.29,-228.05"/>
 </g>
-<!-- proc~interp_1d -->
-<g id="proc~~dintrv~~CalledByGraph_node10" class="node">
-<title>proc~interp_1d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node10"><a xlink:href=".././proc/interp_1d.html" xlink:title="interp_1d">
-<polygon fill="#d9534f" stroke="#d9534f" points="67,-150 4,-150 4,-126 67,-126 67,-150"/>
-<text text-anchor="middle" x="35.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_1d</text>
-</a>
-</g>
-</g>
-<!-- proc~interp_1d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge9" class="edge">
-<title>proc~interp_1d&#45;&gt;proc~dintrv</title>
-<path fill="none" stroke="#000000" d="M59.3,-150.14C63.4,-152.79 67.48,-155.78 71,-159 91.39,-177.65 109.48,-203.87 120.78,-222.03"/>
-<polygon fill="#000000" stroke="#000000" points="117.87,-223.98 126.04,-230.72 123.85,-220.35 117.87,-223.98"/>
-</g>
 <!-- proc~nearest_1d -->
-<g id="proc~~dintrv~~CalledByGraph_node11" class="node">
+<g id="proc~~dintrv~~CalledByGraph_node10" class="node">
 <title>proc~nearest_1d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node11"><a xlink:href=".././proc/nearest_1d.html" xlink:title="nearest_1d">
-<polygon fill="#d9534f" stroke="#d9534f" points="71,-108 0,-108 0,-84 71,-84 71,-108"/>
-<text text-anchor="middle" x="35.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_1d</text>
+<g id="a_proc~~dintrv~~CalledByGraph_node10"><a xlink:href=".././proc/nearest_1d.html" xlink:title="nearest_1d">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-150 0,-150 0,-126 71,-126 71,-150"/>
+<text text-anchor="middle" x="35.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_1d</text>
 </a>
 </g>
 </g>
 <!-- proc~nearest_1d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge10" class="edge">
+<g id="proc~~dintrv~~CalledByGraph_edge9" class="edge">
 <title>proc~nearest_1d&#45;&gt;proc~dintrv</title>
-<path fill="none" stroke="#000000" d="M60.5,-108.13C64.3,-110.72 67.97,-113.69 71,-117 99.32,-147.97 117.59,-194.27 126.52,-221.27"/>
-<polygon fill="#000000" stroke="#000000" points="123.22,-222.45 129.58,-230.92 129.89,-220.33 123.22,-222.45"/>
+<path fill="none" stroke="#000000" d="M59.3,-150.14C63.4,-152.79 67.48,-155.78 71,-159 91.39,-177.65 109.48,-203.87 120.78,-222.03"/>
+<polygon fill="#000000" stroke="#000000" points="117.87,-223.98 126.04,-230.72 123.85,-220.35 117.87,-223.98"/>
 </g>
-<!-- proc~interp_3d -->
-<g id="proc~~dintrv~~CalledByGraph_node12" class="node">
-<title>proc~interp_3d</title>
-<g id="a_proc~~dintrv~~CalledByGraph_node12"><a xlink:href=".././proc/interp_3d.html" xlink:title="interp_3d">
-<polygon fill="#d9534f" stroke="#d9534f" points="67,-66 4,-66 4,-42 67,-42 67,-66"/>
-<text text-anchor="middle" x="35.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interp_3d</text>
+<!-- proc~nearest_6d -->
+<g id="proc~~dintrv~~CalledByGraph_node11" class="node">
+<title>proc~nearest_6d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node11"><a xlink:href=".././proc/nearest_6d.html" xlink:title="nearest_6d">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-108 0,-108 0,-84 71,-84 71,-108"/>
+<text text-anchor="middle" x="35.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_6d</text>
 </a>
 </g>
 </g>
-<!-- proc~interp_3d&#45;&gt;proc~dintrv -->
-<g id="proc~~dintrv~~CalledByGraph_edge11" class="edge">
-<title>proc~interp_3d&#45;&gt;proc~dintrv</title>
+<!-- proc~nearest_6d&#45;&gt;proc~dintrv -->
+<g id="proc~~dintrv~~CalledByGraph_edge10" class="edge">
+<title>proc~nearest_6d&#45;&gt;proc~dintrv</title>
+<path fill="none" stroke="#000000" d="M60.5,-108.13C64.3,-110.72 67.97,-113.69 71,-117 99.32,-147.97 117.59,-194.27 126.52,-221.27"/>
+<polygon fill="#000000" stroke="#000000" points="123.22,-222.45 129.58,-230.92 129.89,-220.33 123.22,-222.45"/>
+</g>
+<!-- proc~nearest_4d -->
+<g id="proc~~dintrv~~CalledByGraph_node12" class="node">
+<title>proc~nearest_4d</title>
+<g id="a_proc~~dintrv~~CalledByGraph_node12"><a xlink:href=".././proc/nearest_4d.html" xlink:title="nearest_4d">
+<polygon fill="#d9534f" stroke="#d9534f" points="71,-66 0,-66 0,-42 71,-42 71,-66"/>
+<text text-anchor="middle" x="35.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">nearest_4d</text>
+</a>
+</g>
+</g>
+<!-- proc~nearest_4d&#45;&gt;proc~dintrv -->
+<g id="proc~~dintrv~~CalledByGraph_edge1" class="edge">
+<title>proc~nearest_4d&#45;&gt;proc~dintrv</title>
 <path fill="none" stroke="#000000" d="M61.15,-66.12C64.79,-68.68 68.24,-71.64 71,-75 107.2,-118.97 123.34,-186.03 129.59,-220.62"/>
 <polygon fill="#000000" stroke="#000000" points="126.17,-221.37 131.29,-230.64 133.07,-220.2 126.17,-221.37"/>
 </g>
@@ -480,14 +475,9 @@ requires a distinct <code>ilo</code> parameter.</p></td>
       <h3>Contents</h3>
  
 <div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
-  <div id="vars-1" class="panel-collapse collapse">
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/dintrv.html#variable-ihi">ihi</a>
-      <a class="list-group-item" href="../proc/dintrv.html#variable-istep">istep</a>
-      <a class="list-group-item" href="../proc/dintrv.html#variable-imid">imid</a>
-      <a class="list-group-item" href="../proc/dintrv.html#variable-n">n</a>
-    </div>
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/dintrv.html#src">dintrv</a>
   </div>
 </div>
 
@@ -495,44 +485,155 @@ requires a distinct <code>ilo</code> parameter.</p></td>
     <br class="visible-xs visible-sm hidden-md">
 
 
-    <section>    
-      <h2>Variables</h2>
-    <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-ihi"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>ihi</strong></td><td></td><td></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-istep"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>istep</strong></td><td></td><td></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-imid"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>imid</strong></td><td></td><td></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-n"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
-  <td><strong>n</strong></td><td></td><td></td><td></td>
-</tr>
-</tbody>
-</table>
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">pure subroutine </span><span class="n">dintrv</span><span class="p">(</span><span class="n">xt</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">ilo</span><span class="p">,</span><span class="n">ileft</span><span class="p">,</span><span class="n">iright</span><span class="p">,</span><span class="n">mflag</span><span class="p">,</span><span class="n">inearest</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xt</span><span class="w">       </span><span class="c">!! a knot or break point vector</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w">        </span><span class="c">!! argument</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">ilo</span><span class="w">      </span><span class="c">!! an initialization parameter which must be set</span>
+<span class="w">                                                 </span><span class="c">!! to 1 the first time the array `xt` is</span>
+<span class="w">                                                 </span><span class="c">!! processed by dintrv. `ilo` contains information for</span>
+<span class="w">                                                 </span><span class="c">!! efficient processing after the initial call and `ilo`</span>
+<span class="w">                                                 </span><span class="c">!! must not be changed by the user.  each dimension</span>
+<span class="w">                                                 </span><span class="c">!! requires a distinct `ilo` parameter.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">ileft</span><span class="w">    </span><span class="c">!! left index</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">iright</span><span class="w">   </span><span class="c">!! right index</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">mflag</span><span class="w">    </span><span class="c">!! signals when `x` lies out of bounds</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">inearest</span><span class="w"> </span><span class="c">!! nearest index</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ihi</span><span class="p">,</span><span class="w"> </span><span class="n">istep</span><span class="p">,</span><span class="w"> </span><span class="n">imid</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+<span class="w">        </span><span class="c">! this is only allowed for nearest interpolation</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span>
+<span class="k">        end if</span>
+<span class="k">    end if</span>
+
+<span class="k">    </span><span class="n">ihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ihi</span><span class="o">&gt;=</span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;=</span><span class="n">xt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">mflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="n">iright</span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span>
+<span class="k">        end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="o">&lt;=</span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">mflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="n">iright</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span>
+<span class="k">        end if</span>
+<span class="k">        </span><span class="n">ilo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">ihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">    </span><span class="k">endif</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;=</span><span class="n">xt</span><span class="p">(</span><span class="n">ihi</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">! now x &gt;= xt(ilo). find upper bound</span>
+<span class="w">        </span><span class="n">istep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">do</span>
+<span class="k">            </span><span class="n">ilo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ihi</span><span class="w"></span>
+<span class="w">            </span><span class="n">ihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">istep</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ihi</span><span class="o">&gt;=</span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;=</span><span class="n">xt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                    </span><span class="n">mflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="n">iright</span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">                    </span><span class="k">return</span>
+<span class="k">                end if</span>
+<span class="k">                </span><span class="n">ihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">            </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;=</span><span class="n">xt</span><span class="p">(</span><span class="n">ihi</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                </span><span class="n">istep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">istep</span><span class="o">*</span><span class="mi">2</span><span class="w"></span>
+<span class="w">                </span><span class="k">cycle</span>
+<span class="k">            endif</span>
+<span class="k">            exit</span>
+<span class="k">        end do</span>
+
+<span class="k">    else</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&gt;=</span><span class="n">xt</span><span class="p">(</span><span class="n">ilo</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">mflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">            </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="w"></span>
+<span class="w">            </span><span class="n">iright</span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xt</span><span class="p">(</span><span class="n">ileft</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xt</span><span class="p">(</span><span class="n">iright</span><span class="p">))</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                    </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ileft</span><span class="w"></span>
+<span class="w">                </span><span class="k">else</span>
+<span class="k">                    </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iright</span><span class="w"></span>
+<span class="w">                </span><span class="k">end if</span>
+<span class="k">            end if</span>
+<span class="k">            return</span>
+<span class="k">        end if</span><span class="w"></span>
+<span class="w">        </span><span class="c">! now x &lt;= xt(ihi). find lower bound</span>
+<span class="w">        </span><span class="n">istep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">do</span>
+<span class="k">            </span><span class="n">ihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="w"></span>
+<span class="w">            </span><span class="n">ilo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ihi</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">istep</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ilo</span><span class="o">&lt;=</span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                </span><span class="n">ilo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&lt;</span><span class="n">xt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                    </span><span class="n">mflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="n">iright</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="k">return</span>
+<span class="k">                end if</span>
+<span class="k">            </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&lt;</span><span class="n">xt</span><span class="p">(</span><span class="n">ilo</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                </span><span class="n">istep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">istep</span><span class="o">*</span><span class="mi">2</span><span class="w"></span>
+<span class="w">                </span><span class="k">cycle</span>
+<span class="k">            endif</span>
+<span class="k">            exit</span>
+<span class="k">        end do</span>
+
+<span class="k">    endif</span><span class="w"></span>
+
+<span class="w">    </span><span class="c">! now xt(ilo) &lt;= x &lt; xt(ihi). narrow the interval</span>
+<span class="w">    </span><span class="k">do</span>
+<span class="k">        </span><span class="n">imid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ilo</span><span class="o">+</span><span class="n">ihi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">imid</span><span class="o">==</span><span class="n">ilo</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">mflag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">            </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="w"></span>
+<span class="w">            </span><span class="n">iright</span><span class="o">=</span><span class="w"> </span><span class="n">ilo</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">inearest</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xt</span><span class="p">(</span><span class="n">ileft</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xt</span><span class="p">(</span><span class="n">iright</span><span class="p">))</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">                    </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ileft</span><span class="w"></span>
+<span class="w">                </span><span class="k">else</span>
+<span class="k">                    </span><span class="n">inearest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iright</span><span class="w"></span>
+<span class="w">                </span><span class="k">end if</span>
+<span class="k">            end if</span>
+<span class="k">            return</span>
+<span class="k">        end if</span><span class="w"></span>
+<span class="w">        </span><span class="c">! note. it is assumed that imid = ilo in case ihi = ilo+1</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">&lt;</span><span class="n">xt</span><span class="p">(</span><span class="n">imid</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">ihi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imid</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            </span><span class="n">ilo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imid</span><span class="w"></span>
+<span class="w">        </span><span class="k">endif</span>
+<span class="k">    end do</span>
+
+<span class="k">    end subroutine </span><span class="n">dintrv</span><span class="w"></span>
+</pre></div>
 
     </section>
     <br>
-    
-    
-
-    
-    
-
-
-    
     
     </div>
   </div>

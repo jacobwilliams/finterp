@@ -88,7 +88,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>16.4% of total for derived types.</p>Including implementation: 189 statements, 16.1% of total for derived types.">22 statements</a>
+    title="<p>16.4% of total for derived types.</p>Including implementation: 241 statements, 13.4% of total for derived types.">22 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/linear_interpolation_module.F90"> Source File</a></li>
   </ul>
@@ -117,6 +117,7 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
   <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-initialized">initialized</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#variable-f~6">f</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#variable-x~6">x</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#variable-y~5">y</a>
@@ -145,10 +146,17 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-0" class="panel-collapse collapse">
     <div class="list-group">
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-check_inputs">check_inputs</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-initialize~6">initialize</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-evaluate~6">evaluate</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-destroy~7">destroy</a>
     </div>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/linear_interp_6d.html#src">linear_interp_6d</a>
   </div>
 </div>
 
@@ -157,7 +165,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, private, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: linear_interp_6d</h2>
+      <h2>type, public, extends(<a href='../type/linear_interp_class.html'>linear_interp_class</a>) :: linear_interp_6d</h2>
     <p>Class for 6d linear interpolation.</p>
 <br>    <div class="panel panel-default">
       <div class="panel-heading">
@@ -320,6 +328,7 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
   <div id="vars-1" class="panel-collapse collapse">
     <div class="list-group">
+      <a class="list-group-item" href="../type/linear_interp_6d.html#variable-initialized">initialized</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#variable-f~6">f</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#variable-x~6">x</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#variable-y~5">y</a>
@@ -348,10 +357,17 @@
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
   <div id="boundprocs-1" class="panel-collapse collapse">
     <div class="list-group">
+      <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-check_inputs">check_inputs</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-initialize~6">initialize</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-evaluate~6">evaluate</a>
       <a class="list-group-item" href="../type/linear_interp_6d.html#boundprocedure-destroy~7">destroy</a>
     </div>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/linear_interp_6d.html#src">linear_interp_6d</a>
   </div>
 </div>
 
@@ -364,68 +380,73 @@
 <thead><tr><th>Type</th><th>Visibility</th><th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
 <tbody>
 <tr>
+  <td><span class="anchor" id="variable-initialized"></span>logical,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>initialized</strong></td><td> =</td><td>.false.</td><td><p>if the class was properly initialized</p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-f~6"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:,:,:,:,:,:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:,:,:,:,:,:), allocatable</td><td>::</td>
   <td><strong>f</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-x~6"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>x</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-y~5"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>y</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-z~4"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>z</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-q~3"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>q</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-r~2"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>r</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-s"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>s</strong></td><td></td><td></td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilox~6"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilox</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloy~5"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloy</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloz~4"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloz</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iloq~3"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iloq</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilor~2"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilor</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-ilos"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>ilos</strong></td><td> =</td><td>1</td><td></td>
 </tr>
 </tbody>
@@ -473,6 +494,81 @@
  
     <section>
     <h2>Type-Bound Procedures</h2>
+     <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-check_inputs"></span><h3>procedure, public :: <strong>check_inputs</strong>    </h3></div>
+  <ul class="list-group">
+      <li class="list-group-item">
+          <h3>private pure subroutine <a href='../proc/check_inputs.html'>check_inputs</a>(me, x, y, z, q, r, s, ierr)</h3>
+<p>Check the validity of the inputs to the initialize routines.
+  Prints warning message if there is an error,
+  and also sets <code>ierr</code> (/=0 if there were any errors).</p><a href="../proc/check_inputs.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+<h4>Arguments</h4>      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" ></span>class(<a href='../type/linear_interp_class.html'>linear_interp_class</a>),</td>
+<td>intent(in)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>me</strong></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
+  <td><strong>x</strong></td><td><p><code>x</code> abscissa vector</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
+  <td><strong>y</strong></td><td><p><code>y</code> abscissa vector</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
+  <td><strong>z</strong></td><td><p><code>z</code> abscissa vector</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
+  <td><strong>q</strong></td><td><p><code>q</code> abscissa vector</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
+  <td><strong>r</strong></td><td><p><code>r</code> abscissa vector</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>real(kind=wp),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td>dimension(:)</td><td>::</td>
+  <td><strong>s</strong></td><td><p><code>s</code> abscissa vector</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" ></span>integer,</td>
+<td>intent(out)</td>
+  <td></td>  <td></td><td>::</td>
+  <td><strong>ierr</strong></td><td><p><code>0</code>   : no problems,
+<code>1</code>   : <code>x</code> is not strictly increasing,
+<code>2</code>   : <code>y</code> is not strictly increasing,
+<code>3</code>   : <code>z</code> is not strictly increasing,
+<code>4</code>   : <code>q</code> is not strictly increasing,
+<code>5</code>   : <code>r</code> is not strictly increasing,
+<code>6</code>   : <code>s</code> is not strictly increasing,
+<code>100</code> : cannot use linear interpolation for only one point.</p></td>
+</tr>
+</tbody>
+</table>
+
+
+      </li>
+  </ul>
+</div>
+
      <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-initialize~6"></span><h3>procedure, public :: <strong>initialize</strong>  => <a href='../proc/initialize_6d.html'>initialize_6d</a>   </h3></div>
   <ul class="list-group">
@@ -658,6 +754,34 @@
 
     </section>
     
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="k">extends</span><span class="p">(</span><span class="n">linear_interp_class</span><span class="p">),</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linear_interp_6d</span><span class="w"></span>
+<span class="w">        </span><span class="c">!! Class for 6d linear interpolation.</span>
+<span class="w">        </span><span class="k">private</span>
+<span class="k">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:,:,:,:,:,:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">q</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ilox</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iloy</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iloz</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iloq</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ilor</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ilos</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">contains</span>
+<span class="k">        private</span>
+<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">initialize</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">initialize_6d</span><span class="w"></span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">evaluate</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">interp_6d</span><span class="w"></span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">destroy</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">destroy_6d</span><span class="w"></span>
+<span class="w">        </span><span class="k">final</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize_6d</span><span class="w"></span>
+<span class="w">    </span><span class="k">end type </span><span class="n">linear_interp_6d</span><span class="w"></span>
+</pre></div>
+
+    </section>
     
     </div>
   </div>
