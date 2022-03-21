@@ -111,7 +111,7 @@ To generate the documentation using [ford](https://github.com/Fortran-FOSS-Progr
 
 ## Documentation
 
-The latest API documentation can be found [here](https://jacobwilliams.github.io/finterp/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford) (note that the included `build.sh` script will also generate these files).
+The latest API documentation can be found [here](https://jacobwilliams.github.io/finterp/). This was generated from the source code using [FORD](https://github.com/Fortran-FOSS-Programmers/ford).
 
 ## License
 
