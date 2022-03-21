@@ -75,7 +75,7 @@ A `fmp.toml` file is provided for compiling finterp with the [Fortran Package Ma
 fpm build --profile release
 ```
 
-By default, the library is built with double precision (`real64`) real values. Explicitly specifying the real kind can be done using the following processor flags:
+By default, the library is built with double precision (`real64`) real values. Explicitly specifying the real kind can be done using the following preprocessor flags:
 
 Preprocessor flag | Kind  | Number of bytes
 ----------------- | ----- | ---------------
