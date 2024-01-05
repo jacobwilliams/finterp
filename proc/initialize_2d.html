@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -35,7 +38,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="../sourcefile/linear_interpolation_module.f90.html">Source File</a>
+                    <a class="nav-link" href="sourcefile/linear_interpolation_module.f90.html">Source File</a>
                   </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../lists/modules.html">Modules</a>
@@ -161,7 +164,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~8"></span>
+              <span class="anchor" id="variable-me~15"></span>
               class(<a href='../type/linear_interp_2d.html'>linear_interp_2d</a>),
             </td>
 <td>intent(inout)</td>
@@ -176,7 +179,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~7"></span>
+              <span class="anchor" id="variable-x~8"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -191,7 +194,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-y~3"></span>
+              <span class="anchor" id="variable-y~6"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -206,7 +209,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-f~16"></span>
+              <span class="anchor" id="variable-f~8"></span>
               real(kind=wp),
             </td>
 <td>intent(in),</td>
@@ -268,7 +271,7 @@
 <!-- proc~check_inputs -->
 <g id="proc~~initialize_2d~~CallsGraph_node2" class="node">
 <title>proc~check_inputs</title>
-<g id="a_proc~~initialize_2d~~CallsGraph_node2"><a xlink:href=".././proc/check_inputs.html" xlink:title="linear_interpolation_module::linear_interp_class%check_inputs">
+<g id="a_proc~~initialize_2d~~CallsGraph_node2"><a xlink:href="../proc/check_inputs.html" xlink:title="linear_interpolation_module::linear_interp_class%check_inputs">
 <polygon fill="#d9534f" stroke="#d9534f" points="713,-66 365,-66 365,-42 713,-42 713,-66"/>
 <text text-anchor="middle" x="539" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linear_interpolation_module::linear_interp_class%check_inputs</text>
 </a>
@@ -283,7 +286,7 @@
 <!-- proc~destroy_2d -->
 <g id="proc~~initialize_2d~~CallsGraph_node3" class="node">
 <title>proc~destroy_2d</title>
-<g id="a_proc~~initialize_2d~~CallsGraph_node3"><a xlink:href=".././proc/destroy_2d.html" xlink:title="linear_interpolation_module::linear_interp_2d%destroy_2d">
+<g id="a_proc~~initialize_2d~~CallsGraph_node3"><a xlink:href="../proc/destroy_2d.html" xlink:title="linear_interpolation_module::linear_interp_2d%destroy_2d">
 <polygon fill="#d9534f" stroke="#d9534f" points="701,-24 377,-24 377,0 701,0 701,-24"/>
 <text text-anchor="middle" x="539" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">linear_interpolation_module::linear_interp_2d%destroy_2d</text>
 </a>
@@ -301,17 +304,17 @@
                   var panprocinitialize_2dCallsGraph = svgPanZoom('#procinitialize_2dCallsGraph',
                     {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
                   );
-                </script>        <div><a type="button" class="graph-help" data-toggle="modal" href="#CallsGraph-help-text">Help</a></div>
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
