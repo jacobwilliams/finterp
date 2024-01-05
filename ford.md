@@ -1,5 +1,5 @@
 project: finterp
-project_dir: ./src
+src_dir: ./src
 output_dir: ./doc
 media_dir: ./media
 project_github: https://github.com/jacobwilliams/finterp
@@ -15,7 +15,6 @@ display: public
          protected
 source: true
 graph: true
-exclude_dir: ./test
 extra_mods: iso_fortran_env:https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html
 
 {!README.md!}
